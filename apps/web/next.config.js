@@ -46,15 +46,6 @@ const nextConfig = {
       },
     ];
   },
-  // Turn off webpack noise: https://github.com/vercel/next.js/discussions/30870#discussioncomment-1862620
-  webpack: (config) => {
-    config.infrastructureLogging = {
-      level: "error",
-    };
-    // Important: return the modified config
-    // https://nextjs.org/docs/messages/undefined-webpack-config
-    return config;
-  },
 };
 
 module.exports = withContentlayer(nextConfig);
