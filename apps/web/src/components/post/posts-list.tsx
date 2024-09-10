@@ -25,7 +25,7 @@ export const PostsList = ({
 
   return (
     <div className={wrapperClassName}>
-      {["year", "topic"].includes(sortBy!) ? (
+      {["year", "topic"].includes(sortBy ?? "") ? (
         <PostsListGrouped groupedPosts={sorted as GroupedPosts} />
       ) : (
         (sorted as Post[]).map((post: Post) => (
@@ -54,7 +54,7 @@ export const PostsBlockList = ({
 
   return (
     <div className={wrapperClassName}>
-      {["year", "topic"].includes(sortBy!) ? (
+      {["year", "topic"].includes(sortBy ?? "") ? (
         <PostsListGrouped groupedPosts={sorted as GroupedPosts} />
       ) : (
         (sorted as Post[]).map((post: Post) => (
@@ -80,7 +80,7 @@ export const PostsSquares = ({
 
   return (
     <div className={cx("pt-w8", wrapperClassName)}>
-      {["year", "topic"].includes(sortBy!) ? (
+      {["year", "topic"].includes(sortBy ?? "") ? (
         <PostsSquaresGrouped groupedPosts={sorted as GroupedPosts} />
       ) : (
         (sorted as Post[]).map((post: Post) => (

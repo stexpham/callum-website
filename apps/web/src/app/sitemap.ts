@@ -1,9 +1,9 @@
+import type { MetadataRoute } from "next";
 import { allPosts } from "contentlayer/generated";
-import { MetadataRoute } from "next";
 import config from "@/config";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  return [
+  return Promise.resolve([
     {
       url: config.PUBLIC_URL,
       lastModified: new Date(),
@@ -24,5 +24,5 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       url: `${config.PUBLIC_URL}/${post._raw.flattenedPath}`,
       lastModified: new Date(),
     })),
-  ];
+  ]);
 }

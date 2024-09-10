@@ -1,11 +1,11 @@
-type HeroCardType = {
+interface HeroCardType {
   icon?: string;
   title: string;
   image: string;
   video?: string;
   date: string;
   link: string;
-};
+}
 
 // Bunny media URLs can use cfd-media.b-cdn.net OR cdn.callumflack.design
 

@@ -1,5 +1,5 @@
-import { type Post } from "contentlayer/generated";
 import { compareAsc, compareDesc } from "date-fns";
+import { type Post } from "contentlayer/generated";
 
 const sortByDate = (posts: Post[], order: "asc" | "desc" = "desc"): Post[] => {
   const compareFn = order === "asc" ? compareAsc : compareDesc;
@@ -13,9 +13,8 @@ const sortByTitle = (posts: Post[], order: "asc" | "desc" = "asc"): Post[] => {
   return [...posts].sort((a, b) => {
     if (order === "asc") {
       return a.title.localeCompare(b.title);
-    } else {
-      return b.title.localeCompare(a.title);
     }
+    return b.title.localeCompare(a.title);
   });
 };
 

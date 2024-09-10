@@ -32,17 +32,12 @@ const useDeviceDetect = (): DeviceDetect => {
   } as DeviceDetect;
 };
 
-/**
- * Categorize device based on user agent
- * @param userAgent
- * @returns
- */
 const detectDevice = (userAgent: string) => {
-  const isAndroid = (): boolean => Boolean(userAgent.match(/Android/i));
-  const isIos = (): boolean => Boolean(userAgent.match(/iPhone|iPad|iPod/i));
-  const isOpera = (): boolean => Boolean(userAgent.match(/Opera Mini/i));
-  const isWindows = (): boolean => Boolean(userAgent.match(/IEMobile/i));
-  const isSSR = (): boolean => Boolean(userAgent.match(/SSR/i));
+  const isAndroid = (): boolean => Boolean(/Android/i.exec(userAgent));
+  const isIos = (): boolean => Boolean(/iPhone|iPad|iPod/i.exec(userAgent));
+  const isOpera = (): boolean => Boolean(/Opera Mini/i.exec(userAgent));
+  const isWindows = (): boolean => Boolean(/IEMobile/i.exec(userAgent));
+  const isSSR = (): boolean => Boolean(/SSR/i.exec(userAgent));
 
   const isMobile = (): boolean =>
     Boolean(isAndroid() || isIos() || isOpera() || isWindows());

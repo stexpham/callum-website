@@ -1,7 +1,7 @@
-import { type Post } from "contentlayer/generated";
 import { format, isSameYear, parseISO } from "date-fns";
-import { sortByCustomSlugOrder, sortByDate, sortByTitle } from "./sort-posts";
+import { type Post } from "contentlayer/generated";
 import { featuredWorkSlugs } from "src/data";
+import { sortByCustomSlugOrder, sortByDate, sortByTitle } from "./sort-posts";
 
 const publishedPosts = (posts: Post[]) => posts.filter((p) => !p.draft);
 
@@ -62,7 +62,7 @@ const postsByCategories = (categories: Post["category"][], posts: Post[]) => {
 const postsByTag = (posts: Post[], tag: string) => {
   const FP = everyPost(posts);
   const P = FP.filter(
-    (p) => p.libraryType === "post" && p.tags && p.tags.includes(tag),
+    (p) => p.libraryType === "post" && p.tags && p.tags.includes(tag)
   );
   return sortByDate(P);
 };
@@ -72,7 +72,7 @@ const postsByYear = (posts: Post[], date: string) => {
   const FP = everyPost(posts);
   const P = FP.filter(
     (p) =>
-      p.libraryType === "post" && isSameYear(parseISO(p.date), parseISO(date)),
+      p.libraryType === "post" && isSameYear(parseISO(p.date), parseISO(date))
   );
   return sortByDate(P);
 };
@@ -131,35 +131,33 @@ function extractUniqueTags(posts: Post[]): Tag[] {
 type GroupedPosts = Record<string, Post[]>;
 const groupPosts = (
   posts: Post[],
-  getKey: (post: Post) => string | string[],
+  getKey: (post: Post) => string | string[]
 ): GroupedPosts => {
   // Sort the posts by date in descending order (most recent first)
   const sortedPosts = [...posts].sort((a, b) => {
     return new Date(b.date).getTime() - new Date(a.date).getTime();
   });
 
-  return sortedPosts.reduce((acc, post) => {
+  return sortedPosts.reduce<GroupedPosts>((acc, post) => {
     const keys = getKey(post);
     const keyArray = Array.isArray(keys) ? keys : [keys];
 
     keyArray.forEach((key) => {
-      if (!acc[key]) {
-        acc[key] = [];
-      }
-      acc[key].push(post);
+      // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition -- fuck you typescript
+      (acc[key] ??= []).push(post);
     });
 
     return acc;
-  }, {} as GroupedPosts);
+  }, {});
 };
 
 const groupPostsByYear = (posts: Post[]): GroupedPosts => {
   const filteredPosts = posts.filter(
     (post) =>
-      !post.draft && post.libraryType !== "year" && post.libraryType !== "hide",
+      !post.draft && post.libraryType !== "year" && post.libraryType !== "hide"
   );
   return groupPosts(filteredPosts, (post) =>
-    format(new Date(post.date), "yyyy"),
+    format(new Date(post.date), "yyyy")
   );
 };
 
@@ -171,10 +169,11 @@ const groupPostsByTag = (posts: Post[]): Record<string, Post[]> => {
       post.category !== "about" &&
       post.libraryType !== "topic" &&
       post.libraryType !== "superset" &&
-      post.libraryType !== "hide",
+      post.libraryType !== "hide"
   );
   const grouped = groupPosts(filteredPosts, (post) => post.tags ?? []);
-  delete grouped["featured"];
+
+  delete grouped.featured;
   return grouped;
 };
 

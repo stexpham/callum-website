@@ -1,15 +1,10 @@
 "use client";
 
-import React from "react";
-
-/* 
-  When you need to know the React page has mounted, use this hook.
-  https://www.joshwcomeau.com/snippets/react-hooks/use-has-mounted/
-*/
+import { useState, useEffect } from "react";
 
 export function useHasMounted() {
-  const [hasMounted, setHasMounted] = React.useState(false);
-  React.useEffect(() => {
+  const [hasMounted, setHasMounted] = useState(false);
+  useEffect(() => {
     setHasMounted(true);
   }, []);
   return hasMounted;

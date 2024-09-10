@@ -1,5 +1,5 @@
-import { SiteContactShort } from "./SiteContactShort";
-import { SiteTime } from "./SiteTime";
+import { SiteContactShort } from "./site-contact-short";
+import { SiteTime } from "./site-time";
 
 export const SiteFooter = () => {
   return (

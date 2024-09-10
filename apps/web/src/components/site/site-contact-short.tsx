@@ -1,9 +1,6 @@
-import { usePathname } from "next/navigation";
 import config from "@/config";
 
 export const SiteContactShort = () => {
-  const pathname = usePathname();
-
   return (
     <ul className="link-block link-block-alt link-block-large flex items-stretch gap-3">
       <li>
@@ -11,17 +8,17 @@ export const SiteContactShort = () => {
       </li>
       {/* <hr className="hr hr-vertical h-[20px]" /> */}
       <li>
-        <a target="_blank" rel="noopener noreferrer" href={config.TWITTER_URL}>
+        <a href={config.TWITTER_URL} rel="noopener noreferrer" target="_blank">
           Twitter
         </a>
       </li>
       <li>
-        <a target="_blank" rel="noopener noreferrer" href={config.GITHUB_URL}>
+        <a href={config.GITHUB_URL} rel="noopener noreferrer" target="_blank">
           Github
         </a>
       </li>
       <li>
-        <a target="_blank" rel="noopener noreferrer" href={config.LINKEDIN_URL}>
+        <a href={config.LINKEDIN_URL} rel="noopener noreferrer" target="_blank">
           Linkedin
         </a>
       </li>

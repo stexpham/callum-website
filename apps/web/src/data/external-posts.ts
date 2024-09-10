@@ -1,5 +1,3 @@
-import { type Post } from "contentlayer/generated";
-
 interface ExternalPost {
   title: string;
   category: string;
@@ -8,7 +6,7 @@ interface ExternalPost {
   external: boolean;
 }
 
-const externalPosts: ExternalPost[] = [
+export const externalPosts: ExternalPost[] = [
   {
     title: "Avari Capital Partners",
     category: "Project",
@@ -24,5 +22,3 @@ const externalPosts: ExternalPost[] = [
     external: true,
   },
 ];
-
-export { externalPosts };

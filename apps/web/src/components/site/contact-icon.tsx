@@ -1,6 +1,6 @@
 import { buttonVariants } from "@repo/ui/button";
 import { Link } from "@repo/ui/next-link";
-import { cx } from "class-variance-authority";
+import { cx } from "cva";
 import React from "react";
 
 interface ContactIconProps {

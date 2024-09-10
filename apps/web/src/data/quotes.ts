@@ -1,8 +1,8 @@
-type Quote = {
+interface Quote {
   quote: string;
   author: string;
   source?: string;
-};
+}
 
 export const quotes: Quote[] = [
   {

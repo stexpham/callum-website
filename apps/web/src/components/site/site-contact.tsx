@@ -1,9 +1,9 @@
-import clsx from "clsx";
-import { usePathname } from "next/navigation";
-import config from "@/config";
+"use client";
 
-// grid grid-cols-4 md:grid-cols-7 gap-w4 items-baseline
-const LIST_STYLE = "Text-subheading";
+import { cx } from "cva";
+import { usePathname } from "next/navigation";
+import { textVariants } from "@repo/ui/text";
+import config from "@/config";
 
 export const SiteContact = () => {
   const pathname = usePathname();
@@ -13,10 +13,10 @@ export const SiteContact = () => {
     <div className="hide-scrollbar flex flex-col gap-w4 text-solid sm:flex-row">
       {pathname === "/" && (
         <h2
-          className={clsx(
+          className={cx(
             "Text-subheading mobile:hidden",
-            // !pathname.includes("knowhow") && "text-fill"
-            pathname === "/" && "text-fill",
+            // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition -- fuck you!
+            pathname === "/" && "text-fill"
           )}
         >
           Connect
@@ -25,38 +25,43 @@ export const SiteContact = () => {
 
       {/* mobile:pl-[15px] */}
       <ul className="link-block-alt link-block-large flex items-stretch gap-3 md:gap-4">
-        <li className={LIST_STYLE}>
+        <li className={cx(textVariants({ intent: "metaHeading" }))}>
           <a href={`mailto:${config.EMAIL}`}>Email</a>
         </li>
         {/* <hr className="hr hr-vertical h-[20px]" /> */}
-        <li className={LIST_STYLE}>
-          <a target="_blank" rel="noopener noreferrer" href={config.GITHUB_URL}>
+        <li className={cx(textVariants)}>
+          <a href={config.GITHUB_URL} rel="noopener noreferrer" target="_blank">
             Github
           </a>
         </li>
-        <li className={LIST_STYLE}>
+        <li className={cx(textVariants({ intent: "metaHeading" }))}>
           <a
-            target="_blank"
-            rel="noopener noreferrer"
             href={config.TWITTER_URL}
+            rel="noopener noreferrer"
+            target="_blank"
           >
             Twitter
           </a>
         </li>
-        <li className={LIST_STYLE}>
+        <li className={cx(textVariants({ intent: "metaHeading" }))}>
           <a
-            target="_blank"
-            rel="noopener noreferrer"
             href={config.LINKEDIN_URL}
+            rel="noopener noreferrer"
+            target="_blank"
           >
             Linkedin
           </a>
         </li>
-        <li className={clsx(LIST_STYLE, "mobile:pr-w24")}>
+        <li
+          className={cx(
+            cx(textVariants({ intent: "metaHeading" })),
+            "mobile:pr-w24"
+          )}
+        >
           <a
-            target="_blank"
-            rel="noopener noreferrer"
             href={config.SUBSTACK_URL}
+            rel="noopener noreferrer"
+            target="_blank"
           >
             Substack
           </a>
