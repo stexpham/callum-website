@@ -16,7 +16,7 @@ module.exports = {
     "@vercel/style-guide/eslint/browser",
     "@vercel/style-guide/eslint/typescript",
     "@vercel/style-guide/eslint/react",
-  ].map(require.resolve),
+  ].map((path) => require.resolve(path)),
   parserOptions: {
     project,
   },
@@ -37,6 +37,8 @@ module.exports = {
   // add rules configurations here
   rules: {
     "import/no-default-export": "off",
+    "react/function-component-definition": "off",
+    "@typescript-eslint/explicit-function-return-type": "off",
   },
   overrides: [
     {

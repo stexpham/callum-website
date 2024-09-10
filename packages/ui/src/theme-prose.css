@@ -1,0 +1,74 @@
+@layer components {
+  .ui-Prose {
+    @apply space-y-2.5;
+  }
+  .Prose blockquote {
+    @apply pb-2;
+  }
+  .Prose blockquote p {
+    @apply border-l border-border-hover pl-2.5 text-solid-hover md:pl-4;
+  }
+  .Citation,
+  .Prose blockquote p strong {
+    @apply table pt-[5px];
+    @apply text-meta !font-normal;
+  }
+  .Prose strong {
+    @apply font-semibold;
+  }
+  .Prose em {
+    @apply not-italic;
+  }
+  .Prose ol,
+  .Prose ul {
+    @apply space-y-0.5 pl-5;
+    /* @apply list-disc; */
+  }
+  .Prose li {
+    @apply relative;
+  }
+  .Prose li::marker {
+    /* @apply ml-4; */
+    /* padding-inline-start: 10ch; */
+  }
+  .Prose li:before {
+    content: "";
+    @apply absolute inline-block bg-current;
+    /* dot */
+    /* @apply -left-[1em] top-[0.65em] size-[5px] rounded-full bg-current; */
+    /* line */
+    @apply -left-[1.3em] top-[0.75em] h-px w-[14px];
+  }
+  .Prose-no-bullets {
+    @apply no-bullets;
+  }
+  .Prose h2 {
+    @apply text-heading;
+  }
+  .Prose h3 {
+    @apply Text-subheading; /* .Text-subheading utility! */
+  }
+  .Prose h2:not(:first-child),
+  .Prose h3:not(:first-child) {
+    @apply !mt-w8;
+  }
+  .Prose p + .Image:first-of-type {
+    @apply pb-0;
+  }
+  .Prose .Image + h2,
+  .Prose .Image + h3 {
+    @apply !mt-w4;
+  }
+  .Prose pre {
+    @apply py-1;
+  }
+  .Prose .Note {
+    @apply !mt-w12 space-y-2;
+  }
+  .Prose .Note + .Note {
+    @apply !mt-3;
+  }
+  .Note {
+    @apply text-meta text-solid-hover;
+  }
+}

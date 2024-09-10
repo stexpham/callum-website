@@ -1,12 +1,14 @@
 {
+  "name": "callum-website",
   "private": true,
   "scripts": {
     "build": "turbo build",
     "dev": "turbo dev",
     "lint": "turbo lint",
     "type-check": "turbo type-check",
-    "clean": "turbo clean",
-    "format": "prettier --write \"**/*.{ts,tsx,md}\""
+    "format": "prettier --write \"**/*.{ts,tsx,md}\"",
+    "clean": "turbo run clean && rm -rf node_modules",
+    "release": "turbo run build --filter=docs^..."
   },
   "devDependencies": {
     "prettier": "^3.2.5",
@@ -16,6 +18,5 @@
   "packageManager": "pnpm@8.15.6",
   "engines": {
     "node": ">=18"
-  },
-  "name": "with-tailwind"
+  }
 }

@@ -1,27 +1,56 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+/* @import "@repo/ui/styles.css"; */
+/* @import "../../../../../packages/ui/src/styles.css"; */
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
-}
+/* @import "@repo/ui/theme-color.css"; */
+/* @import "@repo/ui/theme-typography.css"; */
+/* import "@repo/ui/styles.css"; */
+/* @import "gcmp-design-system/src/styles/spacing-theme.css"; */
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
+/* body {
+  @apply bg-canvas;
+  @apply text-solid;
+} */
+
+@layer utilities {
+  .hr-vertical {
+    /* must add a height when used within a flex parent */
+    @apply w-px border-l;
   }
-}
-
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  .border-dark-transparent {
+    @apply dark:!border-transparent;
+  }
+  .bg-background-body,
+  .bg-background-body .Nav {
+    /* @apply bg-[#f6edc8]; */
+    /* @apply bg-background-hover; */
+    @apply bg-background-active;
+  }
+  .no-bullets,
+  .no-bullets ul,
+  .no-bullets ol {
+    @apply list-none pl-0;
+  }
+  .no-bullets li:before {
+    @apply content-none;
+  }
+  .fill-forwards {
+    animation-fill-mode: forwards;
+  }
+  /* https://sebhastian.com/hide-scrollbar-css/ */
+  .hide-scrollbar {
+    /* Firefox */
+    scrollbar-width: none;
+  }
+  .hide-scrollbar::-webkit-scrollbar {
+    @apply hidden;
+  }
+  /* SVG line drawing dark mode */
+  @media (prefers-color-scheme: dark), .dark {
+    .dark-scheme-invert img {
+      filter: invert(1);
+    }
+  }
 }
