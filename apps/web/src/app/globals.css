@@ -53,4 +53,40 @@
       filter: invert(1);
     }
   }
+  /* used in PostLinkContent */
+  .dotdotdot {
+    background-image: radial-gradient(currentColor 1px, transparent 0);
+    background-size: 0.9em 0.9em;
+    background-position: -0.425em -0.425em;
+  }
+  /* .dark .dotdotdot {
+    background-image: radial-gradient(
+      rgb(255 255 255 / 30%) 1px,
+      transparent 0
+    );
+  } */
+  /* Carousel mask. Ps. this fade did not work: https://rauno.me/craft/nextjs */
+  .mask {
+    mask-image: linear-gradient(
+        to right,
+        rgba(0, 0, 0, 0) 0%,
+        rgb(0, 0, 0) 17.5%,
+        rgb(0, 0, 0) 82.5%,
+        rgba(0, 0, 0, 0) 100%
+      ),
+      linear-gradient(
+        to right,
+        rgba(0, 0, 0, 0) 0%,
+        rgb(0, 0, 0) 17.5%,
+        rgb(0, 0, 0) 82.5%,
+        rgba(0, 0, 0, 0) 100%
+      );
+  }
+  .mask-right {
+    mask-image: linear-gradient(
+      to right,
+      rgb(0, 0, 0) 82.5%,
+      rgba(0, 0, 0, 0) 100%
+    );
+  }
 }

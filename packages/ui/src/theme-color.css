@@ -48,9 +48,9 @@
     --color-gray-fill-contrast: var(--gray-12);
 
     /* ACCENT */
-    --color-accent-bg: var(--orange-3);
-    --color-accent-solid: var(--orange-9);
-    --color-accent-solid-hover: var(--orange-10);
+    --color-accent-bg: var(--red-3);
+    --color-accent-solid: var(--red-9);
+    --color-accent-solid-hover: var(--red-10);
 
     /* SKILLS */
     --color-design: var(--orange-9);

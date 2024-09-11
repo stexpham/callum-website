@@ -1,7 +1,7 @@
 // import { cx, cva, type VariantProps } from "class-variance-authority";
 import type { VariantProps } from "cva";
-// import { cx, cva } from "../cva.config";
-import { cx, cva } from "cva";
+import { cx, cva } from "../cva.config";
+// import { cx, cva } from "cva";
 
 // import { ThemeColors } from "@/styles/colors.type";
 // this overwrites the text-* classes. DUH CN.
@@ -20,8 +20,7 @@ export const textVariants = cva({
         "decoration-solid decoration-[0.025em]",
         "hover:text-accent hover:decoration-accent hover:decoration-[0.05em]",
       ],
-      markdown: "prose", // TBC
-      fine: "text-fine subpixel-antialiased",
+      fine: "text-fine", // subpixel-antialiased
       metaHeading: "text-fine font-bold uppercase tracking-metaHeading",
       meta: "text-meta",
       body: "text-base font-normal",
@@ -29,7 +28,7 @@ export const textVariants = cva({
       title: "text-title font-medium",
     },
     size: {
-      fine: "text-fine subpixel-antialiased",
+      fine: "text-fine", // subpixel-antialiased
       meta: "text-meta",
       base: "text-base",
       heading: "text-heading",
@@ -70,7 +69,7 @@ export const textVariants = cva({
       ],
     },
     dim: {
-      true: "text-solid",
+      true: "!text-solid",
     },
   },
   // Compound variants apply classes when multiple other variant conditions are met: https://cva.style/docs/getting-started/variants#compound-variants

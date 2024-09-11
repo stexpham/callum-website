@@ -1,8 +1,8 @@
 import { Link } from "@repo/ui/next-link";
+import { cx } from "cva";
 import type { PostsKind } from "@/components/post";
 import type { GroupedPosts } from "@/utils";
 import { type Post } from "contentlayer/generated";
-import { cx } from "~/cva.config";
 import { CardImage, HeroCardWrapper } from "../card";
 import { PostLinkBlock } from "./post-link-block";
 import { PostLinkContent } from "./post-link-content";

@@ -2,6 +2,11 @@ import type { HTMLAttributes } from "react";
 import type { VariantProps } from "cva";
 import { cx, cva } from "../cva.config";
 
+/* 
+  Prose applies parent styles to Markdown blocks.
+  The markdown styles are set in mdx-components using Text.
+ */
+
 export const proseVariants = cva({
   base: [
     "space-y-2.5",
