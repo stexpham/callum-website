@@ -23,9 +23,6 @@ importers:
       '@repo/ui':
         specifier: workspace:*
         version: link:../../packages/ui
-      class-variance-authority:
-        specifier: ^0.7.0
-        version: 0.7.0
       cva:
         specifier: 1.0.0-beta.1
         version: 1.0.0-beta.1(typescript@5.3.3)
@@ -84,9 +81,6 @@ importers:
       '@repo/ui':
         specifier: workspace:*
         version: link:../../packages/ui
-      class-variance-authority:
-        specifier: ^0.7.0
-        version: 0.7.0
       contentlayer:
         specifier: ^0.3.4
         version: 0.3.4(esbuild@0.18.20)
@@ -205,9 +199,6 @@ importers:
       '@radix-ui/react-slot':
         specifier: ^1.1.0
         version: 1.1.0(@types/react@18.2.61)(react@18.2.0)
-      class-variance-authority:
-        specifier: ^0.7.0
-        version: 0.7.0
       clsx:
         specifier: ^2.1.1
         version: 2.1.1
@@ -1451,9 +1442,6 @@ packages:
   ci-info@3.9.0:
     resolution: {integrity: sha512-NIxF55hv4nSqQswkAeiOi1r83xy8JldOFDTWiug55KBu9Jnblncd2U6ViHmYgHf01TPZS77NJBhBMKdWj9HQMQ==}
     engines: {node: '>=8'}
-
-  class-variance-authority@0.7.0:
-    resolution: {integrity: sha512-jFI8IQw4hczaL4ALINxqLEXQbWcNjoSkloa4IaufXCJr6QawJyw7tuRysRsrE8w2p/4gGaxKIt/hX3qz/IbD1A==}
 
   clean-regexp@1.0.0:
     resolution: {integrity: sha1-jffHquUf02h06PjQW5GAvBGj/tc=}
@@ -5097,10 +5085,6 @@ snapshots:
       fsevents: 2.3.3
 
   ci-info@3.9.0: {}
-
-  class-variance-authority@0.7.0:
-    dependencies:
-      clsx: 2.0.0
 
   clean-regexp@1.0.0:
     dependencies:
