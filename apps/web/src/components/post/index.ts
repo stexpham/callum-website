@@ -4,5 +4,6 @@
  */
 
 export * from "./posts-list";
+export * from "./post-meta";
 export * from "./use-sorted-posts";
 export * from "./post.styles";

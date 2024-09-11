@@ -3,7 +3,7 @@
 import { usePathname } from "next/navigation";
 import { cx } from "cva";
 
-export function ClientWrapper({
+export function BodyWrapper({
   children,
   className,
 }: {

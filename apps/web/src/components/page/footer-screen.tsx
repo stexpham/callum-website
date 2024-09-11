@@ -10,7 +10,7 @@ export const FooterScreen = ({
 }: {
   children?: React.ReactNode;
   showRule?: boolean;
-  ruleClassName: string;
+  ruleClassName?: string;
   intersectionRef?: React.RefObject<HTMLDivElement>;
 }) => (
   <FooterWrapper ruleClassName={ruleClassName} showAsScreen showRule={showRule}>

@@ -3,11 +3,9 @@
 import { useRef } from "react";
 import { useIntersection } from "react-use";
 import { cx } from "~/cva.config";
+import { NAV_ITEMS } from "~/src/data";
 import { Nav } from "./nav";
 import { FooterScreen } from "./footer-screen";
-
-// "/stream"
-const NAV = ["/about", "/work", "/writing"];
 
 export const PageWrapper = ({
   activeNav,
@@ -30,7 +28,7 @@ export const PageWrapper = ({
       <Nav
         activeNav={activeNav}
         anchorName="Callum"
-        navItems={NAV}
+        navItems={NAV_ITEMS}
         ruleClassName={cx(
           intersection && intersection.intersectionRatio < 1
             ? ""
@@ -40,7 +38,7 @@ export const PageWrapper = ({
 
       {children}
 
-      <FooterScreen intersectionRef={intersectionRef} ruleClassName="">
+      <FooterScreen intersectionRef={intersectionRef}>
         {footerChildren}
       </FooterScreen>
     </>

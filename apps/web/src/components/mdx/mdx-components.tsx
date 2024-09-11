@@ -7,12 +7,13 @@ import NextImage from "next/image";
 import type { AnchorHTMLAttributes, HTMLAttributes } from "react";
 import { ContactIcons, LinkWithArrow } from "@/components/elements";
 import type { MediaFigureProps } from "@/components/media/media.type";
-import { MediaFigure } from "@/components/media";
+import type { MediaDialogProps, VideoProps } from "@/components/media";
+import { MediaDialog, MediaFigure, Video } from "@/components/media";
 import { cx } from "~/cva.config";
 import { Available } from "./available";
 
 interface MdxImageProps extends MediaFigureProps, NextImageProps {}
-// interface MdxVideoProps extends MediaFigureProps, VideoProps {}
+interface MdxVideoProps extends MediaFigureProps, VideoProps {}
 
 const noteStyle = [
   "Note !mt-w12 space-y-2",
@@ -169,5 +170,104 @@ export const components = {
         {...props}
       />
     </MediaFigure>
+  ),
+  Video: ({
+    id,
+    src,
+    poster,
+    aspect,
+    allowSound,
+    theme,
+    caption,
+    showBorder,
+    showBackground = true,
+    showRounded = true,
+  }: MdxVideoProps) => (
+    <MediaFigure
+      aspect={aspect}
+      caption={caption}
+      id={id}
+      showBackground={showBackground}
+      showBorder={showBorder}
+      showRounded={showRounded}
+      theme={theme}
+    >
+      <Video
+        allowSound={allowSound}
+        aspect={aspect}
+        poster={poster}
+        src={src}
+      />
+    </MediaFigure>
+  ),
+  MediaDialogVideo: ({
+    src,
+    poster,
+    aspect,
+    allowSound,
+    title = "Media Dialog Video",
+    theme,
+    showBorder = true,
+    showBackground = true,
+    showRounded = true,
+  }: MediaDialogProps & VideoProps) => (
+    <MediaDialog
+      aspect={aspect}
+      buttonNode={
+        <Video
+          allowSound={allowSound}
+          aspect={aspect}
+          poster={poster}
+          src={src}
+        />
+      }
+      showBackground={showBackground}
+      showBorder={showBorder}
+      showRounded={showRounded}
+      theme={theme}
+      title={title}
+    >
+      <Video
+        allowSound={allowSound}
+        aspect={aspect}
+        poster={poster}
+        src={src}
+      />
+    </MediaDialog>
+  ),
+  MediaDialogImage: ({
+    src,
+    alt,
+    aspect,
+    title = "Media Dialog Image",
+    theme,
+    showBorder = true,
+    showBackground = true,
+    showRounded = true,
+    ...props
+  }: MediaDialogProps & NextImageProps) => (
+    <MediaDialog
+      aspect={aspect}
+      buttonNode={
+        <NextImage
+          alt={alt}
+          className="w-full object-cover"
+          src={src}
+          {...props}
+        />
+      }
+      showBackground={showBackground}
+      showBorder={showBorder}
+      showRounded={showRounded}
+      theme={theme}
+      title={title}
+    >
+      <NextImage
+        alt={alt}
+        className="w-full object-cover"
+        src={src}
+        {...props}
+      />
+    </MediaDialog>
   ),
 };

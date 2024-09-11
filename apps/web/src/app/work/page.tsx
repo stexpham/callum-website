@@ -1,10 +1,9 @@
 import { Text } from "@repo/ui/text";
+import type { SearchParams } from "@/types/search-params";
 import { PageWrapper } from "@/components/page";
 import { TitleHeader } from "@/components/elements";
 import { PagePostsIndexClient } from "@/components/page/page-posts-index-client";
 import type { PostsKind } from "@/components/post";
-
-type SearchParams = Record<string, string | string[] | undefined>;
 
 export default function WorkIndexPage({
   searchParams,
