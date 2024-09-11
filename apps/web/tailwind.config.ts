@@ -7,7 +7,7 @@ const config: Pick<Config, "content" | "presets"> = {
   content: [
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
-    // TODO: says "include packages if not transpiling" …but I am and without this, styles fuck up?
+    // We're not transpiling, but consuming from the ui/src directly
     "../../packages/ui/src/**/*.{js,ts,jsx,tsx}",
   ],
   presets: [sharedConfig],

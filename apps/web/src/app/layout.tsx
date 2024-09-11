@@ -1,6 +1,4 @@
 import "./globals.css";
-import "@repo/ui/styles.css";
-import { bodyVariants } from "@repo/ui/base";
 import { cx } from "cva";
 import type { Metadata, Viewport } from "next";
 import PlausibleProvider from "next-plausible";
@@ -55,7 +53,7 @@ export default function RootLayout({
         {/* https://github.com/4lejandrito/next-plausible */}
         <PlausibleProvider domain={config.PUBLIC_DOMAIN} trackOutboundLinks />
       </head>
-      <BodyWrapper className={cx(bodyVariants(), sans.variable, mono.variable)}>
+      <BodyWrapper className={cx(sans.variable, mono.variable)}>
         <Providers>{children}</Providers>
       </BodyWrapper>
     </html>

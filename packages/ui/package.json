@@ -7,8 +7,7 @@
   ],
   "files": [
     "dist",
-    "src/fonts",
-    "src/styles.css"
+    "src/fonts"
   ],
   "exports": {
     "./styles.css": "./dist/index.css",
@@ -16,7 +15,6 @@
     "./text": "./src/text.tsx",
     "./prose": "./src/prose.tsx",
     "./card": "./src/card.tsx",
-    "./base": "./src/base.tsx",
     "./button": "./src/button.tsx",
     "./next-link": "./src/next-link.tsx",
     "./polymorphic-element": "./src/polymorphic-element.tsx",

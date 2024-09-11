@@ -1,0 +1,101 @@
+@layer utilities {
+  .link {
+    @apply relative;
+    @apply underline underline-offset-[0.25em];
+    @apply decoration-solid decoration-[0.025em];
+    @apply hover:text-accent;
+    @apply hover:decoration-accent hover:decoration-[0.05em];
+  }
+
+  /* must add a height when used within a flex parent */
+  .hr-vertical {
+    @apply w-px border-l;
+  }
+
+  .border-dark-transparent {
+    @apply dark:!border-transparent;
+  }
+
+  /* bullets reset */
+  .no-bullets,
+  .no-bullets ul,
+  .no-bullets ol {
+    @apply list-none pl-0;
+  }
+  .no-bullets li:before {
+    @apply content-none;
+  }
+
+  /* https://sebhastian.com/hide-scrollbar-css/ */
+  .hide-scrollbar {
+    /* Firefox */
+    scrollbar-width: none;
+  }
+  .hide-scrollbar::-webkit-scrollbar {
+    @apply hidden;
+  }
+
+  /* SVG line drawing dark mode */
+  @media (prefers-color-scheme: dark), .dark {
+    .dark-scheme-invert img {
+      filter: invert(1);
+    }
+  }
+
+  /* The dotdotdots as used in post-link-content */
+  .dotdotdot {
+    background-image: radial-gradient(currentColor 1px, transparent 0);
+    background-size: 0.9em 0.9em;
+    background-position: -0.425em -0.425em;
+  }
+
+  /* Carousel mask. Ps. this fade did not work: https://rauno.me/craft/nextjs */
+  .mask {
+    mask-image: linear-gradient(
+        to right,
+        rgba(0, 0, 0, 0) 0%,
+        rgb(0, 0, 0) 17.5%,
+        rgb(0, 0, 0) 82.5%,
+        rgba(0, 0, 0, 0) 100%
+      ),
+      linear-gradient(
+        to right,
+        rgba(0, 0, 0, 0) 0%,
+        rgb(0, 0, 0) 17.5%,
+        rgb(0, 0, 0) 82.5%,
+        rgba(0, 0, 0, 0) 100%
+      );
+  }
+  .mask-right {
+    mask-image: linear-gradient(
+      to right,
+      rgb(0, 0, 0) 82.5%,
+      rgba(0, 0, 0, 0) 100%
+    );
+  }
+}
+
+@layer components {
+  /* parent link modifiers */
+  .link-block a:not(.Button),
+  .Prose a:not(.Button) {
+    @apply link;
+  }
+  .link-alt,
+  .link-block-alt a:not(.Button) {
+    @apply relative no-underline;
+  }
+  .link-accent,
+  .link-block-accent a:not(.Button) {
+    @apply link;
+    @apply bg-accent-background hover:bg-accent;
+    @apply hover:text-fill;
+  }
+  .link-large,
+  .link-block-large a:not(.Button) {
+    @apply before:absolute before:-inset-[0.25em];
+  }
+  .link-block-reset a:not(.Button) {
+    @apply no-underline;
+  }
+}

@@ -29,7 +29,7 @@ const config: Omit<Config, "content"> = {
       center: true,
       padding: "var(--space-inset)",
       screens: {
-        // lg: "var(--container-text)" WTF?
+        // "var(--container-text)" doesn't work here
         lg: "660px",
       },
     },

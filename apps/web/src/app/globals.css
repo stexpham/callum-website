@@ -1,127 +1,18 @@
 @import "tailwindcss/base";
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
-/* @import "@repo/ui/styles.css"; */
-/* @import "../../../../../packages/ui/src/styles.css"; */
 
-/* @import "@repo/ui/theme-color.css"; */
-/* @import "@repo/ui/theme-typography.css"; */
-/* import "@repo/ui/styles.css"; */
-/* @import "gcmp-design-system/src/styles/spacing-theme.css"; */
-
-/* body {
-  @apply bg-canvas;
-  @apply text-solid;
-} */
+/* Consume packages/ui directly from source without building. If using this option, you will need to update the tailwind.config.js in your apps to be aware of your package locations, so it can find all usages of the tailwindcss class names for CSS compilation. */
+@import "@repo/ui/src/theme-colors.css";
+@import "@repo/ui/src/theme-base.css";
+@import "@repo/ui/src/theme-utils.css";
 
 @layer utilities {
-  .hr-vertical {
-    /* must add a height when used within a flex parent */
-    @apply w-px border-l;
-  }
-  .border-dark-transparent {
-    @apply dark:!border-transparent;
-  }
+  /* could use group here, but whatevs */
   .bg-background-body,
   .bg-background-body .Nav {
     /* @apply bg-[#f6edc8]; */
     /* @apply bg-background-hover; */
     @apply bg-background-active;
-  }
-  .no-bullets,
-  .no-bullets ul,
-  .no-bullets ol {
-    @apply list-none pl-0;
-  }
-  .no-bullets li:before {
-    @apply content-none;
-  }
-  .fill-forwards {
-    animation-fill-mode: forwards;
-  }
-  /* https://sebhastian.com/hide-scrollbar-css/ */
-  .hide-scrollbar {
-    /* Firefox */
-    scrollbar-width: none;
-  }
-  .hide-scrollbar::-webkit-scrollbar {
-    @apply hidden;
-  }
-  /* SVG line drawing dark mode */
-  @media (prefers-color-scheme: dark), .dark {
-    .dark-scheme-invert img {
-      filter: invert(1);
-    }
-  }
-  /* used in PostLinkContent */
-  .dotdotdot {
-    background-image: radial-gradient(currentColor 1px, transparent 0);
-    background-size: 0.9em 0.9em;
-    background-position: -0.425em -0.425em;
-  }
-  /* .dark .dotdotdot {
-    background-image: radial-gradient(
-      rgb(255 255 255 / 30%) 1px,
-      transparent 0
-    );
-  } */
-  /* Carousel mask. Ps. this fade did not work: https://rauno.me/craft/nextjs */
-  .mask {
-    mask-image: linear-gradient(
-        to right,
-        rgba(0, 0, 0, 0) 0%,
-        rgb(0, 0, 0) 17.5%,
-        rgb(0, 0, 0) 82.5%,
-        rgba(0, 0, 0, 0) 100%
-      ),
-      linear-gradient(
-        to right,
-        rgba(0, 0, 0, 0) 0%,
-        rgb(0, 0, 0) 17.5%,
-        rgb(0, 0, 0) 82.5%,
-        rgba(0, 0, 0, 0) 100%
-      );
-  }
-  .mask-right {
-    mask-image: linear-gradient(
-      to right,
-      rgb(0, 0, 0) 82.5%,
-      rgba(0, 0, 0, 0) 100%
-    );
-  }
-  .link {
-    @apply relative;
-    @apply underline underline-offset-[0.25em];
-    @apply decoration-solid decoration-[0.025em];
-    @apply hover:text-accent;
-    @apply hover:decoration-accent hover:decoration-[0.05em];
-  }
-}
-
-@layer components {
-  /* Works, as expected */
-  /* .Prose strong {
-    @apply text-[salmon];
-  } */
-  .link-block a:not(.Button),
-  .Prose a:not(.Button) {
-    @apply link;
-  }
-  .link-alt,
-  .link-block-alt a:not(.Button) {
-    @apply relative no-underline;
-  }
-  .link-accent,
-  .link-block-accent a:not(.Button) {
-    @apply link;
-    @apply bg-accent-background hover:bg-accent;
-    @apply hover:text-fill;
-  }
-  .link-large,
-  .link-block-large a:not(.Button) {
-    @apply before:absolute before:-inset-[0.25em];
-  }
-  .link-block-reset a:not(.Button) {
-    @apply no-underline;
   }
 }

@@ -1,9 +1,7 @@
 import "./globals.css";
-import "@repo/ui/styles.css";
+import { cx } from "cva";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-import { bodyVariants } from "@repo/ui/base";
-import { cx } from "cva";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -19,7 +17,7 @@ export default function RootLayout({
 }): JSX.Element {
   return (
     <html lang="en">
-      <body className={cx(bodyVariants(), inter.className)}>
+      <body className={cx(inter.className)}>
         <div className="container">
           <p className="text-solid h-nav">DOCS. I should be solid</p>
         </div>

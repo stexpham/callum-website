@@ -1,4 +1,3 @@
-// import { cx, cva, type VariantProps } from "class-variance-authority";
 import type { VariantProps } from "cva";
 import { cx, cva } from "../cva.config";
 // import { cx, cva } from "cva";
@@ -15,24 +14,13 @@ export const textVariants = cva({
   base: "",
   variants: {
     intent: {
-      link: [
-        "relative underline underline-offset-[0.25em]",
-        "decoration-solid decoration-[0.025em]",
-        "hover:text-accent hover:decoration-accent hover:decoration-[0.05em]",
-      ],
-      fine: "text-fine", // subpixel-antialiased
+      link: "link", // specified in theme-utils.css
+      fine: "text-fine", // subpixel-antialiased?
       metaHeading: "text-fine font-bold uppercase tracking-metaHeading",
       meta: "text-meta",
       body: "text-base font-normal",
       heading: "text-heading font-medium",
       title: "text-title font-medium",
-    },
-    size: {
-      fine: "text-fine", // subpixel-antialiased
-      meta: "text-meta",
-      base: "text-base",
-      heading: "text-heading",
-      title: "text-title",
     },
     color: {
       "solid-light": "text-solid-light",
@@ -74,15 +62,14 @@ export const textVariants = cva({
   },
   // Compound variants apply classes when multiple other variant conditions are met: https://cva.style/docs/getting-started/variants#compound-variants
   compoundVariants: [
-    {
-      caps: true,
-      size: ["heading"],
-      class: "!tracking-[0.05em]",
-    },
+    // {
+    //   caps: true,
+    //   size: ["heading"],
+    //   class: "!tracking-[0.05em]",
+    // },
   ],
   defaultVariants: {
     intent: "body",
-    // size: "base",
   },
 });
 
@@ -97,7 +84,6 @@ export const Text = ({
   as: Component = "p",
   className,
   intent,
-  size,
   color,
   weight,
   align,
@@ -120,7 +106,6 @@ export const Text = ({
       className={cx(
         textVariants({
           intent,
-          size,
           color,
           weight,
           align,

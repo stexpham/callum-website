@@ -1,28 +1,9 @@
-@import "tailwindcss/base";
-@import "tailwindcss/components";
-@import "tailwindcss/utilities";
+/* 
+  UNUSED!  
+  Instead, we consume the ui/src/theme-* files per app globals.css.
+  Retaining for alternate method if I find blockers in the current method.
+ */
 
-@import "./theme-color.css";
-/* @import "./theme-prose.css"; */
-/* @import "./theme-typography.css"; */
-
-@layer base {
-  :root {
-    --radius: 8px;
-    --height-nav: 80px;
-    --height-tab: 54px;
-    --space-inset: 20px;
-
-    --container-text-px: 660px;
-    --container-hero-px: 1000px;
-    --container-text: calc(var(--container-text-px) - (var(--space-inset) * 2));
-    --container-hero: calc(var(--container-hero-px) - (var(--space-inset) * 2));
-
-    --inset-full: calc((100vw - (var(--space-inset) * 2)));
-    --inset-text: calc((100vw - var(--container-text)) / 2);
-    --inset-hero: calc((100vw - var(--container-hero)) / 2);
-  }
-  /* * {
-    @apply border-border;
-  } */
-}
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
