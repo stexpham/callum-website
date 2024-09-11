@@ -16,6 +16,7 @@ interface MdxVideoProps extends MediaFigureProps, VideoProps {}
 
 export const noteStyle = [
   "Note !mt-w12 space-y-2 text-meta text-solid",
+  "link-block",
   "[&_p]:text-meta [&_p]:text-solid",
   // "[&_.Note+.Note]:!mt-2",
   // textVariants({ intent: "meta", dim: true }),
@@ -26,13 +27,13 @@ export const components = {
     const isExternal = href && /^(?:https?:)?\/\//.test(href);
     return isExternal ? (
       <LinkWithArrow
-        className={textVariants({ intent: "link" })}
+        className={cx(textVariants({ intent: "link" }))}
         href={href}
         {...props}
       />
     ) : (
       <Link
-        className={textVariants({ intent: "link" })}
+        className={cx(textVariants({ intent: "link" }))}
         href={href || "#"}
         {...props}
       />

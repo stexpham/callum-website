@@ -1,0 +1,40 @@
+@layer base {
+  :root {
+    --radius: 8px;
+    --height-nav: 80px;
+    --height-tab: 54px;
+    --space-inset: 20px;
+
+    --container-text-px: 660px;
+    --container-hero-px: 1000px;
+    --container-text: calc(var(--container-text-px) - (var(--space-inset) * 2));
+    --container-hero: calc(var(--container-hero-px) - (var(--space-inset) * 2));
+
+    --inset-full: calc((100vw - (var(--space-inset) * 2)));
+    --inset-text: calc((100vw - var(--container-text)) / 2);
+    --inset-hero: calc((100vw - var(--container-hero)) / 2);
+  }
+  ::selection {
+    @apply bg-fill text-canvas;
+  }
+  * {
+    @apply border-border;
+  }
+  html {
+    @apply bg-canvas;
+  }
+  body {
+    @apply relative min-h-screen;
+    @apply antialiased;
+    @apply font-sans text-base font-normal;
+    @apply bg-canvas text-fill;
+
+    /* 1. Apple kerning, from http://design.byform.co/ */
+    /* font-feature-settings: "kern" 1,'ss01' 1,'ss02' 1,'ss03' 1,'ss04' 1; */
+    /* font-feature-settings:
+      "kern" 1,
+      "liga" 1; */
+    /* transition everywhere: do NOT use tailwind here as the variables are inherited on every child transition */
+    transition: color 50ms ease 0s;
+  }
+}

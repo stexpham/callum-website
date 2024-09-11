@@ -33,7 +33,7 @@ export default function HomePage(): JSX.Element {
       {/* make this div fill the screen on mobile */}
       <div className="min-h-screen sm:min-h-fit">
         <header className="container pb-w12 pt-w12">
-          <div className="pb-4">
+          <div className="pb-w4">
             <Avatar />
           </div>
           <div className="space-y-2 lg:w-10/12">
@@ -42,7 +42,9 @@ export default function HomePage(): JSX.Element {
             </h1>
             <Prose>
               <Intro components={components} />
-              <Available />
+              <div className="pb-1">
+                <Available />
+              </div>
               <ContactIcons className="pt-0.5" />
             </Prose>
           </div>
