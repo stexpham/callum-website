@@ -1,17 +1,18 @@
 "use client";
 
 import { ArrowRightIcon } from "@radix-ui/react-icons";
-import { cx } from "class-variance-authority";
+import { cx } from "cva";
+import { SnapCarousel, SnapCarouselItem } from "@repo/ui/snap-carousel";
 import { MediaDialogBasic, MediaWrapper } from "@/components/media";
 import type { AspectRatio } from "@/components/media";
-import { SnapCarousel, SnapCarouselItem } from "@/components/snap-carousel";
-import { SnapCard, CardInDialog, CardImage } from "@/components/card";
+import { SnapCard, CardImage } from "@/components/card";
 import type { CustomPost } from "./extra-card";
 import {
   SnapCarouselInDialog,
   HomeSnapDialogClose,
 } from "./snap-carousel-in-dialog";
 import { homeCarouselStyles } from "./home-carousel-styles";
+import { CardInDialog } from "./card-in-dialog";
 
 const snapCardStyle = "!w-inset-full [@media(min-width:620px)]:!w-[380px]";
 

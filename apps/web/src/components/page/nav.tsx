@@ -2,10 +2,10 @@
 
 import { Link } from "@repo/ui/next-link";
 import { textVariants } from "@repo/ui/text";
-import { cx } from "class-variance-authority";
+import { cx } from "cva";
 import { usePathname } from "next/navigation";
 import { useWindowScroll } from "react-use";
-import { OutsetRule } from "./outset-rule";
+import { OutsetRule } from "@/components/elements";
 
 const linkStyle = [
   "h-tab flex items-center relative hover:text-accent",

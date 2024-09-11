@@ -1,6 +1,7 @@
 import { Link } from "@repo/ui/next-link";
 import { Text } from "@repo/ui/text";
-import { ContactIcons, SiteTime } from "../site";
+import { ContactIcons } from "./contact-icons";
+import { SiteTime } from "./site-time";
 
 // Callum Flack is a designer who codes.
 // Callum Flack. Design. Code. Writing.

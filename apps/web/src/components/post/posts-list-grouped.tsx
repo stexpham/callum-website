@@ -8,14 +8,12 @@ import { CardImage, HeroCardWrapper } from "@/components/card";
 import type { AspectRatio } from "@/components/media";
 import { MediaWrapper } from "@/components/media";
 import { PostLinkContent } from "./post-link-content";
+import { hideFeaturedDotStyle } from "./post.styles";
 
 interface PostsListGroupedProps {
   groupedPosts: GroupedPosts;
   sortOrder?: string[];
 }
-
-export const hideFeaturedDot =
-  "before:absolute before:left-[-1em] before:h-tabH before:w-[1em] before:bg-canvas";
 
 export const PostsListGrouped = ({
   groupedPosts,
@@ -38,8 +36,8 @@ export const PostsListGrouped = ({
         <div className="relative space-y-2" key={index}>
           <div
             className={cx(
-              "INCH sticky top-[calc(theme(spacing.navH)+theme(spacing.tabH))] z-[9] scroll-pt-[calc(theme(spacing.navH)+theme(spacing.tabH))] bg-canvas",
-              hideFeaturedDot
+              "sticky top-[calc(theme(spacing.navH)+theme(spacing.tabH))] z-[9] scroll-pt-[calc(theme(spacing.navH)+theme(spacing.tabH))] bg-canvas",
+              hideFeaturedDotStyle
             )}
           >
             <div

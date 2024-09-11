@@ -1,4 +1,4 @@
-import { cx } from "class-variance-authority";
+import { cx } from "cva";
 import { Caption } from "./caption";
 import type { AspectRatio } from "./media-aspect";
 import { mediaAspect } from "./media-aspect";

@@ -3,8 +3,8 @@
 import { useRef } from "react";
 import { useIntersection } from "react-use";
 import { cx } from "~/cva.config";
-import { Nav } from "@/components/nav";
-import { FooterScreen } from "@/components/footer/footer-screen";
+import { Nav } from "./nav";
+import { FooterScreen } from "./footer-screen";
 
 // "/stream"
 const NAV = ["/about", "/work", "/writing"];

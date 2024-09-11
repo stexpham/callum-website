@@ -3,7 +3,7 @@ import "@repo/ui/styles.css";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import { bodyVariants } from "@repo/ui/base";
-import { cx } from "class-variance-authority";
+import { cx } from "cva";
 
 const inter = Inter({ subsets: ["latin"] });
 

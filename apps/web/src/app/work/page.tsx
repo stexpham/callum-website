@@ -1,6 +1,6 @@
 import { Text } from "@repo/ui/text";
-import { PageWrapper } from "@/components/page/page-wrapper";
-import { TitleHeader } from "@/components/title-header";
+import { PageWrapper } from "@/components/page";
+import { TitleHeader } from "@/components/elements";
 import { PagePostsIndexClient } from "@/components/page/page-posts-index-client";
 import type { PostsKind } from "@/components/post";
 

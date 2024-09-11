@@ -1,6 +1,6 @@
 import { ArrowRightIcon, ArrowTopRightIcon } from "@radix-ui/react-icons";
 import { Link } from "@repo/ui/next-link";
-import { cx } from "class-variance-authority";
+import { cx } from "cva";
 import type { AnchorHTMLAttributes } from "react";
 
 interface LinkWithArrowProps extends AnchorHTMLAttributes<HTMLAnchorElement> {

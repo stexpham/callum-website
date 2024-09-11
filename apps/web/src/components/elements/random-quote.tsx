@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { quotes } from "src/data/quotes";
-import { LinkWithArrow } from "../link-variants";
+import { LinkWithArrow } from "./link-variants";
 
 export const RandomQuote = () => {
   const [randomQuote, setRandomQuote] = useState(quotes[0]);

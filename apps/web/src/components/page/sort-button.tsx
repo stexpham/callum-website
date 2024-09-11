@@ -3,7 +3,6 @@
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { useCallback } from "react";
 import { textVariants } from "@repo/ui/text";
-// import { cx } from "~/cva.config";
 import { cx } from "cva";
 
 // https://nextjs.org/docs/app/api-reference/functions/use-search-params#updating-searchparams
@@ -85,7 +84,6 @@ export const StyledSortButton = ({
     onClick={onClick}
     sortBy={sortBy}
   >
-    {/* <PostCategoryIcon category={sortBy} /> */}
     {children}
   </SortButton>
 );

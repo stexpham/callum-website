@@ -1,7 +1,7 @@
 "use client";
 
 import { usePathname } from "next/navigation";
-import { cx } from "class-variance-authority";
+import { cx } from "cva";
 
 export function ClientWrapper({
   children,

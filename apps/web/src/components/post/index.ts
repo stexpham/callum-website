@@ -1,12 +1,8 @@
-// export * from "./PostCategoryIcon";
-// export * from "./PostLinkContent";
-// export * from "./PostLinkBlock";
-// export * from "./PostMeta";
+/* 
+  Rule of least permission! 
+  Do not export if it's only used within this directory 
+ */
+
 export * from "./posts-list";
-export * from "./posts-list-grouped";
-// export * from "./PostsListGrouped";
-// export * from "./PostsNav";
-export * from "./sorted-posts";
-export * from "./post-link-content";
-export * from "./post-link-block";
-export * from "./post-category-icon";
+export * from "./use-sorted-posts";
+export * from "./post.styles";

@@ -1,15 +1,14 @@
 import { useMDXComponent } from "next-contentlayer/hooks";
 import { Prose } from "@repo/ui/prose";
-import { Avatar } from "@/components/avatar";
+import { Avatar } from "~/src/components/elements/avatar";
 import { Available, components } from "@/components/mdx";
 import { PageWrapper } from "@/components/page";
-import { ContactIcons } from "@/components/site/contact-icons";
+import { ContactIcons } from "@/components/elements";
 import { allPosts, type Post } from "contentlayer/generated";
 import { sortByCustomSlugOrder } from "@/utils";
 import { featuredSlugs } from "@/data";
-import { HomeSnapCarousel } from "@/app/(home)/home-snap-carousel";
-import type { CustomPost } from "@/app/(home)/extra-card";
-import { extraCard } from "@/app/(home)/extra-card";
+import { HomeSnapCarousel, extraCard } from "@/app/(home)";
+import type { CustomPost } from "@/app/(home)";
 
 const filteredPosts = featuredSlugs.map((slug) =>
   allPosts.find((post) => post.slug === slug)

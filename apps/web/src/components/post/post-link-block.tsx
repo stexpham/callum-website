@@ -3,10 +3,10 @@ import { cx } from "cva";
 import { Text } from "@repo/ui/text";
 import { type Post } from "contentlayer/generated";
 import { isVideoFile } from "@/utils";
-import { CardImage } from "../card";
-import type { AspectRatio } from "../media";
-import { MediaWrapper } from "../media";
-import { postIconStyle } from "./post-styles";
+import { CardImage } from "@/components/card";
+import type { AspectRatio } from "@/components/media";
+import { MediaWrapper } from "@/components/media";
+import { postIconStyle } from "./post.styles";
 import { PostLinkHeadingWrapper } from "./post-link-heading-wrapper";
 
 interface PostLinkBlockProps {

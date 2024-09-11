@@ -3,7 +3,7 @@ import {
   EyeOpenIcon,
   QuoteIcon,
 } from "@radix-ui/react-icons";
-import { cx } from "class-variance-authority";
+import { cx } from "cva";
 import { Text } from "@repo/ui/text";
 import { getYear } from "@/utils";
 import { type Post } from "contentlayer/generated";

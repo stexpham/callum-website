@@ -1,5 +1,5 @@
 import { TwitterLogoIcon } from "@radix-ui/react-icons";
-import { cx } from "class-variance-authority";
+import { cx } from "cva";
 import {
   IonSocialLinkedinOutline,
   MynauiBrandGithub,

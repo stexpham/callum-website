@@ -1,6 +1,6 @@
-import { TitleHeader } from "../title-header";
+import { Signoff } from "~/src/components/elements/signoff";
+import { TitleHeader } from "~/src/components/elements";
 import { FooterWrapper } from "./footer-wrapper";
-import { Signoff } from "./signoff";
 
 export const FooterScreen = ({
   children,

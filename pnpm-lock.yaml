@@ -26,6 +26,9 @@ importers:
       class-variance-authority:
         specifier: ^0.7.0
         version: 0.7.0
+      cva:
+        specifier: 1.0.0-beta.1
+        version: 1.0.0-beta.1(typescript@5.3.3)
       next:
         specifier: ^14.2.3
         version: 14.2.3(@opentelemetry/api@1.9.0)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
@@ -226,6 +229,9 @@ importers:
       react:
         specifier: ^18.2.0
         version: 18.2.0
+      react-snap-carousel:
+        specifier: ^0.4.1
+        version: 0.4.1(react@18.2.0)
       tailwind-merge:
         specifier: ^2.5.2
         version: 2.5.2

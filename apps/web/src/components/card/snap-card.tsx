@@ -1,5 +1,5 @@
 import { ArrowRightIcon } from "@radix-ui/react-icons";
-import { cx } from "class-variance-authority";
+import { cx } from "cva";
 import { type Post } from "contentlayer/generated";
 import type { AspectRatio } from "../media";
 import { MediaWrapper } from "../media";

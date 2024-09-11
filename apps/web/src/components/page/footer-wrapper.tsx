@@ -1,5 +1,5 @@
-import { cx } from "class-variance-authority";
-import { OutsetRule } from "../outset-rule";
+import { cx } from "cva";
+import { OutsetRule } from "../elements/outset-rule";
 
 interface FooterWrapperProps {
   children: React.ReactNode;

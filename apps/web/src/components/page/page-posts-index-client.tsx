@@ -3,9 +3,13 @@
 import { Fragment, useState } from "react";
 import { useRouter } from "next/navigation";
 import type { PostsKind } from "@/components/post";
-import { PostsBlockList, PostsList, hideFeaturedDot } from "@/components/post";
+import {
+  PostsBlockList,
+  PostsList,
+  hideFeaturedDotStyle,
+} from "@/components/post";
 import { cx } from "~/cva.config";
-import { useSortedPosts } from "../post/sorted-posts";
+import { useSortedPosts } from "../post/use-sorted-posts";
 import { ListHeader } from "./list-header";
 import { StyledSortButton } from "./sort-button";
 
@@ -48,7 +52,7 @@ export const PagePostsIndexClient = ({
       <ListHeader
         className={cx(
           "top-nav translate-y-px transform",
-          hideFeaturedDot
+          hideFeaturedDotStyle
           // For PostsSquares only
           // (!currentSort ||
           //   currentSort === "projects" ||

@@ -1,7 +1,7 @@
 "use client";
 
 import { ChevronLeftIcon, ChevronRightIcon } from "@radix-ui/react-icons";
-import { cx } from "class-variance-authority";
+import { cx } from "cva";
 import React, { useCallback } from "react";
 import { useSnapCarousel } from "react-snap-carousel";
 
@@ -52,6 +52,7 @@ export const SnapCarousel = <T extends Record<string, unknown>>({
             activePageIndex <= 0 && carouselClasses.nextPrevButtonDisabled
           )}
           disabled={activePageIndex <= 0}
+          // eslint-disable-next-line @typescript-eslint/no-confusing-void-expression -- be simple!
           onClick={() => prev()}
           type="button"
         >
@@ -80,6 +81,7 @@ export const SnapCarousel = <T extends Record<string, unknown>>({
               carouselClasses.nextPrevButtonDisabled
           )}
           disabled={activePageIndex === pages.length - 1}
+          // eslint-disable-next-line @typescript-eslint/no-confusing-void-expression -- be simple!
           onClick={() => next()}
           type="button"
         >

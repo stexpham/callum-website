@@ -5,7 +5,7 @@ import useEmblaCarousel, {
   type UseEmblaCarouselType,
 } from "embla-carousel-react";
 import { ChevronRightIcon, ChevronLeftIcon } from "@radix-ui/react-icons";
-import { cx } from "class-variance-authority";
+import { cx } from "cva";
 import { Button } from "./button";
 // import { cn } from "src/utils/shadcn-utils";
 

@@ -1,6 +1,6 @@
 import type { PolymorphicProps } from "@repo/ui/polymorphic-element";
 import { PolymorphicElement } from "@repo/ui/polymorphic-element";
-import { cx } from "class-variance-authority";
+import { cx } from "cva";
 import * as React from "react";
 import { Text } from "@repo/ui/text";
 

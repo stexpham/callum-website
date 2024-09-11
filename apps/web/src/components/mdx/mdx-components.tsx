@@ -5,10 +5,9 @@ import { Text, textVariants } from "@repo/ui/text";
 import type { ImageProps as NextImageProps } from "next/image";
 import NextImage from "next/image";
 import type { AnchorHTMLAttributes, HTMLAttributes } from "react";
-import { ContactIcons } from "@/components/site";
+import { ContactIcons, LinkWithArrow } from "@/components/elements";
 import type { MediaFigureProps } from "@/components/media/media.type";
 import { MediaFigure } from "@/components/media";
-import { LinkWithArrow } from "@/components/link-variants";
 import { cx } from "~/cva.config";
 import { Available } from "./available";
 

@@ -3,16 +3,16 @@
 import { Cross2Icon } from "@radix-ui/react-icons";
 import { useEffect } from "react";
 import { DialogClose } from "@repo/ui/dialog";
-import { cx } from "class-variance-authority";
-import type { AspectRatio } from "@/components/media";
-import { MediaWrapper } from "@/components/media";
-import type { Asset } from "contentlayer/generated";
-import { CardImage } from "@/components/card/card-image";
+import { cx } from "cva";
 import {
   SnapCarousel,
   SnapCarouselItem,
   snapCarouselStyles,
-} from "@/components/snap-carousel";
+} from "@repo/ui/snap-carousel";
+import type { AspectRatio } from "@/components/media";
+import { MediaWrapper } from "@/components/media";
+import type { Asset } from "contentlayer/generated";
+import { CardImage } from "@/components/card/card-image";
 import {
   homeCarouselStyles,
   dialogCarouselStyles,

@@ -1,7 +1,7 @@
 import { useMDXComponent } from "next-contentlayer/hooks";
 import { Prose } from "@repo/ui/prose";
 import { PageWrapper } from "src/components/page";
-import { Avatar } from "@/components/avatar";
+import { Avatar } from "~/src/components/elements/avatar";
 import { allPosts } from "contentlayer/generated";
 import { components } from "src/components/mdx";
 

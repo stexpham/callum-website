@@ -6,7 +6,7 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@repo/ui/dialog";
-import { cx } from "class-variance-authority";
+import { cx } from "cva";
 import type { MediaDialogProps } from "./media-dialog";
 
 export const MediaDialogBasic = ({

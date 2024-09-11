@@ -1,7 +1,7 @@
 import "./globals.css";
 import "@repo/ui/styles.css";
 import { bodyVariants } from "@repo/ui/base";
-import { cx } from "class-variance-authority";
+import { cx } from "cva";
 import type { Metadata, Viewport } from "next";
 import PlausibleProvider from "next-plausible";
 import { mono, sans } from "@repo/ui/fonts";

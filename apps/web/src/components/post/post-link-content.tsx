@@ -4,7 +4,7 @@ import { format, parseISO } from "date-fns";
 import { Text } from "@repo/ui/text";
 import { type Post } from "contentlayer/generated";
 import { PostCategoryIcon } from "./post-category-icon";
-import { postIconStyle } from "./post-styles";
+import { postIconStyle } from "./post.styles";
 import { PostLinkHeadingWrapper } from "./post-link-heading-wrapper";
 
 interface PostLinkContentProps {
