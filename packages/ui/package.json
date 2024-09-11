@@ -8,10 +8,16 @@
   "files": [
     "dist",
     "src/fonts",
-    "src/styles.css"
+    "src/styles.css",
+    "src/theme-colors.css",
+    "src/theme-base.css",
+    "src/theme-utils.css"
   ],
   "exports": {
     "./styles.css": "./dist/index.css",
+    "./theme-colors.css": "./src/theme-colors.css",
+    "./theme-base.css": "./src/theme-base.css",
+    "./theme-utils.css": "./src/theme-utils.css",
     "./fonts": "./src/fonts.ts",
     "./text": "./src/text.tsx",
     "./prose": "./src/prose.tsx",

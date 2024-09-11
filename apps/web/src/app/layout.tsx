@@ -1,4 +1,5 @@
 import "./globals.css";
+import "@repo/ui/styles.css";
 import { cx } from "cva";
 import type { Metadata, Viewport } from "next";
 import PlausibleProvider from "next-plausible";
