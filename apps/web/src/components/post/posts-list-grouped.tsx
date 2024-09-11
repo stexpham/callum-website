@@ -36,14 +36,15 @@ export const PostsListGrouped = ({
         <div className="relative space-y-2" key={index}>
           <div
             className={cx(
-              "sticky top-[calc(theme(spacing.navH)+theme(spacing.tabH))] z-[9] scroll-pt-[calc(theme(spacing.navH)+theme(spacing.tabH))] bg-canvas",
+              "PostsListGrouped",
+              "sticky top-[calc(theme(spacing.nav)+theme(spacing.tab))] z-[9] scroll-pt-[calc(theme(spacing.nav)+theme(spacing.tab))] bg-canvas",
               hideFeaturedDotStyle
             )}
           >
             <div
               className={cx(
                 sortButtonStyle,
-                "h-[calc(theme(spacing.tabH)-9px)]"
+                "h-[calc(theme(spacing.tab)-9px)]"
               )}
               id={group}
             >
@@ -89,8 +90,8 @@ export const PostsSquaresGrouped = ({
     <>
       {sortedGroups.map(([group, posts], index) => (
         <div className="relative space-y-w4" key={index}>
-          <div className="sticky top-[calc(theme(spacing.navH)+theme(spacing.tabH))] z-[9] bg-canvas">
-            <div className={cx(sortButtonStyle, "X")}>{group}</div>
+          <div className="sticky top-[calc(theme(spacing.nav)+theme(spacing.tab))] z-[9] bg-canvas">
+            <div className={cx(sortButtonStyle)}>{group}</div>
             <hr className="-mt-px" />
           </div>
           <div className="space-y-w24 pb-2.5">
