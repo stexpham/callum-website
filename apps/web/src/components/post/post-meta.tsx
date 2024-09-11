@@ -4,6 +4,7 @@ import { Fragment } from "react";
 import { Link } from "@repo/ui/next-link";
 import { type Post } from "contentlayer/generated";
 import { getYear } from "@/utils";
+import { noteStyle } from "@/components/mdx/mdx-components";
 
 /* <a
   href={`${config.GITHUB_URL}/commits/main/posts/${post.slug}.mdx`}
@@ -31,7 +32,7 @@ export const PostMeta = ({ post }: { post: Post }) => {
   const endYear = post.endDate ? getYear(post.endDate) : null;
 
   return (
-    <div className={cx("Note", "link-block-alt link-block-large")}>
+    <div className={cx(noteStyle, "link-block-alt link-block-large")}>
       <span>
         Superset:{" "}
         <Link className="capitalize" href={categoryLink}>

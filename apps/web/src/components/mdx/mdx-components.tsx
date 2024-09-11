@@ -1,23 +1,24 @@
 import { Link } from "@repo/ui/next-link";
 import type { TextProps } from "@repo/ui/text";
 import { Text, textVariants } from "@repo/ui/text";
-// import type { MDXComponents } from "mdx/types";
 import type { ImageProps as NextImageProps } from "next/image";
 import NextImage from "next/image";
 import type { AnchorHTMLAttributes, HTMLAttributes } from "react";
+import { cx } from "cva";
 import { ContactIcons, LinkWithArrow } from "@/components/elements";
 import type { MediaFigureProps } from "@/components/media/media.type";
 import type { MediaDialogProps, VideoProps } from "@/components/media";
 import { MediaDialog, MediaFigure, Video } from "@/components/media";
-import { cx } from "~/cva.config";
 import { Available } from "./available";
 
 interface MdxImageProps extends MediaFigureProps, NextImageProps {}
 interface MdxVideoProps extends MediaFigureProps, VideoProps {}
 
-const noteStyle = [
-  "Note !mt-w12 space-y-2",
-  textVariants({ intent: "meta", dim: true }),
+export const noteStyle = [
+  "Note !mt-w12 space-y-2 text-meta text-solid",
+  "[&_p]:text-meta [&_p]:text-solid",
+  // "[&_.Note+.Note]:!mt-2",
+  // textVariants({ intent: "meta", dim: true }),
 ];
 
 export const components = {
@@ -65,24 +66,16 @@ export const components = {
       as="blockquote"
       {...(props as TextProps)}
       className={cx(
-        "pb-2",
+        "pb-2 group",
         "[&_p]:pb-0 [&_p]:border-l [&_p]:border-border-hover [&_p]:pl-2.5 [&_p]:text-solid-hover md:[&_p]:pl-4",
-        // Citation too?
-        "[&_blockquote_p_strong]:table [&_blockquote_p_strong]:pt-[5px] [&_blockquote_p_strong]:text-meta [&_blockquote_p_strong]:!font-normal"
+        // style p child elements inside blockquote
+        // for some reason, this doesn't work: [&_blockquote_p_strong]:table
+        // seems to be 1st child nesting only
+        "group-[&_strong]:table group-[&_strong]:pt-[calc(5/16*1em)] group-[&_strong]:text-meta group-[&_strong]:!font-normal"
       )}
     >
       {children}
     </Text>
-  ),
-  strong: ({ children, ...props }: HTMLAttributes<HTMLElement>) => (
-    <strong className="font-medium" {...props}>
-      {children}
-    </strong>
-  ),
-  em: ({ children, ...props }: HTMLAttributes<HTMLElement>) => (
-    <em className="not-italic" {...props}>
-      {children}
-    </em>
   ),
   h2: ({ children, ...props }: HTMLAttributes<HTMLHeadingElement>) => (
     <Text

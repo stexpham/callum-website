@@ -2,6 +2,7 @@ import { ArrowRightIcon } from "@radix-ui/react-icons";
 import { Link } from "@repo/ui/next-link";
 import { useMDXComponent } from "next-contentlayer/hooks";
 import NextImage from "next/image";
+import { Prose } from "@repo/ui/prose";
 import { allPosts, type Post } from "contentlayer/generated";
 import { TitleHeader } from "src/components/elements";
 import { components } from "src/components/mdx";
@@ -101,10 +102,10 @@ export const PagePost = ({ post }: { post: Post }) => {
       </TitleHeader>
 
       <div className="container flex flex-col pb-w20">
-        <article className="Prose text-fill">
+        <Prose>
           <MDXContent components={components} />
           <PostMeta post={post} />
-        </article>
+        </Prose>
       </div>
     </PageWrapper>
   );

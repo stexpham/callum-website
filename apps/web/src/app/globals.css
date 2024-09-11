@@ -89,4 +89,39 @@
       rgba(0, 0, 0, 0) 100%
     );
   }
+  .link {
+    @apply relative;
+    @apply underline underline-offset-[0.25em];
+    @apply decoration-solid decoration-[0.025em];
+    @apply hover:text-accent;
+    @apply hover:decoration-accent hover:decoration-[0.05em];
+  }
+}
+
+@layer components {
+  /* Works, as expected */
+  /* .Prose strong {
+    @apply text-[salmon];
+  } */
+  .link-block a:not(.Button),
+  .Prose a:not(.Button) {
+    @apply link;
+  }
+  .link-alt,
+  .link-block-alt a:not(.Button) {
+    @apply relative no-underline;
+  }
+  .link-accent,
+  .link-block-accent a:not(.Button) {
+    @apply link;
+    @apply bg-accent-background hover:bg-accent;
+    @apply hover:text-fill;
+  }
+  .link-large,
+  .link-block-large a:not(.Button) {
+    @apply before:absolute before:-inset-[0.25em];
+  }
+  .link-block-reset a:not(.Button) {
+    @apply no-underline;
+  }
 }
