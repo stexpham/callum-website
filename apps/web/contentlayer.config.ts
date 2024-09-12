@@ -4,6 +4,7 @@ import {
   makeSource,
 } from "contentlayer/source-files";
 import readingTime from "reading-time";
+import smartypants from "remark-smartypants";
 // import remarkSlug from "remark-slug";
 // import { rehypeHighlightCode } from "./lib/rehype-highlight-code";
 // import { rehypeMetaAttribute } from "./lib/rehype-meta-attribute";
@@ -128,10 +129,10 @@ const Asset = defineNestedType(() => ({
 export default makeSource({
   contentDirPath: "posts",
   documentTypes: [Post],
-  // mdx: {
-  //   remarkPlugins: [remarkSlug],
-  //   rehypePlugins: [rehypeMetaAttribute, rehypeHighlightCode],
-  // },
+  mdx: {
+    remarkPlugins: [smartypants],
+    // rehypePlugins: [rehypeMetaAttribute, rehypeHighlightCode],
+  },
 });
 
 // Could use a nested enum here, but all the filtering gets too complicated
