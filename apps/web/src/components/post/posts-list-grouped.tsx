@@ -1,9 +1,9 @@
 import { Link } from "@repo/ui/next-link";
 import { useMemo } from "react";
+import { cx } from "cva";
 import { sortButtonStyle } from "@/components/page/sort-button";
 import type { GroupedPosts } from "@/utils";
 import type { Post } from "contentlayer/generated";
-import { cx } from "cva";
 import { CardImage, HeroCardWrapper } from "@/components/card";
 import type { AspectRatio } from "@/components/media";
 import { MediaWrapper } from "@/components/media";
@@ -32,19 +32,28 @@ export const PostsListGrouped = ({
 
   return (
     <>
-      {sortedGroups.map(([group, posts], index) => (
-        <div className="relative space-y-2" key={index}>
+      {sortedGroups.map(([group, posts]) => (
+        <div
+          className={cx(
+            "relative space-y-2"
+            // "scroll-pt-[calc(theme(spacing.nav)+theme(spacing.tab))]"
+          )}
+          key={group}
+        >
           <div
             className={cx(
-              "PostsListGrouped",
-              "sticky top-[calc(theme(spacing.nav)+theme(spacing.tab))] z-[9] scroll-pt-[calc(theme(spacing.nav)+theme(spacing.tab))] bg-canvas",
+              "PostsListGrouped sticky z-[9] bg-canvas",
+              "top-[calc(theme(spacing.nav)+theme(spacing.tab))]",
               hideFeaturedDotStyle
             )}
           >
             <div
               className={cx(
                 sortButtonStyle,
-                "h-[calc(theme(spacing.tab)-9px)]"
+                "h-[calc(theme(spacing.tab)-9px)]",
+                // 42px is the height of the featured dot + padding
+                // No idea why scroll-mt works here but no on the parent div…
+                "scroll-mt-[calc(theme(spacing.nav)+theme(spacing.tab)+42px)]"
               )}
               id={group}
             >
@@ -88,8 +97,8 @@ export const PostsSquaresGrouped = ({
 
   return (
     <>
-      {sortedGroups.map(([group, posts], index) => (
-        <div className="relative space-y-w4" key={index}>
+      {sortedGroups.map(([group, posts]) => (
+        <div className="relative space-y-w4" key={group}>
           <div className="sticky top-[calc(theme(spacing.nav)+theme(spacing.tab))] z-[9] bg-canvas">
             <div className={cx(sortButtonStyle)}>{group}</div>
             <hr className="-mt-px" />
