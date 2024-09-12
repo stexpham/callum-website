@@ -130,7 +130,8 @@ export default makeSource({
   contentDirPath: "posts",
   documentTypes: [Post],
   mdx: {
-    remarkPlugins: [smartypants],
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any -- fuck you
+    remarkPlugins: [smartypants as any],
     // rehypePlugins: [rehypeMetaAttribute, rehypeHighlightCode],
   },
 });
