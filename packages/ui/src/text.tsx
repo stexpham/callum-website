@@ -124,10 +124,12 @@ export const Text = ({
   );
 };
 
+// Doubles: &ldquo; &rdquo; "Pretty"
+// Singles: &lsquo; &rsquo; 'Pretty'
 function formatText(text: string): string {
   return text
-    .replace(/'/g, "'")
-    .replace(/"/g, '"')
-    .replace(/"/g, '"')
-    .replace(/'/g, "'");
+    .replace(/'/g, "&lsquo;") // Left single quote (&lsquo; or '\u2018')
+    .replace(/'/g, "&rsquo;") // Right single quote (&rsquo; or '\u2019')
+    .replace(/"/g, "&ldquo;") // Left double quote (&ldquo; or '\u201C')
+    .replace(/"/g, "&rdquo;"); // Right double quote (&rdquo; or '\u201D')
 }
