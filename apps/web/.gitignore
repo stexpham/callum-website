@@ -30,8 +30,11 @@ yarn-error.log*
 .env.test.local
 .env.production.local
 
+# vercel
+.vercel
+
 # Content layer
 .contentlayer
 
-# vercel
-.vercel
+# typescript
+*.tsbuildinfo
