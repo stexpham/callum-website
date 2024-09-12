@@ -38,7 +38,7 @@ export default function HomePage(): JSX.Element {
           </div>
           <div className="space-y-2 lg:w-10/12">
             <h1 className="text-title font-medium">
-              Hi, I&lsquo;m Callum. I make beautiful hypertext products.
+              Hi, I&rsquo;m Callum. I make beautiful hypertext products.
             </h1>
             <Prose>
               <Intro components={components} />
