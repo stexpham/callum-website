@@ -1,9 +1,8 @@
 import { useMDXComponent } from "next-contentlayer/hooks";
 import { Prose } from "@repo/ui/prose";
-import { Avatar } from "~/src/components/elements/avatar";
-import { Available, components } from "@/components/mdx";
+import { Avatar, Available, ContactIcons } from "~/src/components/elements";
+import { components } from "@/components/mdx";
 import { PageWrapper } from "@/components/page";
-import { ContactIcons } from "@/components/elements";
 import { allPosts, type Post } from "contentlayer/generated";
 import { sortByCustomSlugOrder } from "@/utils";
 import { featuredSlugs } from "@/data";
