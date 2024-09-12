@@ -7,7 +7,7 @@ const rl = readline.createInterface({
   output: process.stdout,
 });
 
-const templatePath = path.join(__dirname, "posts", "_TEMPLATE.txt");
+const templatePath = path.join(__dirname, "posts", "_TEMPLATE.mdx");
 const template = fs.readFileSync(templatePath, "utf8");
 
 rl.question("Enter the title for the new post: ", (title) => {
