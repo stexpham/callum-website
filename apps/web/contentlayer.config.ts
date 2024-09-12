@@ -74,7 +74,7 @@ export const Post = defineDocumentType(() => ({
         "An external link used on thumbnails. If present, the UI does not link to the Post page",
     },
     assets: {
-      type: "list", // despite what docs says, use listed not nested!
+      type: "list", // despite what docs says, use list not nested!
       of: Asset,
       description:
         "The first asset is used as the thumbnail, which should always be aspect-[1440/880]",
