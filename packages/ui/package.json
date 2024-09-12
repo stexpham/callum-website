@@ -18,6 +18,7 @@
     "./theme-colors.css": "./src/theme-colors.css",
     "./theme-base.css": "./src/theme-base.css",
     "./theme-utils.css": "./src/theme-utils.css",
+    "./theme-code.css": "./src/theme-code.css",
     "./fonts": "./src/fonts.ts",
     "./text": "./src/text.tsx",
     "./prose": "./src/prose.tsx",

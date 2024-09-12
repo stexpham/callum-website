@@ -6,6 +6,7 @@
 @import "@repo/ui/src/theme-colors.css";
 @import "@repo/ui/src/theme-base.css";
 @import "@repo/ui/src/theme-utils.css";
+@import "@repo/ui/src/theme-code.css";
 
 @layer utilities {
   /* could use group here, but whatevs */

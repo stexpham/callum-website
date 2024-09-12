@@ -1,15 +1,26 @@
+import type { ComponentPropsWithoutRef } from "react";
+import React from "react";
 import { Link } from "@repo/ui/next-link";
 import type { TextProps } from "@repo/ui/text";
 import { Text, textVariants } from "@repo/ui/text";
 import type { ImageProps as NextImageProps } from "next/image";
 import NextImage from "next/image";
-import type { AnchorHTMLAttributes, HTMLAttributes } from "react";
 import { cx } from "cva";
-import { ContactIcons, LinkWithArrow } from "@/components/elements";
-import type { MediaFigureProps } from "@/components/media/media.type";
-import type { MediaDialogProps, VideoProps } from "@/components/media";
+import { highlight } from "sugar-high";
+import { ContactIcons, LinkWithArrow, Available } from "@/components/elements";
+import type {
+  MediaFigureProps,
+  MediaDialogProps,
+  VideoProps,
+} from "@/components/media";
 import { MediaDialog, MediaFigure, Video } from "@/components/media";
-import { Available } from "./available";
+
+type HeadingProps = ComponentPropsWithoutRef<"h2">;
+type ParagraphProps = ComponentPropsWithoutRef<"p">;
+type ListProps = ComponentPropsWithoutRef<"ul">;
+type ListItemProps = ComponentPropsWithoutRef<"li">;
+type AnchorProps = ComponentPropsWithoutRef<"a">;
+type BlockquoteProps = ComponentPropsWithoutRef<"blockquote">;
 
 interface MdxImageProps extends MediaFigureProps, NextImageProps {}
 interface MdxVideoProps extends MediaFigureProps, VideoProps {}
@@ -18,12 +29,10 @@ export const noteStyle = [
   "Note !mt-w12 space-y-2 text-meta text-solid",
   "link-block",
   "[&_p]:text-meta [&_p]:text-solid",
-  // "[&_.Note+.Note]:!mt-2",
-  // textVariants({ intent: "meta", dim: true }),
 ];
 
 export const components = {
-  a: ({ href, ...props }: AnchorHTMLAttributes<HTMLAnchorElement>) => {
+  a: ({ href, ...props }: AnchorProps) => {
     const isExternal = href && /^(?:https?:)?\/\//.test(href);
     return isExternal ? (
       <LinkWithArrow
@@ -39,22 +48,22 @@ export const components = {
       />
     );
   },
-  p: ({ children, ...props }: HTMLAttributes<HTMLParagraphElement>) => (
+  p: ({ children, ...props }: ParagraphProps) => (
     <Text as="p" {...(props as TextProps)}>
       {children}
     </Text>
   ),
-  ul: ({ children, ...props }: HTMLAttributes<HTMLUListElement>) => (
+  ul: ({ children, ...props }: ListProps) => (
     <Text as="ul" className="space-y-0.5 pl-5" {...(props as TextProps)}>
       {children}
     </Text>
   ),
-  ol: ({ children, ...props }: HTMLAttributes<HTMLOListElement>) => (
+  ol: ({ children, ...props }: ListProps) => (
     <Text as="ol" className="space-y-0.5 pl-5" {...(props as TextProps)}>
       {children}
     </Text>
   ),
-  li: ({ children, ...props }: HTMLAttributes<HTMLLIElement>) => (
+  li: ({ children, ...props }: ListItemProps) => (
     <li
       className="relative before:content-[''] before:absolute before:inline-block before:bg-current before:-left-[1.3em] before:top-[0.75em] before:h-px before:w-[14px]"
       {...props}
@@ -62,23 +71,20 @@ export const components = {
       {children}
     </li>
   ),
-  blockquote: ({ children, ...props }: HTMLAttributes<HTMLQuoteElement>) => (
+  blockquote: ({ children, ...props }: BlockquoteProps) => (
     <Text
       as="blockquote"
       {...(props as TextProps)}
       className={cx(
         "pb-2 group",
         "[&_p]:pb-0 [&_p]:border-l [&_p]:border-border-hover [&_p]:pl-2.5 [&_p]:text-solid-hover md:[&_p]:pl-4",
-        // style p child elements inside blockquote
-        // for some reason, this doesn't work: [&_blockquote_p_strong]:table
-        // seems to be 1st child nesting only
         "group-[&_strong]:table group-[&_strong]:pt-[calc(5/16*1em)] group-[&_strong]:text-meta group-[&_strong]:!font-normal"
       )}
     >
       {children}
     </Text>
   ),
-  h2: ({ children, ...props }: HTMLAttributes<HTMLHeadingElement>) => (
+  h2: ({ children, ...props }: HeadingProps) => (
     <Text
       as="h2"
       className="text-heading [&:not(:first-child)]:!mt-w8"
@@ -88,7 +94,7 @@ export const components = {
       {children}
     </Text>
   ),
-  h3: ({ children, ...props }: HTMLAttributes<HTMLHeadingElement>) => (
+  h3: ({ children, ...props }: HeadingProps) => (
     <Text
       as="h3"
       className="Text-subheading [&:not(:first-child)]:!mt-w8"
@@ -98,7 +104,7 @@ export const components = {
       {children}
     </Text>
   ),
-  h5: ({ id, children, ...props }: HTMLAttributes<HTMLHeadingElement>) => (
+  h5: ({ id, children, ...props }: HeadingProps) => (
     <div className="scroll-mt-2" id={id}>
       <a className="!no-underline" href={`#${id}`}>
         <Text as="h5" className="inline" {...(props as TextProps)}>
@@ -107,27 +113,25 @@ export const components = {
       </a>
     </div>
   ),
-  pre: ({ children, ...props }: HTMLAttributes<HTMLPreElement>) => (
+  pre: ({ children, ...props }: ComponentPropsWithoutRef<"pre">) => (
     <pre className="py-1" {...props}>
       {children}
     </pre>
   ),
-  code: ({ children, ...props }: HTMLAttributes<HTMLElement>) => (
-    <div className="py-[0.4em]">
-      <div
-        className="block rounded-[2px] bg-background p-w6 font-mono text-[0.875em]"
-        {...props}
-      >
-        {children}
+  code: ({ children, ...props }: ComponentPropsWithoutRef<"code">) => {
+    const codeHTML = highlight(children as string);
+    return (
+      <div className="py-[0.4em] block rounded-[2px] bg-background p-w6 font-mono text-[0.875em]">
+        <code dangerouslySetInnerHTML={{ __html: codeHTML }} {...props} />
       </div>
-    </div>
-  ),
+    );
+  },
   hr: () => (
     <div className={cx(noteStyle)}>
       <hr />
     </div>
   ),
-  Note: (props: HTMLAttributes<HTMLDivElement>) => (
+  Note: (props: ComponentPropsWithoutRef<"div">) => (
     <div className={cx(noteStyle)} {...props} />
   ),
   Contact: () => <ContactIcons className="!pl-0 pt-0.5" />,
