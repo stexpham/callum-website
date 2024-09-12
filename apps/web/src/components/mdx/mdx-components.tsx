@@ -121,7 +121,7 @@ export const components = {
   code: ({ children, ...props }: ComponentPropsWithoutRef<"code">) => {
     const codeHTML = highlight(children as string);
     return (
-      <div className="py-[0.4em] block rounded-[2px] bg-background p-w6 font-mono text-[0.875em]">
+      <div className="py-3 pl-3.5 block rounded-[2px] bg-background font-mono text-[0.875em]">
         <code dangerouslySetInnerHTML={{ __html: codeHTML }} {...props} />
       </div>
     );
