@@ -6,7 +6,7 @@ import { Cross2Icon } from "@radix-ui/react-icons";
 // import { cx } from "cva";
 // import { cn } from "@/lib/utils";
 // import { cn } from "../lib/utils";
-import { cx } from "../cva.config";
+import { cx } from "cva";
 import { textVariants } from "./text";
 
 const Dialog = DialogPrimitive.Root;

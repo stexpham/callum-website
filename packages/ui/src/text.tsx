@@ -1,5 +1,5 @@
 import type { VariantProps } from "cva";
-import { cx, cva } from "../cva.config";
+import { cx, cva } from "cva";
 // import { cx, cva } from "cva";
 
 // import { ThemeColors } from "@/styles/colors.type";

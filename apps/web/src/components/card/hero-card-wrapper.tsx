@@ -1,7 +1,7 @@
 import { ArrowTopRightIcon } from "@radix-ui/react-icons";
 import { format, parseISO } from "date-fns";
 import { Link } from "@repo/ui/next-link";
-import { cx } from "~/cva.config";
+import { cx } from "cva";
 import { type Post } from "contentlayer/generated";
 import { iconStyle, transformStyle } from "./card-styles";
 import { CardIcon } from "./card-title-meta";

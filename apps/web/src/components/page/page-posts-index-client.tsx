@@ -8,7 +8,7 @@ import {
   PostsList,
   hideFeaturedDotStyle,
 } from "@/components/post";
-import { cx } from "~/cva.config";
+import { cx } from "cva";
 import { useSortedPosts } from "../post/use-sorted-posts";
 import { ListHeader } from "./list-header";
 import { StyledSortButton } from "./sort-button";

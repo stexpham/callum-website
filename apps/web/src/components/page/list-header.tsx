@@ -1,4 +1,4 @@
-import { cx } from "~/cva.config";
+import { cx } from "cva";
 
 export const ListHeader = ({
   children,

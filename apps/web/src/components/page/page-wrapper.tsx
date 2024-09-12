@@ -2,7 +2,7 @@
 
 import { useRef } from "react";
 import { useIntersection } from "react-use";
-import { cx } from "~/cva.config";
+import { cx } from "cva";
 import { NAV_ITEMS } from "~/src/data";
 import { Nav } from "./nav";
 import { FooterScreen } from "./footer-screen";

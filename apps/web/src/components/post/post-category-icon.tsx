@@ -4,7 +4,7 @@ import {
   QuoteIcon,
   StackIcon,
 } from "@radix-ui/react-icons";
-import { cx } from "~/cva.config";
+import { cx } from "cva";
 
 export const categoryIconStyle = [
   "size-[1.2em]",

@@ -3,7 +3,7 @@ import { useMemo } from "react";
 import { sortButtonStyle } from "@/components/page/sort-button";
 import type { GroupedPosts } from "@/utils";
 import type { Post } from "contentlayer/generated";
-import { cx } from "~/cva.config";
+import { cx } from "cva";
 import { CardImage, HeroCardWrapper } from "@/components/card";
 import type { AspectRatio } from "@/components/media";
 import { MediaWrapper } from "@/components/media";

@@ -1,6 +1,6 @@
 import type { HTMLAttributes } from "react";
 import type { VariantProps } from "cva";
-import { cx, cva } from "../cva.config";
+import { cx, cva } from "cva";
 
 /* 
   Prose applies parent styles to Markdown blocks.

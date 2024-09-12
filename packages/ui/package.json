@@ -62,7 +62,6 @@
     "embla-carousel-react": "^8.2.1",
     "next": "^14.2.3",
     "react-snap-carousel": "^0.4.1",
-    "tailwind-merge": "^2.5.2",
     "tailwindcss-animate": "^1.0.7"
   }
 }
