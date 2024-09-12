@@ -8,7 +8,8 @@
     "start": "next start",
     "lint": "next lint",
     "type-check": "tsc --noEmit",
-    "typecheck": "contentlayer build && pnpm tsc --noEmit"
+    "typecheck": "contentlayer build && pnpm tsc --noEmit",
+    "new-post": "node create-post.js"
   },
   "dependencies": {
     "@radix-ui/react-icons": "^1.3.0",
