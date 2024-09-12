@@ -1,5 +1,0 @@
-Sitemap: https://callum.website/sitemap.xml
-
-User-agent: *
-Disallow: /api
-Allow: /
