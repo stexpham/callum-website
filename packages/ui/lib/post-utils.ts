@@ -3,6 +3,10 @@ import { format, parseISO } from "date-fns";
 export const getYear = (dateString: string) =>
   format(parseISO(dateString), "yyyy");
 
+export const formatPostDate = (dateString: string): string => {
+  return format(parseISO(dateString), "MMMM d, yyyy");
+};
+
 export const isVideoFile = (url: string) => url.toLowerCase().endsWith(".mp4");
 
 export const splitAspect = (

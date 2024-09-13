@@ -3,8 +3,9 @@
 import { ArrowRightIcon } from "@radix-ui/react-icons";
 import { cx } from "cva";
 import { SnapCarousel, SnapCarouselItem } from "@repo/ui/snap-carousel";
-import { MediaDialogBasic, MediaWrapper } from "@/components/media";
-import type { AspectRatio } from "@/components/media";
+import type { AspectRatio } from "@repo/ui/media-aspect";
+import { MediaDialogBasic } from "@repo/ui/media-dialog-basic";
+import { MediaWrapper } from "@repo/ui/media-wrapper";
 import { SnapCard, CardImage } from "@/components/card";
 import type { CustomPost } from "./extra-card";
 import {

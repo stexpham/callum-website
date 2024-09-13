@@ -7,7 +7,7 @@ export type {
   MediaTheme,
   MediaFigureProps,
   MediaWrapperProps,
-} from "./media.type";
+} from "./media-types";
 export {
   MediaWrapper,
   MediaFigure,

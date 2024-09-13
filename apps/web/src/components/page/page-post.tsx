@@ -4,16 +4,12 @@ import { useMDXComponent } from "next-contentlayer/hooks";
 import NextImage from "next/image";
 import { Prose } from "@repo/ui/prose";
 import { TitleHeader } from "@repo/ui/title-header";
+import { getYear, isVideoFile, splitAspect } from "@repo/ui/post-utils";
+import { MediaWrapper } from "@repo/ui/media-wrapper";
+import { notSupersetOrTopicPosts } from "@/utils";
 import { allPosts, type Post } from "contentlayer/generated";
 import { components } from "@/components/mdx";
-import { MediaWrapper } from "@/components/media";
 import { PostMeta } from "@/components/post";
-import {
-  getYear,
-  isVideoFile,
-  notSupersetOrTopicPosts,
-  splitAspect,
-} from "@/utils";
 import { PageWrapper } from "./page-wrapper";
 
 export const PagePost = ({ post }: { post: Post }) => {

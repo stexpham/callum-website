@@ -97,8 +97,8 @@ export const Text = ({
 }: TextProps) => {
   const bulletProp = Component === "li" ? true : bullet;
 
-  const formattedChildren: React.ReactNode =
-    typeof children === "string" ? formatText(children) : children;
+  // const formattedChildren: React.ReactNode =
+  //   typeof children === "string" ? formatText(children) : children;
 
   return (
     <Component
@@ -119,17 +119,19 @@ export const Text = ({
         Component === "ul" ? "pl-[2em]" : ""
       )}
     >
-      {formattedChildren}
+      {/* {formattedChildren} */}
+      {children}
     </Component>
   );
 };
 
-// Doubles: &ldquo; &rdquo; "Pretty"
-// Singles: &lsquo; &rsquo; 'Pretty'
-function formatText(text: string): string {
-  return text
-    .replace(/'/g, "&lsquo;") // Left single quote (&lsquo; or '\u2018')
-    .replace(/'/g, "&rsquo;") // Right single quote (&rsquo; or '\u2019')
-    .replace(/"/g, "&ldquo;") // Left double quote (&ldquo; or '\u201C')
-    .replace(/"/g, "&rdquo;"); // Right double quote (&rdquo; or '\u201D')
-}
+// This fucking bullshit doesn't work…
+// Doubles: &ldquo; &rdquo;  “ ” "Pretty"
+// Singles: &lsquo; &rsquo; ’ ‘ 'Pretty'
+// function formatText(text: string): string {
+//   return text
+//     .replace(/'/g, "&lsquo;") // Left single quote (&lsquo; or '\u2018')
+//     .replace(/'/g, "&rsquo;") // Right single quote (&rsquo; or '\u2019')
+//     .replace(/"/g, "&ldquo;") // Left double quote (&ldquo; or '\u201C')
+//     .replace(/"/g, "&rdquo;"); // Right double quote (&rdquo; or '\u201D')
+// }

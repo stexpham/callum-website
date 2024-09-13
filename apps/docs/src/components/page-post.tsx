@@ -4,10 +4,10 @@ import { useMDXComponent } from "next-contentlayer2/hooks";
 // import NextImage from "next/image";
 import { Prose } from "@repo/ui/prose";
 // import { MediaWrapper } from "@repo/ui/media-wrapper";
-import { getYear } from "@repo/ui/post-utils";
-import { TitleHeader } from "@repo/ui/title-header";
 import { components } from "@repo/ui/mdx-components";
-import { allPosts, type Post } from "contentlayer/generated";
+import { formatPostDate } from "@repo/ui/post-utils";
+import { TitleHeader } from "@repo/ui/title-header";
+import { type Post } from "contentlayer/generated";
 import { PageWrapper } from "./page-wrapper";
 // import { PostMeta } from "@/components/post";
 
@@ -21,8 +21,6 @@ export const PagePost = ({ post }: { post: Post }) => {
   // const { width, height } = splitAspect(
   //   nextPost?.assets?.[0]?.aspect ?? "1920-1080"
   // );
-
-  const year = getYear(post.date);
 
   return (
     <PageWrapper
@@ -72,7 +70,9 @@ export const PagePost = ({ post }: { post: Post }) => {
       //   </>
       // }
     >
-      <TitleHeader subheading={year}>{post.title}</TitleHeader>
+      <TitleHeader subheading={formatPostDate(post.date)}>
+        {post.title}
+      </TitleHeader>
       <div className="container flex flex-col pb-w20">
         <Prose>
           <MDXContent components={components} />

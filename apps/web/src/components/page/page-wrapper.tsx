@@ -5,7 +5,9 @@ import { cx } from "cva";
 import { useRef } from "react";
 import { useIntersection } from "react-use";
 import config from "@repo/ui/config";
-import { FooterScreen } from "./footer-screen";
+import { FooterShape } from "@repo/ui/footer-shape";
+import { TitleHeader } from "@repo/ui/title-header";
+import { Signoff } from "~/src/components/elements/signoff";
 
 export const PageWrapper = ({
   activeNav,
@@ -43,9 +45,12 @@ export const PageWrapper = ({
 
       {children}
 
-      <FooterScreen intersectionRef={intersectionRef}>
+      <FooterShape intersectionRef={intersectionRef}>
+        <TitleHeader as="div" isContained>
+          <Signoff />
+        </TitleHeader>
         {footerChildren}
-      </FooterScreen>
+      </FooterShape>
     </>
   );
 };

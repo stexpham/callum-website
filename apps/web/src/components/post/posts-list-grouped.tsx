@@ -1,12 +1,12 @@
 import { Link } from "@repo/ui/next-link";
 import { useMemo } from "react";
 import { cx } from "cva";
+import type { AspectRatio } from "@repo/ui/media-aspect";
+import { MediaWrapper } from "@repo/ui/media-wrapper";
 import { sortButtonStyle } from "@/components/page/sort-button";
 import type { GroupedPosts } from "@/utils";
 import type { Post } from "contentlayer/generated";
 import { CardImage, HeroCardWrapper } from "@/components/card";
-import type { AspectRatio } from "@/components/media";
-import { MediaWrapper } from "@/components/media";
 import { PostLinkContent } from "./post-link-content";
 import { hideFeaturedDotStyle } from "./post.styles";
 

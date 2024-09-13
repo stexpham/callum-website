@@ -7,7 +7,7 @@ import {
   DialogTitle,
 } from "@repo/ui/dialog";
 import { MediaFigure } from "./media-figure";
-import type { MediaWrapperProps } from "./media.type";
+import type { MediaWrapperProps } from "./media-types";
 
 export type MediaDialogProps = MediaWrapperProps & {
   title: string;

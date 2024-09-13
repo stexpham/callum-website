@@ -5,7 +5,7 @@ import {
 } from "@radix-ui/react-icons";
 import { cx } from "cva";
 import { Text } from "@repo/ui/text";
-import { getYear } from "@/utils";
+import { getYear } from "@repo/ui/post-utils";
 import { type Post } from "contentlayer/generated";
 import { iconStyle, transformStyle } from "./card-styles";
 

@@ -3,8 +3,8 @@ import NextLink from "next/link";
 import { Fragment } from "react";
 import { Link } from "@repo/ui/next-link";
 import { noteStyle } from "@repo/ui/mdx-components";
+import { getYear } from "@repo/ui/post-utils";
 import { type Post } from "contentlayer/generated";
-import { getYear } from "@/utils";
 
 /* <a
   href={`${config.GITHUB_URL}/commits/main/posts/${post.slug}.mdx`}

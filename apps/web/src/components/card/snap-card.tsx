@@ -1,8 +1,8 @@
 import { ArrowRightIcon } from "@radix-ui/react-icons";
 import { cx } from "cva";
+import type { AspectRatio } from "@repo/ui/media-aspect";
+import { MediaWrapper } from "@repo/ui/media-wrapper";
 import { type Post } from "contentlayer/generated";
-import type { AspectRatio } from "../media";
-import { MediaWrapper } from "../media";
 import { LinkOrDiv } from "../utils";
 import { CardImage } from "./card-image";
 import { CardTitleMeta } from "./card-title-meta";

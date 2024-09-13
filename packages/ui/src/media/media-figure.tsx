@@ -2,7 +2,7 @@ import { cx } from "cva";
 import { Caption } from "./caption";
 import { MediaWrapper } from "./media-wrapper";
 import type { AspectRatio } from "./media-aspect";
-import type { MediaFigureProps } from "./media.type";
+import type { MediaFigureProps } from "./media-types";
 
 export const figureStyle =
   "Figure py-w4 first:pb-w4 first:pt-0 relative space-y-w4";

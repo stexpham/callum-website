@@ -2,7 +2,7 @@ import { cx } from "cva";
 import { Caption } from "./caption";
 import type { AspectRatio } from "./media-aspect";
 import { mediaAspect } from "./media-aspect";
-import type { MediaWrapperProps, MediaFigureProps } from "./media.type";
+import type { MediaWrapperProps, MediaFigureProps } from "./media-types";
 
 const MediaWrapper = ({
   theme = "default",
