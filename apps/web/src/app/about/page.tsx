@@ -1,9 +1,9 @@
 import { useMDXComponent } from "next-contentlayer/hooks";
 import { Prose } from "@repo/ui/prose";
-import { PageWrapper } from "src/components/page";
+import { PageWrapper } from "@/components/page";
 import { Avatar } from "~/src/components/elements/avatar";
 import { allPosts } from "contentlayer/generated";
-import { components } from "src/components/mdx";
+import { components } from "@/components/mdx";
 
 const file = allPosts.filter(
   (p) => p.category === "home" && p.title.includes("gist")

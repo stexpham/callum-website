@@ -1,7 +1,7 @@
 import { notFound } from "next/navigation";
+import config from "@repo/ui/config";
 import { allPosts } from "contentlayer/generated";
-import { PagePost } from "src/components/page";
-import config from "@/config";
+import { PagePost } from "@/components/page";
 
 interface Params {
   slug: string;

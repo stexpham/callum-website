@@ -1,5 +1,6 @@
 import { useMDXComponent } from "next-contentlayer/hooks";
 import { Prose } from "@repo/ui/prose";
+import { Text } from "@repo/ui/text";
 import { Avatar, Available, ContactIcons } from "~/src/components/elements";
 import { components } from "@/components/mdx";
 import { PageWrapper } from "@/components/page";
@@ -36,9 +37,9 @@ export default function HomePage(): JSX.Element {
             <Avatar />
           </div>
           <div className="space-y-2 lg:w-10/12">
-            <h1 className="text-title font-medium">
+            <Text as="h1" intent="title">
               Hi, I&rsquo;m Callum. I make beautiful hypertext products.
-            </h1>
+            </Text>
             <Prose>
               <Intro components={components} />
               <div className="pb-1">

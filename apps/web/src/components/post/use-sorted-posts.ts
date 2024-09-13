@@ -8,7 +8,7 @@ import {
   groupPostsByYear,
   postsAZ,
   postsByCategory,
-} from "src/utils";
+} from "@/utils";
 
 const posts = everyPost(allPosts).filter((post) => post.libraryType === "post");
 const writing = postsByCategory("writing", posts);

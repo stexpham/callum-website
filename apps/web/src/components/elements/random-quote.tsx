@@ -1,8 +1,8 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { quotes } from "src/data/quotes";
-import { LinkWithArrow } from "./link-variants";
+import { LinkWithArrow } from "@repo/ui/link-variants";
+import { quotes } from "@/data/quotes";
 
 export const RandomQuote = () => {
   const [randomQuote, setRandomQuote] = useState(quotes[0]);

@@ -1,12 +1,4 @@
-import React from "react";
-
 /* Taken from the Rainbow Wallet repo a long time ago… */
-
-const iconPath = {
-  background: `conic-gradient(from 180deg at 50% 50%, rgba(72, 146, 254, 0) 0deg, currentColor 282.04deg, rgba(72, 146, 254, 0) 319.86deg, rgba(72, 146, 254, 0) 360deg)`,
-  height: 21,
-  width: 21,
-};
 
 export const Spinner = ({
   id = "spinner-01",
@@ -31,3 +23,9 @@ export const Spinner = ({
     </foreignObject>
   </svg>
 );
+
+const iconPath = {
+  background: `conic-gradient(from 180deg at 50% 50%, rgba(72, 146, 254, 0) 0deg, currentColor 282.04deg, rgba(72, 146, 254, 0) 319.86deg, rgba(72, 146, 254, 0) 360deg)`,
+  height: 21,
+  width: 21,
+};

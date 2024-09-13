@@ -4,8 +4,8 @@ import {
   IonSocialLinkedinOutline,
   MynauiBrandGithub,
   ReadCv,
-} from "src/components/icons";
-import config from "src/config";
+} from "@/components/icons";
+import config from "@repo/ui/config";
 import { ContactIcon } from "./contact-icon";
 import { EmailIcon } from "./email-icon";
 

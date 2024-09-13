@@ -6,9 +6,9 @@ const { withContentlayer } = require("next-contentlayer");
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
-  // importing styles & components from ui src directly
-  // transpilePackages: ["@repo/ui"],
   swcMinify: true,
+  // importing styles & components from ui src directly
+  transpilePackages: ["@repo/ui"],
   images: {
     remotePatterns: [
       {

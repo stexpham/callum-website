@@ -6,7 +6,4 @@
 export * from "./avatar";
 export * from "./available";
 export * from "./signoff";
-export * from "./title-header";
-export * from "./outset-rule";
 export * from "./contact-icons";
-export * from "./link-variants";

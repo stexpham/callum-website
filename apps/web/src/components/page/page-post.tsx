@@ -3,17 +3,17 @@ import { Link } from "@repo/ui/next-link";
 import { useMDXComponent } from "next-contentlayer/hooks";
 import NextImage from "next/image";
 import { Prose } from "@repo/ui/prose";
+import { TitleHeader } from "@repo/ui/title-header";
 import { allPosts, type Post } from "contentlayer/generated";
-import { TitleHeader } from "src/components/elements";
-import { components } from "src/components/mdx";
-import { MediaWrapper } from "src/components/media";
-import { PostMeta } from "src/components/post";
+import { components } from "@/components/mdx";
+import { MediaWrapper } from "@/components/media";
+import { PostMeta } from "@/components/post";
 import {
   getYear,
   isVideoFile,
   notSupersetOrTopicPosts,
   splitAspect,
-} from "src/utils";
+} from "@/utils";
 import { PageWrapper } from "./page-wrapper";
 
 export const PagePost = ({ post }: { post: Post }) => {
@@ -72,7 +72,7 @@ export const PagePost = ({ post }: { post: Post }) => {
                       sizes="(min-width: 1000px) 960px, (min-width: 660px) 620px, 100vw"
                       src={
                         isVideoFile(nextPost.assets[0].src)
-                          ? nextPost.assets[0].poster ?? ""
+                          ? (nextPost.assets[0].poster ?? "")
                           : nextPost.assets[0].src
                       }
                       width={isNaN(width) ? 1080 : width}

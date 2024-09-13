@@ -7,7 +7,7 @@ import useEmblaCarousel, {
 import { ChevronRightIcon, ChevronLeftIcon } from "@radix-ui/react-icons";
 import { cx } from "cva";
 import { Button } from "./button";
-// import { cn } from "src/utils/shadcn-utils";
+// import { cn } from "@/utils/shadcn-utils";
 
 type CarouselApi = UseEmblaCarouselType[1];
 type UseCarouselParameters = Parameters<typeof useEmblaCarousel>;

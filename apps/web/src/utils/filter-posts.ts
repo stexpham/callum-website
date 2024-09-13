@@ -1,6 +1,6 @@
 import { format, isSameYear, parseISO } from "date-fns";
 import { type Post } from "contentlayer/generated";
-import { featuredWorkSlugs } from "src/data";
+import { featuredWorkSlugs } from "@/data";
 import { sortByCustomSlugOrder, sortByDate, sortByTitle } from "./sort-posts";
 
 const publishedPosts = (posts: Post[]) => posts.filter((p) => !p.draft);

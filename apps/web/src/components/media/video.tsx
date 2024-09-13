@@ -3,7 +3,7 @@
 import { SpeakerLoudIcon, SpeakerOffIcon } from "@radix-ui/react-icons";
 import type { SVGProps, VideoHTMLAttributes } from "react";
 import { useEffect, useRef, useState } from "react";
-import { useDeviceDetect } from "src/utils";
+import { useDeviceDetect } from "@/utils";
 import type { AspectRatio } from "./media-aspect";
 import { VideoLoader } from "./video-loader";
 

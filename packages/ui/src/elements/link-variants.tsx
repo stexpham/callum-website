@@ -1,7 +1,7 @@
 import { ArrowRightIcon, ArrowTopRightIcon } from "@radix-ui/react-icons";
-import { Link } from "@repo/ui/next-link";
 import { cx } from "cva";
 import type { AnchorHTMLAttributes } from "react";
+import { Link } from "../next-link";
 
 interface LinkWithArrowProps extends AnchorHTMLAttributes<HTMLAnchorElement> {
   href: string;

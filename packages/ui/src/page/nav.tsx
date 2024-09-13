@@ -1,29 +1,32 @@
 "use client";
 
-import { Link } from "@repo/ui/next-link";
-import { textVariants } from "@repo/ui/text";
 import { cx } from "cva";
 import { usePathname } from "next/navigation";
 import { useWindowScroll } from "react-use";
-import { OutsetRule } from "@/components/elements";
+import { ArrowTopRightIcon } from "@radix-ui/react-icons";
+import { textVariants } from "../text";
+import { Link } from "../next-link";
+import { OutsetRule } from "../elements/outset-rule";
 
 const linkStyle = [
-  "h-tab flex items-center relative hover:text-accent",
+  "h-tab flex items-center gap-0 relative hover:text-accent",
   "before:absolute before:left-[-2px] before:right-[-2px] before:bottom-[-1px] before:border-b",
 ];
 
 interface NavProps {
-  ruleClassName?: string;
-  activeNav?: string;
-  navItems: string[];
   anchorName: string;
+  navItems: NavLinkProps[];
+  activeNav?: string;
+  showRootActive?: boolean;
+  ruleClassName?: string;
 }
 
 export const Nav = ({
-  ruleClassName,
-  activeNav,
-  navItems,
   anchorName,
+  navItems,
+  activeNav,
+  showRootActive = false,
+  ruleClassName,
 }: NavProps) => {
   const pathname = usePathname();
   const { y } = useWindowScroll();
@@ -46,7 +49,7 @@ export const Nav = ({
             textVariants({ intent: "metaHeading" }),
             linkStyle,
             "pl-0 before:left-0",
-            pathname === "/"
+            pathname === "/" || showRootActive
               ? "before:border-fill hover:before:border-accent"
               : "before:border-transparent"
           )}
@@ -55,14 +58,13 @@ export const Nav = ({
           {anchorName}
         </Link>
         <div className="flex items-center gap-4">
-          {navItems.map((nav) => (
+          {navItems.map(({ href, label }) => (
             <NavLink
-              href={nav}
-              isActive={pathname === nav || activeNav === nav}
-              key={nav}
-            >
-              {nav}
-            </NavLink>
+              href={href}
+              isActive={pathname === href || activeNav === href}
+              key={href}
+              label={label}
+            />
           ))}
         </div>
       </nav>
@@ -76,15 +78,16 @@ export const Nav = ({
   );
 };
 
+interface NavLinkProps {
+  href: string;
+  label: string;
+}
+
 const NavLink = ({
   href,
   isActive,
-  children,
-}: {
-  href: string;
-  isActive: boolean;
-  children: string;
-}) => (
+  label,
+}: NavLinkProps & { isActive: boolean }) => (
   <Link
     className={cx(
       textVariants({ intent: "metaHeading" }),
@@ -95,7 +98,9 @@ const NavLink = ({
     )}
     href={href}
   >
-    {/* extract the href "/" from the children string */}
-    {children.replace(/^\/|\/$/g, "")}
+    {label}
+    {href.includes("https://") && (
+      <ArrowTopRightIcon className="size-[1.25em] mt-[-0.25em]" />
+    )}
   </Link>
 );

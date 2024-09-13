@@ -7,8 +7,9 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "type-check": "tsc --noEmit",
-    "typecheck": "contentlayer build && pnpm tsc --noEmit",
+    "build:content": "contentlayer build",
+    "typecheck": "tsc --noEmit",
+    "type-check": "contentlayer build && pnpm tsc --noEmit",
     "new-post": "node create-post.js",
     "create-post": "node ../../packages/scripts/create-post.js 'posts/_TEMPLATE.mdx'"
   },

@@ -1,10 +1,10 @@
 "use client";
 
+import { Nav } from "@repo/ui/nav";
+import { cx } from "cva";
 import { useRef } from "react";
 import { useIntersection } from "react-use";
-import { cx } from "cva";
-import { NAV_ITEMS } from "~/src/data";
-import { Nav } from "./nav";
+import config from "@repo/ui/config";
 import { FooterScreen } from "./footer-screen";
 
 export const PageWrapper = ({
@@ -28,7 +28,12 @@ export const PageWrapper = ({
       <Nav
         activeNav={activeNav}
         anchorName="Callum"
-        navItems={NAV_ITEMS}
+        navItems={[
+          { href: "/about", label: "About" },
+          { href: "/work", label: "Work" },
+          { href: "/writing", label: "Writing" },
+          { href: config.PUBLIC_NOTES_URL, label: "Notes" },
+        ]}
         ruleClassName={cx(
           intersection && intersection.intersectionRatio < 1
             ? ""
