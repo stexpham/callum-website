@@ -1,7 +1,7 @@
 // https://github.com/contentlayerdev/contentlayer/issues/140.
 // import { withContentlayer } from "next-contentlayer";
 // To load an ES module, set "type": "module" in the package.json or use the .mjs extension. Otherwise use require() instead. Mind you, this is Lee Rob's, which uses require() instead of import: https://github.com/leerob/leerob.io/blob/main/next.config.js
-const { withContentlayer } = require("next-contentlayer");
+const { withContentlayer } = require("next-contentlayer2");
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {

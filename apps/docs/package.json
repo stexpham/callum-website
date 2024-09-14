@@ -9,7 +9,7 @@
     "lint": "next lint",
     "build:content": "contentlayer2 build",
     "typecheck": "tsc --noEmit",
-    "type-check": "contentlayer build && pnpm tsc --noEmit",
+    "type-check": "contentlayer2 build && pnpm tsc --noEmit",
     "create-post": "node ../../packages/scripts/create-post.js 'posts/_TEMPLATE.mdx'"
   },
   "dependencies": {

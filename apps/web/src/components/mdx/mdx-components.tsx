@@ -1,4 +1,4 @@
-import { useMDXComponent } from "next-contentlayer/hooks";
+import { useMDXComponent } from "next-contentlayer2/hooks";
 import { components as uiMdxComponents } from "@repo/ui/mdx-components";
 import { Prose } from "@repo/ui/elements";
 import { Available, ContactIcons } from "~/src/components/elements";
