@@ -1,5 +1,5 @@
 import { Text } from "@repo/ui/atoms";
-import { TitleHeader } from "../../../../../packages/ui/src/elements";
+import { TitleHeader } from "@repo/ui/elements";
 import config from "@repo/ui/config";
 import type { SearchParams } from "@/types/search-params";
 import { PageWrapper } from "@/components/page";

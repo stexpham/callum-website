@@ -1,11 +1,11 @@
 "use client";
 
-import { Nav, FooterShape } from "@repo/ui/page";
 import { cx } from "cva";
 import { useRef } from "react";
 import { useIntersection } from "react-use";
 import config from "@repo/ui/config";
-import { TitleHeader } from "../../../../../packages/ui/src/elements";
+import { Nav, FooterShape } from "@repo/ui/page";
+import { TitleHeader } from "@repo/ui/elements";
 import { Signoff } from "~/src/components/elements/signoff";
 
 export const PageWrapper = ({

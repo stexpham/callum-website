@@ -1,4 +1,5 @@
 /* 
+  Composites are complex components built from elements.
   Composites are assembled into complex systems such as interactions.
 
   Rule of least permission! 

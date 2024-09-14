@@ -1,5 +1,5 @@
-import { Link } from "../../../../../packages/ui/src/atoms/next-link";
 import { cx } from "cva";
+import { Link } from "@repo/ui/atoms";
 import type { PostsKind } from "@/components/post";
 import type { GroupedPosts } from "@/utils";
 import { type Post } from "contentlayer/generated";

@@ -1,4 +1,4 @@
-import { Link } from "../../../../../packages/ui/src/atoms/next-link";
+import { Link } from "@repo/ui/atoms";
 
 interface LinkOrDivProps {
   href?: string;

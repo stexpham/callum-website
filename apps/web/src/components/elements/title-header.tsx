@@ -1,8 +1,7 @@
-import type { PolymorphicProps } from "../../../../../packages/ui/src/atoms/polymorphic-element";
-import { PolymorphicElement } from "../../../../../packages/ui/src/atoms/polymorphic-element";
+import type { PolymorphicProps } from "@repo/ui/atoms";
+import { PolymorphicElement, Text } from "@repo/ui/atoms";
 import { cx } from "cva";
 import * as React from "react";
-import { Text } from "@repo/ui/atoms";
 
 type TitleHeaderProps = PolymorphicProps<React.ElementType> & {
   subheading?: React.ReactNode;

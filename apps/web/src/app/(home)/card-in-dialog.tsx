@@ -1,9 +1,9 @@
 import { ArrowRightIcon, ArrowTopRightIcon } from "@radix-ui/react-icons";
-import { Link } from "../../../../../packages/ui/src/atoms/next-link";
+import { Link } from "@repo/ui/atoms";
 import { cx } from "cva";
 import { type Post } from "contentlayer/generated";
-import { iconStyle, transformStyle } from "../../components/card/card-styles";
-import { CardTitleMeta } from "../../components/card/card-title-meta";
+import { iconStyle, transformStyle } from "@/components/card/card-styles";
+import { CardTitleMeta } from "@/components/card/card-title-meta";
 
 interface CardInDialogProps {
   post: Post;

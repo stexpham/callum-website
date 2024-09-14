@@ -1,6 +1,6 @@
 import { ArrowTopRightIcon } from "@radix-ui/react-icons";
 import { format, parseISO } from "date-fns";
-import { Link } from "../../../../../packages/ui/src/atoms/next-link";
+import { Link } from "@repo/ui/atoms";
 import { cx } from "cva";
 import { type Post } from "contentlayer/generated";
 import { iconStyle, transformStyle } from "./card-styles";

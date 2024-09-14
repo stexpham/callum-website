@@ -1,6 +1,6 @@
-import { Link } from "../../../../../packages/ui/src/atoms/next-link";
 import { useMemo } from "react";
 import { cx } from "cva";
+import { Link } from "@repo/ui/atoms";
 import type { AspectRatio } from "@repo/ui/media";
 import { MediaWrapper } from "@repo/ui/media";
 import { sortButtonStyle } from "@/components/page/sort-button";

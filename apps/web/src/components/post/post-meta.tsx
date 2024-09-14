@@ -1,7 +1,7 @@
 import { cx } from "cva";
 import NextLink from "next/link";
 import { Fragment } from "react";
-import { Link } from "../../../../../packages/ui/src/atoms/next-link";
+import { Link } from "@repo/ui/atoms";
 import { noteStyle } from "@repo/ui/mdx-components";
 import { getYear } from "@repo/ui/utils";
 import { type Post } from "contentlayer/generated";

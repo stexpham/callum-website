@@ -1,14 +1,14 @@
 "use client";
 
 import { Cross2Icon } from "@radix-ui/react-icons";
-import { DialogClose } from "@repo/ui/composites";
-import type { AspectRatio } from "@repo/ui/media";
-import { MediaWrapper } from "@repo/ui/media";
 import {
+  DialogClose,
   SnapCarousel,
   SnapCarouselItem,
   snapCarouselStyles,
-} from "../../../../../packages/ui/src/composites/snap-carousel";
+} from "@repo/ui/composites";
+import type { AspectRatio } from "@repo/ui/media";
+import { MediaWrapper } from "@repo/ui/media";
 import { cx } from "cva";
 import { useEffect } from "react";
 import type { Asset } from "contentlayer/generated";
