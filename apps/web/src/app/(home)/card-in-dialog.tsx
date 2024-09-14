@@ -1,5 +1,5 @@
 import { ArrowRightIcon, ArrowTopRightIcon } from "@radix-ui/react-icons";
-import { Link } from "@repo/ui/atoms";
+import { Link, Text } from "@repo/ui/atoms";
 import { cx } from "cva";
 import { type Post } from "contentlayer/generated";
 import { iconStyle, transformStyle } from "@/components/card/card-styles";
@@ -28,10 +28,12 @@ export const CardInDialog = ({
         href={post.thumbnailLink ? post.thumbnailLink : `/${post.slug}`}
       >
         <div className="flex items-center gap-2">
-          <h1 className="font-medium group-hover:text-accent">{post.title}</h1>
+          <Text as="h1" className="group-hover:text-accent" weight="medium">
+            {post.title}
+          </Text>
           <CardTitleMeta post={post} />
         </div>
-        <p className="pt-1 text-meta text-solid">
+        <Text className="pt-1" dim intent="meta">
           {post.lede}{" "}
           <span className="link inline-flex items-center gap-0.5 text-solid group-hover:text-solid group-hover:decoration-solid">
             Read case study
@@ -41,7 +43,7 @@ export const CardInDialog = ({
               <ArrowRightIcon className={cx(iconStyle, transformStyle)} />
             )}
           </span>
-        </p>
+        </Text>
       </Link>
     </div>
   </>
