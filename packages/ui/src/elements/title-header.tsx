@@ -1,8 +1,8 @@
 import { cx } from "cva";
 import * as React from "react";
-import { Text } from "../text";
-import type { PolymorphicProps } from "../polymorphic-element";
-import { PolymorphicElement } from "../polymorphic-element";
+import { Text } from "../atoms/text";
+import type { PolymorphicProps } from "../atoms/polymorphic-element";
+import { PolymorphicElement } from "../atoms/polymorphic-element";
 
 type TitleHeaderProps = PolymorphicProps<React.ElementType> & {
   subheading?: React.ReactNode;

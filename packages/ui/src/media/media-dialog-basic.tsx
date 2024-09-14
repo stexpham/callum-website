@@ -6,7 +6,7 @@ import {
   DialogContent,
   DialogTitle,
   DialogTrigger,
-} from "@repo/ui/dialog";
+} from "@repo/ui/composites";
 import type { MediaDialogProps } from "./media-dialog";
 
 export const MediaDialogBasic = ({

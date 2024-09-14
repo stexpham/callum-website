@@ -1,7 +1,7 @@
 import { cx } from "cva";
 import { ArrowTopRightIcon } from "@radix-ui/react-icons";
 import { format, parseISO } from "date-fns";
-import { Text } from "@repo/ui/text";
+import { Text } from "@repo/ui/atoms";
 import { type Post } from "contentlayer/generated";
 import { PostCategoryIcon } from "./post-category-icon";
 import { postIconStyle } from "./post.styles";

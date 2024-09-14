@@ -1,8 +1,8 @@
-import { Link } from "@repo/ui/next-link";
+import { Link } from "../../../../../packages/ui/src/atoms/next-link";
 import { useMemo } from "react";
 import { cx } from "cva";
-import type { AspectRatio } from "@repo/ui/media-aspect";
-import { MediaWrapper } from "@repo/ui/media-wrapper";
+import type { AspectRatio } from "@repo/ui/media";
+import { MediaWrapper } from "@repo/ui/media";
 import { sortButtonStyle } from "@/components/page/sort-button";
 import type { GroupedPosts } from "@/utils";
 import type { Post } from "contentlayer/generated";

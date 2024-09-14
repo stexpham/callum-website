@@ -1,7 +1,7 @@
 import NextImage from "next/image";
-import { isVideoFile, splitAspect } from "@repo/ui/post-utils";
-import type { AspectRatio } from "@repo/ui/media-aspect";
-import { Video } from "@repo/ui/video";
+import { isVideoFile, splitAspect } from "@repo/ui/utils";
+import type { AspectRatio } from "@repo/ui/media";
+import { Video } from "@repo/ui/media";
 import type { Asset } from "contentlayer/generated";
 
 export interface CardImageProps {

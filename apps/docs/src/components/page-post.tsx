@@ -1,14 +1,13 @@
-// import { ArrowRightIcon } from "@radix-ui/react-icons";
-// import { Link } from "@repo/ui/next-link";
 import { useMDXComponent } from "next-contentlayer2/hooks";
-// import NextImage from "next/image";
-import { Prose } from "@repo/ui/prose";
-// import { MediaWrapper } from "@repo/ui/media-wrapper";
+import { Prose, TitleHeader } from "@repo/ui/elements";
 import { components } from "@repo/ui/mdx-components";
-import { formatPostDate } from "@repo/ui/post-utils";
-import { TitleHeader } from "@repo/ui/title-header";
+import { formatPostDate } from "@repo/ui/utils";
 import { type Post } from "contentlayer/generated";
 import { PageWrapper } from "./page-wrapper";
+// import { ArrowRightIcon } from "@radix-ui/react-icons";
+// import NextImage from "next/image";
+// import { Link } from "@repo/ui/atoms";
+// import { MediaWrapper } from "@repo/ui/media";
 // import { PostMeta } from "@/components/post";
 
 export const PagePost = ({ post }: { post: Post }) => {

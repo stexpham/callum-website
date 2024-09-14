@@ -1,5 +1,5 @@
-import { buttonVariants } from "@repo/ui/button";
-import { Link } from "@repo/ui/next-link";
+import { buttonVariants } from "../../../../../packages/ui/src/atoms/button";
+import { Link } from "../../../../../packages/ui/src/atoms/next-link";
 import { cx } from "cva";
 import React from "react";
 

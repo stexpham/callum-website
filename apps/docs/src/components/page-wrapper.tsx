@@ -3,10 +3,9 @@
 import { useRef } from "react";
 import { useIntersection } from "react-use";
 import { cx } from "cva";
-import { Nav } from "@repo/ui/nav";
+import { Nav, FooterShape } from "@repo/ui/page";
 import config from "@repo/ui/config";
-import { FooterShape } from "@repo/ui/footer-shape";
-import { TitleHeader } from "@repo/ui/title-header";
+import { TitleHeader } from "@repo/ui/elements";
 
 export const PageWrapper = ({
   activeNav,
@@ -32,7 +31,7 @@ export const PageWrapper = ({
         activeNav={activeNav}
         anchorName="Notes"
         navItems={[
-          { href: "/index", label: "Index" },
+          { href: "/archive", label: "Archive" },
           { href: "/random", label: "Random" },
           { href: "/patterns", label: "Patterns" },
           { href: config.PUBLIC_URL, label: "Callum" },

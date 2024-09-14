@@ -3,4 +3,4 @@
   Do not export if it's only used within this directory 
  */
 
-export * from "./mdx-components";
+export { components, Mdx } from "./mdx-components";

@@ -1,7 +1,7 @@
 import NextLink from "next/link";
-import type { AnchorHTMLAttributes } from "react";
+import type { ComponentPropsWithoutRef } from "react";
 
-interface LinkProps extends AnchorHTMLAttributes<HTMLAnchorElement> {
+export interface LinkProps extends ComponentPropsWithoutRef<"a"> {
   href: string;
 }
 

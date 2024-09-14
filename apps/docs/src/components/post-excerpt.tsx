@@ -1,9 +1,6 @@
-import { useMDXComponent } from "next-contentlayer2/hooks";
-import { Link } from "@repo/ui/next-link";
-import { Prose } from "@repo/ui/prose";
-import { TitleHeader } from "@repo/ui/title-header";
-import { formatPostDate } from "@repo/ui/post-utils";
-import { components } from "@repo/ui/mdx-components";
+import { Link } from "@repo/ui/atoms";
+import { Prose, TitleHeader } from "@repo/ui/elements";
+import { formatPostDate } from "@repo/ui/utils";
 import type { Post } from "contentlayer/generated";
 
 interface PostExcerptProps {
@@ -11,10 +8,6 @@ interface PostExcerptProps {
 }
 
 export function PostExcerpt({ post }: PostExcerptProps) {
-  // Slice the MDX content
-  const excerptCode = post.body.code.slice(0, 500);
-  // const MDXContent = useMDXComponent(excerptCode);
-
   return (
     <div>
       <Link href={post.slug}>

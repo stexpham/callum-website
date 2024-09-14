@@ -12,32 +12,32 @@ const sans = localFont({
   display: "swap",
   src: [
     {
-      path: "./fonts/neue-haas-unica-pro-regular.woff2",
+      path: "./neue-haas-unica-pro-regular.woff2",
       weight: "300",
       style: "normal",
     },
     {
-      path: "./fonts/neue-haas-unica-pro-regular.woff2",
+      path: "./neue-haas-unica-pro-regular.woff2",
       weight: "400",
       style: "normal",
     },
     {
-      path: "./fonts/neue-haas-unica-pro-medium.woff2",
+      path: "./neue-haas-unica-pro-medium.woff2",
       weight: "500",
       style: "normal",
     },
     {
-      path: "./fonts/neue-haas-unica-pro-medium.woff2",
+      path: "./neue-haas-unica-pro-medium.woff2",
       weight: "600",
       style: "normal",
     },
     {
-      path: "./fonts/neue-haas-unica-pro-bold.woff2",
+      path: "./neue-haas-unica-pro-bold.woff2",
       weight: "700",
       style: "normal",
     },
     {
-      path: "./fonts/neue-haas-unica-pro-bold.woff2",
+      path: "./neue-haas-unica-pro-bold.woff2",
       weight: "800",
       style: "normal",
     },
@@ -49,7 +49,7 @@ const mono = localFont({
   display: "swap",
   src: [
     {
-      path: "./fonts/SohneMono-Buch.woff2",
+      path: "./SohneMono-Buch.woff2",
       weight: "500",
       style: "normal",
     },

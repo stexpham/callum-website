@@ -2,13 +2,13 @@
 
 import { Fragment, useState } from "react";
 import { useRouter } from "next/navigation";
+import { cx } from "cva";
 import type { PostsKind } from "@/components/post";
 import {
   PostsBlockList,
   PostsList,
   hideFeaturedDotStyle,
 } from "@/components/post";
-import { cx } from "cva";
 import { useSortedPosts } from "../post/use-sorted-posts";
 import { ListHeader } from "./list-header";
 import { StyledSortButton } from "./sort-button";

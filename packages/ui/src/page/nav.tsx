@@ -4,8 +4,8 @@ import { cx } from "cva";
 import { usePathname } from "next/navigation";
 import { useWindowScroll } from "react-use";
 import { ArrowTopRightIcon } from "@radix-ui/react-icons";
-import { textVariants } from "../text";
-import { Link } from "../next-link";
+import { textVariants } from "../atoms/text";
+import { Link } from "../atoms/next-link";
 import { OutsetRule } from "../elements/outset-rule";
 
 const linkStyle = [

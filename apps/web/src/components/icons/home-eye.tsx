@@ -1,9 +1,9 @@
-import type { SVGIconProps } from "@repo/ui/svg";
-import { SVG as SVGComponent } from "@repo/ui/svg";
+import type { SvgIconProps } from "@repo/ui/atoms";
+import { Svg as SvgComponent } from "@repo/ui/atoms";
 
 // props: React.ComponentProps<typeof SVG>
-export const HomeEyeIcon = (props: SVGIconProps) => (
-  <SVGComponent viewbox="0 0 200 200" {...props}>
+export const HomeEyeIcon = (props: SvgIconProps) => (
+  <SvgComponent viewbox="0 0 200 200" {...props}>
     <rect fill="none" height="200" width="200" />
     <g clipPath="url(#clip0_785_369)">
       <path
@@ -13,5 +13,5 @@ export const HomeEyeIcon = (props: SVGIconProps) => (
         fillRule="evenodd"
       />
     </g>
-  </SVGComponent>
+  </SvgComponent>
 );

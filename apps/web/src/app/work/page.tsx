@@ -1,8 +1,7 @@
-import { Text } from "@repo/ui/text";
-import { TitleHeader } from "@repo/ui/title-header";
+import { Text } from "@repo/ui/atoms";
+import { TitleHeader } from "@repo/ui/elements";
 import type { SearchParams } from "@/types/search-params";
-import { PageWrapper } from "@/components/page";
-import { PagePostsIndexClient } from "@/components/page/page-posts-index-client";
+import { PageWrapper, PagePostsIndexClient } from "@/components/page";
 import type { PostsKind } from "@/components/post";
 
 export default function WorkIndexPage({

@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { LinkWithArrow } from "@repo/ui/link-variants";
+import { LinkWithArrow } from "@repo/ui/elements";
 import { quotes } from "@/data/quotes";
 
 export const RandomQuote = () => {

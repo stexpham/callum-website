@@ -5,7 +5,7 @@ import {
   DialogContent,
   DialogTrigger,
   DialogTitle,
-} from "@repo/ui/dialog";
+} from "@repo/ui/composites";
 import { MediaFigure } from "./media-figure";
 import type { MediaWrapperProps } from "./media-types";
 

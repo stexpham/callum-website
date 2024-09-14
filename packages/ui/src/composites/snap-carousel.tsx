@@ -28,7 +28,7 @@ interface SnapCarouselRenderItemProps<T> {
   readonly index: number;
 }
 
-export const SnapCarousel = <T extends Record<string, unknown>>({
+const SnapCarousel = <T extends Record<string, unknown>>({
   items,
   renderItem,
   controlNode,
@@ -117,7 +117,7 @@ export const SnapCarousel = <T extends Record<string, unknown>>({
   );
 };
 
-export interface SnapCarouselItemProps {
+interface SnapCarouselItemProps {
   readonly isSnapPoint: boolean;
   readonly isActive: boolean;
   readonly children?: React.ReactNode;
@@ -125,7 +125,7 @@ export interface SnapCarouselItemProps {
   activeClassName?: string;
 }
 
-export const SnapCarouselItem = ({
+const SnapCarouselItem = ({
   isSnapPoint,
   isActive,
   children,
@@ -144,7 +144,7 @@ export const SnapCarouselItem = ({
   </li>
 );
 
-export const snapCarouselStyles = {
+const snapCarouselStyles = {
   // overflow-hidden
   root: "relative flex",
   // overscroll-contain will prevent y-scrolling when cursor is over carousel
@@ -202,3 +202,11 @@ const useCarouselClasses = (customClasses: CustomClasses) => {
     caretNext: snapCarouselStyles.caretNext,
   };
 };
+
+export {
+  SnapCarousel,
+  SnapCarouselItem,
+  snapCarouselStyles,
+  useCarouselClasses,
+};
+export type { SnapCarouselItemProps };

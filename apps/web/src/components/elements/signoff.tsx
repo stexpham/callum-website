@@ -1,5 +1,5 @@
-import { Link } from "@repo/ui/next-link";
-import { Text } from "@repo/ui/text";
+import { Link } from "../../../../../packages/ui/src/atoms/next-link";
+import { Text } from "@repo/ui/atoms";
 import { ContactIcons } from "./contact-icons";
 import { SiteTime } from "./site-time";
 

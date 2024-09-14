@@ -1,6 +1,6 @@
 import NextImage from "next/image";
-import { splitAspect } from "../../lib/post-utils";
-import { Spinner } from "../spinner";
+import { splitAspect } from "../../lib/utils";
+import { Spinner } from "../elements/spinner";
 
 interface VideoLoaderProps {
   poster: string;

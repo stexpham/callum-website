@@ -1,9 +1,9 @@
 import { ArrowTopRightIcon } from "@radix-ui/react-icons";
 import { cx } from "cva";
-import { Text } from "@repo/ui/text";
-import { isVideoFile } from "@repo/ui/post-utils";
-import type { AspectRatio } from "@repo/ui/media-aspect";
-import { MediaWrapper } from "@repo/ui/media-wrapper";
+import { Text } from "@repo/ui/atoms";
+import { isVideoFile } from "@repo/ui/utils";
+import type { AspectRatio } from "@repo/ui/media";
+import { MediaWrapper } from "@repo/ui/media";
 import { type Post } from "contentlayer/generated";
 import { CardImage } from "@/components/card";
 import { postIconStyle } from "./post.styles";

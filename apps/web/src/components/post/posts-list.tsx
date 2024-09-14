@@ -1,4 +1,4 @@
-import { Link } from "@repo/ui/next-link";
+import { Link } from "../../../../../packages/ui/src/atoms/next-link";
 import { cx } from "cva";
 import type { PostsKind } from "@/components/post";
 import type { GroupedPosts } from "@/utils";

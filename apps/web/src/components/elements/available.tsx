@@ -1,4 +1,4 @@
-import { Text } from "@repo/ui/text";
+import { Text } from "@repo/ui/atoms";
 
 export const Available = () => (
   <div className="pt-[0.5em]">

@@ -39,7 +39,7 @@ export const proseVariants = cva({
   ],
 });
 
-interface ProseProps
+export interface ProseProps
   extends HTMLAttributes<HTMLDivElement>,
     VariantProps<typeof proseVariants> {}
 

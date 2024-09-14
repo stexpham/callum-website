@@ -1,14 +1,12 @@
-import { useMDXComponent } from "next-contentlayer/hooks";
-import { Prose } from "@repo/ui/prose";
-import { Text } from "@repo/ui/text";
-import { Avatar, Available, ContactIcons } from "~/src/components/elements";
-import { components } from "@/components/mdx";
-import { PageWrapper } from "@/components/page";
-import { allPosts, type Post } from "contentlayer/generated";
-import { sortByCustomSlugOrder } from "@/utils";
-import { featuredSlugs } from "@/data";
-import { HomeSnapCarousel, extraCard } from "@/app/(home)";
+import { Text } from "@repo/ui/atoms";
 import type { CustomPost } from "@/app/(home)";
+import { HomeSnapCarousel, extraCard } from "@/app/(home)";
+import { Available, Avatar, ContactIcons } from "~/src/components/elements";
+import { Mdx } from "@/components/mdx";
+import { PageWrapper } from "@/components/page";
+import { featuredSlugs } from "@/data";
+import { sortByCustomSlugOrder } from "@/utils";
+import { allPosts, type Post } from "contentlayer/generated";
 
 const filteredPosts = featuredSlugs.map((slug) =>
   allPosts.find((post) => post.slug === slug)
@@ -26,8 +24,6 @@ const copyPosts = allPosts.filter(
 );
 
 export default function HomePage(): JSX.Element {
-  const Intro = useMDXComponent(copyPosts[0]?.body.code ?? "");
-
   return (
     <PageWrapper>
       {/* make this div fill the screen on mobile */}
@@ -40,13 +36,12 @@ export default function HomePage(): JSX.Element {
             <Text as="h1" intent="title">
               Hi, I&rsquo;m Callum. I make beautiful hypertext products.
             </Text>
-            <Prose>
-              <Intro components={components} />
+            <Mdx code={copyPosts[0]?.body.code ?? ""}>
               <div className="pb-1">
                 <Available />
               </div>
               <ContactIcons className="pt-0.5" />
-            </Prose>
+            </Mdx>
           </div>
         </header>
 

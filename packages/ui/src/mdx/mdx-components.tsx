@@ -5,9 +5,9 @@ import NextImage from "next/image";
 import { highlight } from "sugar-high";
 import type { MediaDialogProps, MediaFigureProps, VideoProps } from "../media";
 import { MediaDialog, MediaFigure, Video } from "../media";
-import { Link } from "../next-link";
-import type { TextProps } from "../text";
-import { Text, textVariants } from "../text";
+import { Link } from "../atoms/next-link";
+import type { TextProps } from "../atoms/text";
+import { Text, textVariants } from "../atoms/text";
 import { LinkWithArrow } from "../elements";
 
 type AnchorProps = ComponentPropsWithoutRef<"a">;

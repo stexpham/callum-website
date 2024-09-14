@@ -1,6 +1,7 @@
 /* 
   Rule of least permission! 
-  Do not export if it's only used within this directory 
+  1. Only export what is needed for the apps/web directory
+  2. Do not export if it's only used within this directory 
  */
 
 export type {
