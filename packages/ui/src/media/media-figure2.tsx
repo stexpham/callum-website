@@ -11,11 +11,8 @@ const mediaFigureVariants = cva({
   base: "MediaFigure relative space-y-w4",
   variants: {
     figureIntent: {
-      inDialog: "hover:cursor-zoom-in",
+      inDialogTrigger: "hover:cursor-zoom-in",
       inMdx: "py-w8 first:pt-0",
-    },
-    showHoverCursor: {
-      true: "hover:cursor-zoom-in",
     },
   },
 });
@@ -28,7 +25,6 @@ interface MediaFigureProps
   extends ComponentProps<"figure">,
     MediaFigureVariantProps {
   caption?: string | React.ReactNode;
-  mediaFigureClassName?: string;
   wrapperProps?: Omit<MediaWrapperProps, keyof MediaFigureVariantProps> & {
     isPortrait?: boolean;
   };
@@ -36,13 +32,12 @@ interface MediaFigureProps
 
 const MediaFigure = ({
   caption,
-  mediaFigureClassName,
   intent,
   wrapperProps,
   children,
   ...props
 }: MediaFigureProps) => (
-  <figure className={cx(mediaFigureVariants(props), mediaFigureClassName)}>
+  <figure className={cx(mediaFigureVariants(props))}>
     <MediaWrapper intent={intent} {...wrapperProps}>
       {children}
     </MediaWrapper>

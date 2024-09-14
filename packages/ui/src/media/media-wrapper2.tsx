@@ -3,7 +3,7 @@ import type { ComponentProps } from "react";
 
 const mediaWrapperVariants = cva({
   base: [
-    // do NOT add w-full! This would mean the outset styles don't work
+    // do NOT add w-full! This breaks the outset styles
     "MediaWrapper relative overflow-hidden",
     "flex flex-col justify-center",
   ],

@@ -28,7 +28,7 @@ export const MediaDialog = ({
   return (
     <Dialog>
       <DialogTrigger className="w-full focus-visible:outline-none">
-        <MediaFigure figureIntent="inDialog">{buttonNode}</MediaFigure>
+        <MediaFigure figureIntent="inDialogTrigger">{buttonNode}</MediaFigure>
       </DialogTrigger>
       <DialogContent
         aria-describedby={title}
@@ -43,7 +43,6 @@ export const MediaDialog = ({
           caption={caption}
           intent="superOutset"
           rounded
-          showHoverCursor={false}
           wrapperProps={{
             aspectRatioStyle,
             isPortrait,

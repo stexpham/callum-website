@@ -70,8 +70,6 @@ export const GraphicsGrid = () => {
               }
               isPortrait={project.height > project.width}
               key={project.image}
-              mediaFigureClassName="!py-0"
-              showHoverCursor
               title={project.title}
             >
               <Image
