@@ -9,6 +9,7 @@
     "type-check": "turbo type-check",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
     "clean": "turbo run clean && rm -rf node_modules",
+    "clean:all": "turbo run clean && rm -rf node_modules **/node_modules",
     "release": "turbo run build --filter=docs^..."
   },
   "devDependencies": {

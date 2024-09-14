@@ -4,9 +4,13 @@ import { cx } from "cva";
 import type { Metadata, Viewport } from "next";
 import PlausibleProvider from "next-plausible";
 import { mono, sans } from "@repo/ui/fonts";
+import config from "@repo/ui/config";
 import { BodyWrapper } from "@/components/utils";
-import config from "@/config";
 import { Providers } from "./providers";
+
+const title = "Callum Flack is a designer who codes and writes";
+const description =
+  "Callum Flack is a designer who codes. Fluid across visual design, user experience and frontend engineering, he also writes about creativity, teamwork and attention.";
 
 // See
 // https://nextjs.org/docs/app/api-reference/file-conventions/metadata/app-icons
@@ -14,15 +18,13 @@ import { Providers } from "./providers";
 // Jim's <head>: https://blog.jim-nielsen.com/2024/cold-blooded-software/
 export const metadata: Metadata = {
   metadataBase: new URL(config.PUBLIC_URL),
-  title: "Callum Flack is a designer who codes and writes",
-  description:
-    "Callum Flack is a designer who codes. Fluid across visual design, user experience and frontend engineering, he also writes about creativity, teamwork and attention.",
+  title,
+  description,
   twitter: {
     card: "summary",
     creator: "@callumflack",
-    title: "Callum Flack is a designer who codes and writes",
-    description:
-      "Callum Flack is a designer who codes. Fluid across visual design, user experience and frontend engineering, he also writes about creativity, teamwork and attention.",
+    title,
+    description,
     images: {
       url: "/images/twitter-card.png", // Must be an absolute URL
       alt: "Callum Flack's initial (C) on his favourite colour.",

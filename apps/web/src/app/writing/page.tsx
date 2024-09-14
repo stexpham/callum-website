@@ -1,10 +1,10 @@
-import { Text } from "@repo/ui/text";
+import { Text } from "@repo/ui/atoms";
+import { TitleHeader } from "../../../../../packages/ui/src/elements";
+import config from "@repo/ui/config";
 import type { SearchParams } from "@/types/search-params";
 import { PageWrapper } from "@/components/page";
-import { TitleHeader } from "@/components/elements";
 import { PagePostsIndexClient } from "@/components/page/page-posts-index-client";
 import type { PostsKind } from "@/components/post";
-import config from "src/config";
 
 export default function WritingIndexPage({
   searchParams,

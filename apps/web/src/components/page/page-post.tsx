@@ -1,23 +1,16 @@
 import { ArrowRightIcon } from "@radix-ui/react-icons";
-import { Link } from "@repo/ui/next-link";
-import { useMDXComponent } from "next-contentlayer/hooks";
+import { Link } from "@repo/ui/atoms";
+import { MediaWrapper } from "@repo/ui/media";
+import { TitleHeader } from "@repo/ui/elements";
+import { getYear, isVideoFile, splitAspect } from "@repo/ui/utils";
 import NextImage from "next/image";
-import { Prose } from "@repo/ui/prose";
 import { allPosts, type Post } from "contentlayer/generated";
-import { TitleHeader } from "src/components/elements";
-import { components } from "src/components/mdx";
-import { MediaWrapper } from "src/components/media";
-import { PostMeta } from "src/components/post";
-import {
-  getYear,
-  isVideoFile,
-  notSupersetOrTopicPosts,
-  splitAspect,
-} from "src/utils";
+import { notSupersetOrTopicPosts } from "@/utils";
+import { PostMeta } from "@/components/post";
+import { Mdx } from "@/components/mdx";
 import { PageWrapper } from "./page-wrapper";
 
 export const PagePost = ({ post }: { post: Post }) => {
-  const MDXContent = useMDXComponent(post.body.code);
   // const longDate = format(parseISO(post?.date ?? ""), "LLLL d, yyyy");
   // const year = format(parseISO(post?.date ?? ""), "yyyy");
   // const tagsWithoutFeatured = post?.tags.filter((tag) => tag !== "featured");
@@ -72,7 +65,7 @@ export const PagePost = ({ post }: { post: Post }) => {
                       sizes="(min-width: 1000px) 960px, (min-width: 660px) 620px, 100vw"
                       src={
                         isVideoFile(nextPost.assets[0].src)
-                          ? nextPost.assets[0].poster ?? ""
+                          ? (nextPost.assets[0].poster ?? "")
                           : nextPost.assets[0].src
                       }
                       width={isNaN(width) ? 1080 : width}
@@ -102,10 +95,9 @@ export const PagePost = ({ post }: { post: Post }) => {
       </TitleHeader>
 
       <div className="container flex flex-col pb-w20">
-        <Prose>
-          <MDXContent components={components} />
+        <Mdx code={post.body.code}>
           <PostMeta post={post} />
-        </Prose>
+        </Mdx>
       </div>
     </PageWrapper>
   );

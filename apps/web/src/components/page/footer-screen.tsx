@@ -1,5 +1,5 @@
-import { Signoff } from "~/src/components/elements/signoff";
-import { TitleHeader } from "~/src/components/elements";
+import { TitleHeader } from "@repo/ui/elements";
+import { Signoff } from "~/src/components/elements";
 import { FooterWrapper } from "./footer-wrapper";
 
 export const FooterScreen = ({

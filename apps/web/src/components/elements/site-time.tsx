@@ -2,7 +2,7 @@
 
 import { format, toZonedTime } from "date-fns-tz";
 import { useEffect, useState } from "react";
-import { useHasMounted } from "src/utils";
+import { useHasMounted } from "@/utils";
 
 export const SiteTime = () => {
   const hasMounted = useHasMounted();

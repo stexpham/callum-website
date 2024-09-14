@@ -1,5 +1,5 @@
 import { cx } from "cva";
-import { OutsetRule } from "../elements/outset-rule";
+import { OutsetRule } from "@repo/ui/elements";
 
 interface FooterWrapperProps {
   children: React.ReactNode;

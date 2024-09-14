@@ -1,5 +1,5 @@
 import { ArrowRightIcon, ArrowTopRightIcon } from "@radix-ui/react-icons";
-import { Link } from "@repo/ui/next-link";
+import { Link } from "../../../../../packages/ui/src/atoms/next-link";
 import { cx } from "cva";
 import { type Post } from "contentlayer/generated";
 import { iconStyle, transformStyle } from "../../components/card/card-styles";

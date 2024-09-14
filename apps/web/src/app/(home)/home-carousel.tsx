@@ -6,7 +6,7 @@ import {
   CarouselItem,
   CarouselNext,
   CarouselPrevious,
-} from "@repo/ui/carousel";
+} from "@repo/ui/composites";
 import { SnapCard } from "@/components/card/snap-card";
 import { type Post } from "contentlayer/generated";
 

@@ -1,10 +1,10 @@
 import { cx } from "cva";
 import NextLink from "next/link";
 import { Fragment } from "react";
-import { Link } from "@repo/ui/next-link";
+import { Link } from "../../../../../packages/ui/src/atoms/next-link";
+import { noteStyle } from "@repo/ui/mdx-components";
+import { getYear } from "@repo/ui/utils";
 import { type Post } from "contentlayer/generated";
-import { getYear } from "@/utils";
-import { noteStyle } from "@/components/mdx/mdx-components";
 
 /* <a
   href={`${config.GITHUB_URL}/commits/main/posts/${post.slug}.mdx`}
