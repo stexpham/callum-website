@@ -1,6 +1,6 @@
 "use client";
 
-import { Fragment, useState } from "react";
+import { Fragment, useState, Suspense } from "react";
 import { useRouter } from "next/navigation";
 import { cx } from "cva";
 import type { PostsKind } from "@/components/post";
@@ -111,30 +111,32 @@ export const PagePostsIndexClient = ({
       </ListHeader>
 
       {/* only kind of "projects" or "writing" will show grid */}
-      {showGrid ? (
-        // <MemoizedPostsSquares
-        //   kind={kind}
-        //   sortBy={currentSort}
-        //   sortedPostsMap={sortedPostsMap}
-        //   wrapperClassName={cx(
-        //     "flex flex-col gap-w24 pt-w12",
-        //     mediaWrapperStyle.superOutset,
-        //   )}
-        // />
-        <PostsBlockList
-          kind={kind}
-          sortBy={currentSort}
-          sortedPostsMap={sortedPostsMap}
-          wrapperClassName={cx("flex flex-col gap-w8 pt-w8")}
-        />
-      ) : (
-        <PostsList
-          kind={kind}
-          sortBy={currentSort}
-          sortedPostsMap={sortedPostsMap}
-          wrapperClassName="pt-3"
-        />
-      )}
+      <Suspense fallback={<>Loading…</>}>
+        {showGrid ? (
+          // <MemoizedPostsSquares
+          //   kind={kind}
+          //   sortBy={currentSort}
+          //   sortedPostsMap={sortedPostsMap}
+          //   wrapperClassName={cx(
+          //     "flex flex-col gap-w24 pt-w12",
+          //     mediaWrapperStyle.superOutset,
+          //   )}
+          // />
+          <PostsBlockList
+            kind={kind}
+            sortBy={currentSort}
+            sortedPostsMap={sortedPostsMap}
+            wrapperClassName={cx("flex flex-col gap-w8 pt-w8")}
+          />
+        ) : (
+          <PostsList
+            kind={kind}
+            sortBy={currentSort}
+            sortedPostsMap={sortedPostsMap}
+            wrapperClassName="pt-3"
+          />
+        )}
+      </Suspense>
     </main>
   );
 };

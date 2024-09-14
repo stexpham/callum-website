@@ -1,4 +1,5 @@
 import { Text, Link } from "@repo/ui/atoms";
+import { Suspense } from "react";
 import { ContactIcons } from "./contact-icons";
 import { SiteTime } from "./site-time";
 
@@ -15,7 +16,9 @@ export const Signoff = () => {
           {heading}
         </Text>
         <Text dim>
-          <SiteTime />
+          <Suspense fallback={<>Loading time…</>}>
+            <SiteTime />
+          </Suspense>
         </Text>
       </Link>
 
