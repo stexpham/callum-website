@@ -6,43 +6,29 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@repo/ui/composites";
-// import { MediaFigure } from "./media-figure";
-import type { MediaFigureProps } from "./media-wrapper2";
-import { MediaFigure } from "./media-wrapper2";
-// import type { MediaWrapperProps } from "./media-types";
+import type { MediaFigureProps } from "./media-figure2";
+import { MediaFigure } from "./media-figure2";
 
-export type MediaDialogProps = MediaFigureProps & {
+export type MediaDialogProps = Omit<MediaFigureProps, "wrapperProps"> & {
   title: string;
   buttonNode: React.ReactNode;
+  aspectRatioStyle?: string;
+  isPortrait?: boolean;
   children: React.ReactNode;
-  contentClassName?: string;
 };
 
 export const MediaDialog = ({
-  showBorder = true,
-  showBackground = true,
-  showRounded = true,
   title,
-  theme,
   buttonNode,
   aspectRatioStyle,
+  isPortrait,
   children,
   caption,
 }: MediaDialogProps) => {
   return (
     <Dialog>
       <DialogTrigger className="w-full focus-visible:outline-none">
-        <MediaFigure
-          aspectRatioStyle={aspectRatioStyle}
-          className=""
-          mediaFigureClassName="!pt-w4 hover:cursor-zoom-in"
-          showBackground={showBackground}
-          showBorder={showBorder}
-          showRounded={showRounded}
-          theme={theme}
-        >
-          {buttonNode}
-        </MediaFigure>
+        <MediaFigure figureIntent="inDialog">{buttonNode}</MediaFigure>
       </DialogTrigger>
       <DialogContent
         aria-describedby={title}
@@ -52,12 +38,16 @@ export const MediaDialog = ({
       >
         <DialogTitle className="sr-only">{title}</DialogTitle>
         <MediaFigure
-          aspectRatioStyle={aspectRatioStyle}
+          background
+          border={false}
           caption={caption}
-          showBackground
-          showBorder={false}
-          showRounded
-          theme="superOutset"
+          intent="superOutset"
+          rounded
+          showHoverCursor={false}
+          wrapperProps={{
+            aspectRatioStyle,
+            isPortrait,
+          }}
         >
           {children}
 

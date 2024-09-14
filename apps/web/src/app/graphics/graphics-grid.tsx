@@ -28,12 +28,11 @@ export const GraphicsGrid = () => {
         <div className="basis-1/3 flex flex-col gap-2" key={column[0].image}>
           {column.map((project) => (
             <MediaDialog
-              // aspect=""
               aspectRatioStyle={`${project.width}/${project.height}`}
+              background={false}
               buttonNode={
                 <Image
                   alt={project.title}
-                  className="w-full rounded-xl"
                   height={project.height}
                   src={project.image}
                   style={{
@@ -55,7 +54,7 @@ export const GraphicsGrid = () => {
                     {project.title}{" "}
                     {project.caseStudyLink ? (
                       <Link
-                        className="group block space-x-[1px]"
+                        className="group block"
                         href={project.caseStudyLink}
                       >
                         <span className="link inline-flex items-center gap-0.5 text-solid group-hover:text-solid group-hover:decoration-solid">
@@ -69,12 +68,15 @@ export const GraphicsGrid = () => {
                   </Text>
                 </div>
               }
+              isPortrait={project.height > project.width}
               key={project.image}
+              mediaFigureClassName="!py-0"
+              showHoverCursor
               title={project.title}
             >
               <Image
                 alt={project.title}
-                className="w-full rounded-xl"
+                // className="w-full rounded-xl"
                 height={project.height}
                 src={project.image}
                 style={{
