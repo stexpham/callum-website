@@ -1,7 +1,7 @@
 import { ArrowRightIcon } from "@radix-ui/react-icons";
+import { mediaWrapperVariants } from "@repo/ui/media";
 import { cx } from "cva";
-import type { AspectRatio } from "@repo/ui/media";
-import { MediaWrapper } from "@repo/ui/media";
+import { Text } from "@repo/ui/atoms";
 import { type Post } from "contentlayer/generated";
 import { LinkOrDiv } from "../utils";
 import { CardImage } from "./card-image";
@@ -25,7 +25,7 @@ export const SnapCard = ({
   return (
     <LinkOrDiv
       className={cx(
-        "group relative h-full w-full overflow-hidden rounded-[9px]",
+        "group relative h-full w-full overflow-hidden rounded-card",
         "bg-canvas dark:bg-background-subtle",
         "block border",
         className
@@ -36,30 +36,35 @@ export const SnapCard = ({
         return undefined;
       })()}
     >
-      <MediaWrapper
-        aspect={"video" as AspectRatio}
-        showBorder={false}
-        showRounded={false}
-      >
-        {post.assets && post.assets.length > 0 ? (
-          <CardImage
-            asset={post.assets[0]}
-            priority
-            sizes="(min-width: 620px) 100vw, 380px"
-          />
-        ) : null}
-      </MediaWrapper>
+      {post.assets && post.assets.length > 0 ? (
+        <CardImage
+          asset={post.assets[0]}
+          className={cx(
+            mediaWrapperVariants({
+              border: false,
+              rounded: false,
+            })
+          )}
+          priority
+          sizes="(min-width: 620px) 100vw, 380px"
+        />
+      ) : null}
 
       <hr />
       <div className={cx("space-y-[2px] px-4 py-2.5 pb-w6", captionClassName)}>
-        <h2 className="flex items-center gap-1 text-left text-base font-medium">
+        <Text
+          align="left"
+          as="h2"
+          className="flex items-center gap-1"
+          weight="medium"
+        >
           {post.title}
           {isViewAllWork ? <ArrowRightIcon className="size-em" /> : null}
-        </h2>
+        </Text>
         <CardTitleMeta post={post} />
       </div>
 
-      {/* SLOT FOR CUSTOMISATION, NAUGHTY! */}
+      {/* CUSTOMISATION SLOT */}
       {children}
     </LinkOrDiv>
   );

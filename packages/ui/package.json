@@ -22,8 +22,6 @@
     "./elements": "./src/elements/index.ts",
     "./composites": "./src/composites/index.ts",
     "./media": "./src/media/index.ts",
-    "./media-wrapper2": "./src/media/media-wrapper2.tsx",
-    "./media-dialog2": "./src/media/media-dialog2.tsx",
     "./page": "./src/page/index.ts",
     "./mdx-components": "./src/mdx/mdx-components.tsx"
   },

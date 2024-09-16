@@ -1,13 +1,12 @@
 import { ArrowTopRightIcon } from "@radix-ui/react-icons";
-import { cx } from "cva";
 import { Text } from "@repo/ui/atoms";
+import { mediaWrapperVariants } from "@repo/ui/media";
 import { isVideoFile } from "@repo/ui/utils";
-import type { AspectRatio } from "@repo/ui/media";
-import { MediaWrapper } from "@repo/ui/media";
+import { cx } from "cva";
 import { type Post } from "contentlayer/generated";
 import { CardImage } from "@/components/card";
-import { postIconStyle } from "./post.styles";
 import { PostLinkHeadingWrapper } from "./post-link-heading-wrapper";
+import { postIconStyle } from "./post.styles";
 
 interface PostLinkBlockProps {
   post: Post;
@@ -19,19 +18,18 @@ export const PostLinkBlock = ({ post, isComingSoon }: PostLinkBlockProps) => {
     <div className="group flex flex-col gap-w6 sm:flex-row">
       <div className="w-full sm:w-1/3 sm:shrink-0">
         {post.assets && post.assets.length > 0 ? (
-          <MediaWrapper aspect={post.assets[0].aspect as AspectRatio}>
-            <CardImage
-              asset={{
-                ...post.assets[0],
-                // Don't show videos, only images
-                src: isVideoFile(post.assets[0]?.src)
-                  ? post.assets[0]?.poster || post.assets[0]?.src || ""
-                  : post.assets[0]?.src || "",
-              }}
-              priority
-              sizes="(min-width: 660px) 205px, 100vw"
-            />
-          </MediaWrapper>
+          <CardImage
+            asset={{
+              ...post.assets[0],
+              // Don't show videos, only images
+              src: isVideoFile(post.assets[0]?.src)
+                ? post.assets[0]?.poster || post.assets[0]?.src || ""
+                : post.assets[0]?.src || "",
+            }}
+            className={cx(mediaWrapperVariants({}))}
+            priority
+            sizes="(min-width: 660px) 205px, 100vw"
+          />
         ) : null}
       </div>
 

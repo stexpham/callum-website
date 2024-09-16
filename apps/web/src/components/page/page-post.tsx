@@ -1,9 +1,10 @@
 import { ArrowRightIcon } from "@radix-ui/react-icons";
 import { Link } from "@repo/ui/atoms";
-import { MediaWrapper } from "@repo/ui/media";
 import { TitleHeader } from "@repo/ui/elements";
 import { getYear, isVideoFile, splitAspect } from "@repo/ui/utils";
 import NextImage from "next/image";
+import { mediaWrapperVariants, MediaWrapper } from "@repo/ui/media";
+import { cx } from "cva";
 import { allPosts, type Post } from "contentlayer/generated";
 import { notSupersetOrTopicPosts } from "@/utils";
 import { PostMeta } from "@/components/post";
@@ -41,37 +42,36 @@ export const PagePost = ({ post }: { post: Post }) => {
                 Next
                 <ArrowRightIcon className="size-[0.9em] translate-y-[0.1em] transform" />
               </h2>
-              {/* Double MediaWrapper to 0.75 the image */}
-              {/* Override aspect! This is better than adding more types! */}
-              {/* 810 = 1080 * 0.75 // TODO post.asset[0] is aspect-[1440/880]? */}
+
+              {/* 810 = 1080 * 0.75 */}
+              {/* TODO post.asset[0] is aspect-[1440/880]? */}
               <MediaWrapper
-                aspect="1920-1080"
-                className="!aspect-[1920/810] !rounded-b-none !border-b-0"
-                theme="default"
+                aspect="1920-810"
+                className="!rounded-b-none !border-b-0"
               >
-                {/* Override aspect! This is better than adding more types! */}
-                <MediaWrapper
-                  aspect="1920-1080"
-                  className="!aspect-[1920/1080]"
-                  showBackground={false}
-                  showBorder={false}
-                  showRounded={false}
-                >
-                  {nextPost.assets && nextPost.assets.length > 0 ? (
-                    <NextImage
-                      alt={nextPost.assets[0].alt}
-                      className="object-cover"
-                      height={isNaN(height) ? 667 : height}
-                      sizes="(min-width: 1000px) 960px, (min-width: 660px) 620px, 100vw"
-                      src={
-                        isVideoFile(nextPost.assets[0].src)
-                          ? (nextPost.assets[0].poster ?? "")
-                          : nextPost.assets[0].src
-                      }
-                      width={isNaN(width) ? 1080 : width}
-                    />
-                  ) : null}
-                </MediaWrapper>
+                {nextPost.assets && nextPost.assets.length > 0 ? (
+                  <NextImage
+                    alt={nextPost.assets[0].alt}
+                    className={cx(
+                      mediaWrapperVariants({
+                        border: false,
+                        background: false,
+                        rounded: false,
+                      })
+                    )}
+                    height={height}
+                    sizes="(min-width: 1000px) 960px, (min-width: 660px) 620px, 100vw"
+                    src={
+                      isVideoFile(nextPost.assets[0].src)
+                        ? (nextPost.assets[0].poster ?? "")
+                        : nextPost.assets[0].src
+                    }
+                    style={{
+                      aspectRatio: "1920 / 1080",
+                    }}
+                    width={width}
+                  />
+                ) : null}
               </MediaWrapper>
             </Link>
           ) : null}

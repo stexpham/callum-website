@@ -4,18 +4,24 @@ import { SpeakerLoudIcon, SpeakerOffIcon } from "@radix-ui/react-icons";
 import type { SVGProps, VideoHTMLAttributes } from "react";
 import { useEffect, useRef, useState } from "react";
 import { useDeviceDetect } from "../../lib/use-device-detect";
-import type { AspectRatio } from "./media-aspect";
 import { VideoLoader } from "./video-loader";
 
 export interface VideoProps extends VideoHTMLAttributes<HTMLVideoElement> {
   src: string;
   poster: string;
-  aspect: AspectRatio;
+  aspect: string;
+  className: string;
   allowSound?: boolean;
   // sizes?: string;
 }
 
-export const Video = ({ src, poster, aspect, allowSound }: VideoProps) => {
+export const Video = ({
+  src,
+  poster,
+  aspect,
+  className,
+  allowSound,
+}: VideoProps) => {
   const { isMobileViewport } = useDeviceDetect();
   const videoRef = useRef<HTMLVideoElement>(null);
 
@@ -52,13 +58,12 @@ export const Video = ({ src, poster, aspect, allowSound }: VideoProps) => {
       setVideoStatus("playing");
     };
 
-    // Make this an async function
     const setupVideo = async () => {
       await handleMetadataLoaded();
       video.addEventListener("play", handlePlay);
     };
 
-    // Call the async function and use void operator
+    // Call the async function using void operator
     void setupVideo();
 
     return () => {
@@ -71,17 +76,21 @@ export const Video = ({ src, poster, aspect, allowSound }: VideoProps) => {
   // }, [videoStatus]);
 
   return (
-    <>
-      {/* DO NOT render conditionally. If you do, event listeners and refs cannot attach. */}
+    <div className="relative">
+      {/* DO NOT render conditionally. Event listeners and refs must attach! */}
       {/* autoPlay={!isMobileViewport} */}
       {/* eslint-disable-next-line jsx-a11y/media-has-caption -- video is controlled by the user */}
       <video
         autoPlay
+        className={className}
         loop
         muted={!isMobileViewport && !sound}
         playsInline
         ref={videoRef}
-        style={{ display: videoStatus === "loading" ? "none" : "block" }}
+        style={{
+          display: videoStatus === "loading" ? "none" : "block",
+          aspectRatio: aspect.replace("-", " / "),
+        }}
       >
         <source src={src} type="video/mp4" />
       </video>
@@ -114,10 +123,9 @@ export const Video = ({ src, poster, aspect, allowSound }: VideoProps) => {
       {/* LOADING */}
       {/* !isMobileViewport? */}
       {videoStatus === "loading" && poster ? (
-        <VideoLoader aspect={aspect} poster={poster} />
+        <VideoLoader aspect={aspect} className={className} poster={poster} />
       ) : null}
-      {/* <VideoLoader poster={poster} aspect={aspect} /> */}
-    </>
+    </div>
   );
 };
 

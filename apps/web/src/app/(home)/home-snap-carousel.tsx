@@ -1,19 +1,22 @@
 "use client";
 
 import { ArrowRightIcon } from "@radix-ui/react-icons";
-import { Suspense } from "react";
-import { cx } from "cva";
-import { SnapCarousel, SnapCarouselItem } from "@repo/ui/composites";
-import type { AspectRatio } from "@repo/ui/media";
-import { MediaDialogBasic, MediaWrapper } from "@repo/ui/media";
-import { SnapCard, CardImage } from "@/components/card";
-import type { CustomPost } from "./extra-card";
 import {
-  SnapCarouselInDialog,
-  HomeSnapDialogClose,
-} from "./snap-carousel-in-dialog";
+  DialogBasic,
+  SnapCarousel,
+  SnapCarouselItem,
+} from "@repo/ui/composites";
+import { mediaWrapperVariants } from "@repo/ui/media";
+import { cx } from "cva";
+import { Fragment, Suspense } from "react";
+import { CardImage, SnapCard } from "@/components/card";
+import { DialogCardCaption } from "./dialog-card-caption";
+import type { CustomPost } from "./extra-card";
 import { homeCarouselStyles } from "./home-carousel-styles";
-import { CardInDialog } from "./card-in-dialog";
+import {
+  HomeSnapDialogClose,
+  SnapCarouselInDialog,
+} from "./snap-carousel-in-dialog";
 
 const snapCardStyle = "!w-inset-full [@media(min-width:620px)]:!w-[380px]";
 
@@ -35,7 +38,7 @@ export const HomeSnapCarousel = ({ posts }: { posts: CustomPost[] }) => (
               key={item.slug}
             >
               <SnapCard
-                className={cx(snapCardStyle, "CUSTOM")}
+                className={cx(snapCardStyle)}
                 key={item.title}
                 post={item}
               >
@@ -59,11 +62,10 @@ export const HomeSnapCarousel = ({ posts }: { posts: CustomPost[] }) => (
             key={item.slug}
           >
             {/* 
-            NB! thumbnail aspect (1st asset) must always be 1.6 here
-            aspect={(item.assets[0].aspect as AspectRatio) ?? "video"} 
-          */}
-            <MediaDialogBasic
-              aspect={item.assets?.[0]?.aspect as AspectRatio}
+              NB! thumbnail aspect (1st asset) must always be 1.6 here
+              aspect={(item.assets[0].aspect as AspectRatio) ?? "video"} 
+            */}
+            <DialogBasic
               buttonNode={
                 <SnapCard
                   className={cx(
@@ -74,49 +76,54 @@ export const HomeSnapCarousel = ({ posts }: { posts: CustomPost[] }) => (
                   post={item}
                 />
               }
-              contentClassName={
+              contentClassName={cx(
+                "!px-0",
                 showDialogCarousel
-                  ? "!left-0 !block !max-w-[unset] !translate-x-0 !px-0"
-                  : undefined
-              }
+                  ? "!left-0 !block !max-w-[unset] !translate-x-0"
+                  : "max-w-hero [@media(max-width:1000px)]:max-w-inset-full"
+              )}
               title={item.title}
             >
-              <CardInDialog
-                captionClassName={
-                  showDialogCarousel ? "container max-w-hero-px" : undefined
-                }
-                closeNode={
-                  !showDialogCarousel && (
-                    // translate-y-[0.25em] transform
-                    <div className="absolute right-0 top-inset">
-                      <HomeSnapDialogClose />
-                    </div>
-                  )
-                }
-                key={item.title}
-                post={item}
-              >
+              <Fragment key={item.title}>
                 {item.assets && item.assets.length > 1 ? (
                   <SnapCarouselInDialog assets={item.assets} />
                 ) : (
                   <>
-                    {item.assets && item.assets.length > 0 ? (
-                      <MediaWrapper
-                        aspect={item.assets[0].aspect as AspectRatio}
-                        className={cx("rounded-[9px]")}
-                        showRounded={false}
-                      >
-                        <CardImage
-                          asset={item.assets[0]}
-                          priority
-                          sizes="(min-width: 960px) 960px, 100vw"
-                        />
-                      </MediaWrapper>
+                    {item.assets && item.assets.length === 1 ? (
+                      <CardImage
+                        asset={item.assets[0]}
+                        className={cx(
+                          mediaWrapperVariants({
+                            border: item.assets[0].border as boolean,
+                            rounded: false,
+                          }),
+                          "rounded-card",
+                          "max-w-hero",
+                          "[@media(max-width:1000px)]:max-w-inset-full"
+                        )}
+                        priority
+                        sizes="(min-width: 960px) 960px, 100vw"
+                      />
                     ) : null}
                   </>
                 )}
-              </CardInDialog>
-            </MediaDialogBasic>
+              </Fragment>
+              <DialogCardCaption
+                className={cx(
+                  // do NOT use container here as we do NOT want w-full!
+                  "mx-auto px-inset max-w-hero-px pt-inset"
+                )}
+                closeNode={
+                  !showDialogCarousel && (
+                    <div className="absolute right-0 top-0">
+                      <HomeSnapDialogClose />
+                    </div>
+                  )
+                }
+                innerClassName={cx(!showDialogCarousel && "-mx-inset")}
+                post={item}
+              />
+            </DialogBasic>
           </SnapCarouselItem>
         );
       }}

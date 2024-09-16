@@ -26,7 +26,7 @@
   body {
     @apply relative min-h-screen;
     @apply antialiased;
-    @apply font-sans text-base font-normal;
+    @apply font-sans text-body font-normal;
     @apply bg-canvas text-fill;
 
     /* 1. Apple kerning, from http://design.byform.co/ */

@@ -97,10 +97,7 @@ const SnapCarousel = <T extends Record<string, unknown>>({
 
   return (
     <div className={carouselClasses.root}>
-      <ul
-        className={cx(snapCarouselStyles.scroll, carouselClasses.scroll)}
-        ref={scrollRef}
-      >
+      <ul className={cx(carouselClasses.scroll)} ref={scrollRef}>
         {items.map((item, i) =>
           renderItem({
             item,
@@ -146,7 +143,7 @@ const SnapCarouselItem = ({
 
 const snapCarouselStyles = {
   // overflow-hidden
-  root: "relative flex",
+  root: "SnapCarousel relative flex",
   // overscroll-contain will prevent y-scrolling when cursor is over carousel
   // overflow-x-auto overflow-y-hidden
   // use grid to assert item size!
@@ -155,8 +152,8 @@ const snapCarouselStyles = {
     "grid grid-rows-1 grid-cols-[max-content] grid-flow-col gap-inset",
     "w-fit",
   ],
-  // w-64 h-64 h-auto w-auto
-  item: "shrink-0 snap-start",
+  // w-64 h-64 h-auto w-auto shrink-0
+  item: "SnapCarouselItem snap-start flex",
   // unsure why snap alignment has to be conditional?
   // itemSnapPoint: ["snap-start"],
   itemSnapPoint: "",

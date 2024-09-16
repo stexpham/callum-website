@@ -7,7 +7,7 @@ export const Caption = ({
   children: React.ReactNode;
   className?: string;
 }) => (
-  <Text as="figcaption" className={className} dim intent="meta">
+  <Text align="left" as="figcaption" className={className} dim intent="meta">
     {children}
   </Text>
 );

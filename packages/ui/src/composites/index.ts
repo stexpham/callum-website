@@ -34,3 +34,14 @@ export {
   DialogTitle,
   DialogDescription,
 } from "./dialog";
+
+// Compound composites?
+export { DialogBasic, type DialogBasicProps } from "./dialog-basic";
+export {
+  MediaDialogImage,
+  type MediaDialogImageProps,
+} from "./media-dialog-image";
+export {
+  MediaDialogVideo,
+  type MediaDialogVideoProps,
+} from "./media-dialog-video";

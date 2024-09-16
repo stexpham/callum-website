@@ -1,5 +1,6 @@
-import { Text } from "@repo/ui/atoms";
+import { Text, spacingVariants } from "@repo/ui/atoms";
 import { TitleHeader } from "@repo/ui/elements";
+import { cx } from "cva";
 import { PageWrapper } from "@/components/page";
 // import type { PostsKind } from "@/components/post";
 // import type { SearchParams } from "@/types/search-params";
@@ -24,9 +25,14 @@ export default function GraphicsIndexPage() {
     <PageWrapper>
       <TitleHeader>{heading}</TitleHeader>
       {/* <PagePostsIndexClient initialSort={currentSort} kind={kind} /> */}
-      <div className="container max-w-hero-px">
+      <main
+        className={cx(
+          "container max-w-hero-px pt-tab",
+          spacingVariants({ intent: "b-xl" })
+        )}
+      >
         <GraphicsGrid />
-      </div>
+      </main>
     </PageWrapper>
   );
 }
