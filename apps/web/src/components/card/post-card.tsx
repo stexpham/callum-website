@@ -22,7 +22,7 @@ export const PostCard = ({
   showRule,
 }: PostCardProps) => (
   <Link
-    className={cx("group block h-full w-full", className)}
+    className={cx("PostCard group block h-full w-full", className)}
     href={post.thumbnailLink ? post.thumbnailLink : `/${post.slug}`}
   >
     <div className="relative">

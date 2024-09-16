@@ -29,13 +29,13 @@ export const PostLine = ({
   };
 
   return (
-    <div className="group flex items-end justify-between gap-2 py-1.5 h-[2.25rem] leading-[2.25rem]">
+    <div className="PostLine group flex items-end justify-between gap-2 py-1.5 h-[2.25rem] leading-[2.25rem]">
       {/* TITLE */}
       <PostLinkHeadingWrapper>
         {isFeatured ? (
           <div className="absolute top-[0.55em] left-[-0.7em] flex items-center justify-center sm:left-[-1em]">
             {/* animate-pulse2 h-[0.35em] w-[0.35em] */}
-            <div className="h-[0.3em] w-[0.3em] rounded-full bg-design group-hover:bg-accent" />
+            <div className="size-[0.25em] rounded-full bg-design opacity-50 group-hover:bg-accent group-hover:opacity-100" />
           </div>
         ) : null}
 
