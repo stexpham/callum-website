@@ -5,6 +5,8 @@ const mediaWrapperVariants = cva({
   base: [
     // do NOT add w-full! This breaks the outset styles
     "MediaWrapper relative overflow-hidden",
+    // This provides leeway if any aspect code is "off by one"
+    "object-cover",
   ],
   variants: {
     border: {
