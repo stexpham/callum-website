@@ -1,12 +1,11 @@
 import { Link } from "@repo/ui/atoms";
-import { mediaWrapperVariants } from "@repo/ui/media";
 import { cx } from "cva";
 import { useMemo } from "react";
-import { CardImage, HeroCardWrapper } from "@/components/card";
+import { PostCard } from "@/components/card";
 import { sortButtonStyle } from "@/components/page/sort-button";
 import type { GroupedPosts } from "@/utils";
 import type { Post } from "contentlayer/generated";
-import { PostLinkContent } from "./post-link-content";
+import { PostLine } from "./post-line";
 import { hideFeaturedDotStyle } from "./post.styles";
 
 interface PostsListGroupedProps {
@@ -34,14 +33,14 @@ export const PostsListGrouped = ({
       {sortedGroups.map(([group, posts]) => (
         <div
           className={cx(
-            "relative space-y-2"
+            "PostsListGrouped relative space-y-2"
             // "scroll-pt-[calc(theme(spacing.nav)+theme(spacing.tab))]"
           )}
           key={group}
         >
           <div
             className={cx(
-              "PostsListGrouped sticky z-[9] bg-canvas",
+              "sticky z-[9] bg-canvas",
               "top-[calc(theme(spacing.nav)+theme(spacing.tab))]",
               hideFeaturedDotStyle
             )}
@@ -64,7 +63,7 @@ export const PostsListGrouped = ({
             {Array.isArray(posts) &&
               posts.map((post: Post) => (
                 <Link href={post.thumbnailLink ?? post.slug} key={post._id}>
-                  <PostLinkContent
+                  <PostLine
                     isComingSoon={false}
                     isFeatured={post.tags?.includes("featured")}
                     isLibrary={post.category === "library"}
@@ -79,7 +78,8 @@ export const PostsListGrouped = ({
   );
 };
 
-export const PostsSquaresGrouped = ({
+/* CURRENTLY UNUSED */
+export const PostsListCardGrouped = ({
   groupedPosts,
   sortOrder,
 }: PostsListGroupedProps) => {
@@ -97,7 +97,7 @@ export const PostsSquaresGrouped = ({
   return (
     <>
       {sortedGroups.map(([group, posts]) => (
-        <div className="relative space-y-w4" key={group}>
+        <div className="PostsListCardGrouped relative space-y-w4" key={group}>
           <div className="sticky top-[calc(theme(spacing.nav)+theme(spacing.tab))] z-[9] bg-canvas">
             <div className={cx(sortButtonStyle)}>{group}</div>
             <hr className="-mt-px" />
@@ -111,25 +111,18 @@ export const PostsSquaresGrouped = ({
                 //   className=""
                 //   captionClassName="pt-w4"
                 // >
-                //   <HeroCard
+                //   <PostCard
                 //     post={post}
                 //     theme="default"
                 //     aspectClassName="aspect-[1440/880]"
-                //   ></HeroCard>
+                //   ></PostCard>
                 // </HomeCard>
-                <HeroCardWrapper
+                <PostCard
                   captionClassName="absolute bottom-[-2em] translate-y-[0.6em] pt-1.5"
                   className="rounded-card bg-background lg:p-[7em]"
                   key={post.title}
                   post={post}
-                >
-                  {post.assets && post.assets.length > 0 ? (
-                    <CardImage
-                      asset={post.assets[0]}
-                      className={cx(mediaWrapperVariants(), "aspect-video")}
-                    />
-                  ) : null}
-                </HeroCardWrapper>
+                />
               ))}
           </div>
         </div>

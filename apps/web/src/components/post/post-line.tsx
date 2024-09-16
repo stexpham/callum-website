@@ -7,19 +7,19 @@ import { PostCategoryIcon } from "./post-category-icon";
 import { postIconStyle } from "./post.styles";
 import { PostLinkHeadingWrapper } from "./post-link-heading-wrapper";
 
-interface PostLinkContentProps {
+interface PostLineProps {
   post: Post;
   isLibrary?: boolean;
   isComingSoon?: boolean;
   isFeatured?: boolean;
 }
 
-export const PostLinkContent = ({
+export const PostLine = ({
   post,
   isLibrary,
   isComingSoon,
   isFeatured,
-}: PostLinkContentProps) => {
+}: PostLineProps) => {
   const hoverLabel = () => {
     if (isLibrary) return "View";
     if (isComingSoon) return "Coming soon";

@@ -2,35 +2,42 @@ import { ArrowTopRightIcon } from "@radix-ui/react-icons";
 import { format, parseISO } from "date-fns";
 import { Link } from "@repo/ui/atoms";
 import { cx } from "cva";
+import { mediaWrapperVariants } from "@repo/ui/media";
 import { type Post } from "contentlayer/generated";
 import { iconStyle, transformStyle } from "./card-styles";
 import { CardIcon } from "./card-title-meta";
+import { CardImage } from "./card-image";
 
-interface HeroCardWrapperProps {
+interface PostCardProps {
   post: Post;
-  children: React.ReactNode;
   className: string;
   captionClassName: string;
   showRule?: boolean;
 }
 
-export const HeroCardWrapper = ({
+export const PostCard = ({
   post,
-  children,
   className,
   captionClassName,
   showRule,
-}: HeroCardWrapperProps) => (
+}: PostCardProps) => (
   <Link
     className={cx("group block h-full w-full", className)}
     href={post.thumbnailLink ? post.thumbnailLink : `/${post.slug}`}
   >
     <div className="relative">
-      {children}
+      {/* IMAGE */}
+      {post.assets && post.assets.length > 0 ? (
+        <CardImage
+          asset={post.assets[0]}
+          className={cx(mediaWrapperVariants())}
+        />
+      ) : null}
 
+      {/* CAPTION */}
       <div
         className={cx(
-          "flex w-full flex-1 transform items-baseline gap-2 text-base",
+          "flex w-full flex-1 transform items-baseline gap-2 text-body",
           captionClassName
         )}
       >

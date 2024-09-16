@@ -6,7 +6,7 @@ import { cx } from "cva";
 import { spacingVariants } from "@repo/ui/atoms";
 import type { PostsKind } from "@/components/post";
 import {
-  PostsBlockList,
+  PostsListBlock,
   PostsList,
   hideFeaturedDotStyle,
 } from "@/components/post";
@@ -116,16 +116,16 @@ export const PagePostsIndexClient = ({
       {/* only kind of "projects" or "writing" will show grid */}
       <Suspense fallback={<>Loading…</>}>
         {showGrid ? (
-          // <MemoizedPostsSquares
+          // <PostsListCard
           //   kind={kind}
           //   sortBy={currentSort}
           //   sortedPostsMap={sortedPostsMap}
           //   wrapperClassName={cx(
-          //     "flex flex-col gap-w24 pt-w12",
-          //     mediaWrapperStyle.superOutset,
+          //     "flex flex-col gap-w24 pt-w12"
+          //     // mediaWrapperStyle.superOutset
           //   )}
           // />
-          <PostsBlockList
+          <PostsListBlock
             kind={kind}
             sortBy={currentSort}
             sortedPostsMap={sortedPostsMap}

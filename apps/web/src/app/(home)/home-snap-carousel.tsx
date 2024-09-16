@@ -9,6 +9,7 @@ import {
 import { mediaWrapperVariants } from "@repo/ui/media";
 import { cx } from "cva";
 import { Fragment, Suspense } from "react";
+import { Text } from "@repo/ui/atoms";
 import { CardImage, SnapCard } from "@/components/card";
 import { DialogCardCaption } from "./dialog-card-caption";
 import type { CustomPost } from "./extra-card";
@@ -18,7 +19,8 @@ import {
   SnapCarouselInDialog,
 } from "./snap-carousel-in-dialog";
 
-const snapCardStyle = "!w-inset-full [@media(min-width:620px)]:!w-[380px]";
+const snapCardStyle =
+  "!w-inset-full [@media(min-width:620px)]:!w-[380px] hover:text-accent";
 
 export const HomeSnapCarousel = ({ posts }: { posts: CustomPost[] }) => (
   <Suspense fallback={<>Loading…</>}>
@@ -43,10 +45,15 @@ export const HomeSnapCarousel = ({ posts }: { posts: CustomPost[] }) => (
                 post={item}
               >
                 <div className="absolute inset-0 flex items-center justify-center bg-canvas">
-                  <h2 className="flex items-center gap-1 text-left text-base font-medium">
+                  <Text
+                    align="left"
+                    as="h2"
+                    className="flex items-center gap-1"
+                    weight="medium"
+                  >
                     {item.title}
                     <ArrowRightIcon className="size-em" />
-                  </h2>
+                  </Text>
                 </div>
               </SnapCard>
             </SnapCarouselItem>

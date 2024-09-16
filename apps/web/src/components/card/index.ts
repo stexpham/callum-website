@@ -5,4 +5,4 @@
 
 export * from "./card-image";
 export * from "./snap-card";
-export * from "./hero-card-wrapper";
+export * from "./post-card";

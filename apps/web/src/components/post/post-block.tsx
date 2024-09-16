@@ -8,14 +8,15 @@ import { CardImage } from "@/components/card";
 import { PostLinkHeadingWrapper } from "./post-link-heading-wrapper";
 import { postIconStyle } from "./post.styles";
 
-interface PostLinkBlockProps {
+interface PostBlockProps {
   post: Post;
   isComingSoon?: boolean;
 }
 
-export const PostLinkBlock = ({ post, isComingSoon }: PostLinkBlockProps) => {
+export const PostBlock = ({ post, isComingSoon }: PostBlockProps) => {
   return (
-    <div className="group flex flex-col gap-w6 sm:flex-row">
+    <div className="PostBlock group flex flex-col gap-w4 sm:flex-row">
+      {/* IMAGE */}
       <div className="w-full sm:w-1/3 sm:shrink-0">
         {post.assets && post.assets.length > 0 ? (
           <CardImage
@@ -26,14 +27,14 @@ export const PostLinkBlock = ({ post, isComingSoon }: PostLinkBlockProps) => {
                 ? post.assets[0]?.poster || post.assets[0]?.src || ""
                 : post.assets[0]?.src || "",
             }}
-            className={cx(mediaWrapperVariants({}))}
+            className={cx(mediaWrapperVariants())}
             priority
             sizes="(min-width: 660px) 205px, 100vw"
           />
         ) : null}
       </div>
 
-      {/* TEXT */}
+      {/* CAPTION */}
       <div className="translate-y-[-0.2em] transform space-y-1">
         <PostLinkHeadingWrapper>
           <Text as="h2" weight="medium">

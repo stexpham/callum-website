@@ -37,7 +37,7 @@ export const SortButton = ({
   );
 
   return (
-    /* using useRouter, but can also use Link — see above URL */
+    // using useRouter, but can also use Link — see above URL
     <button
       className={className}
       onClick={() => {

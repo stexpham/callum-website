@@ -1,13 +1,12 @@
-import { cx } from "cva";
 import { Link } from "@repo/ui/atoms";
-import { mediaWrapperVariants } from "@repo/ui/media";
+import { cx } from "cva";
 import type { PostsKind } from "@/components/post";
 import type { GroupedPosts } from "@/utils";
 import { type Post } from "contentlayer/generated";
-import { CardImage, HeroCardWrapper } from "../card";
-import { PostLinkBlock } from "./post-link-block";
-import { PostLinkContent } from "./post-link-content";
-import { PostsListGrouped, PostsSquaresGrouped } from "./posts-list-grouped";
+import { PostCard } from "@/components/card";
+import { PostBlock } from "./post-block";
+import { PostLine } from "./post-line";
+import { PostsListGrouped, PostsListCardGrouped } from "./posts-list-grouped";
 
 interface PostsListProps {
   kind: PostsKind;
@@ -34,7 +33,7 @@ export const PostsList = ({
             href={post.thumbnailLink ? post.thumbnailLink : post.slug}
             key={post._id}
           >
-            <PostLinkContent
+            <PostLine
               isFeatured={post.tags?.includes("featured")}
               post={post}
             />
@@ -45,7 +44,7 @@ export const PostsList = ({
   );
 };
 
-export const PostsBlockList = ({
+export const PostsListBlock = ({
   kind,
   sortBy,
   sortedPostsMap,
@@ -63,7 +62,7 @@ export const PostsBlockList = ({
             href={post.thumbnailLink ? post.thumbnailLink : post.slug}
             key={post._id}
           >
-            <PostLinkBlock post={post} />
+            <PostBlock post={post} />
           </Link>
         ))
       )}
@@ -71,7 +70,8 @@ export const PostsBlockList = ({
   );
 };
 
-export const PostsSquares = ({
+/* CURRENTLY UNUSED */
+export const PostsListCard = ({
   kind,
   sortBy,
   sortedPostsMap,
@@ -82,22 +82,15 @@ export const PostsSquares = ({
   return (
     <div className={cx("pt-w8", wrapperClassName)}>
       {["year", "topic"].includes(sortBy ?? "") ? (
-        <PostsSquaresGrouped groupedPosts={sorted as GroupedPosts} />
+        <PostsListCardGrouped groupedPosts={sorted as GroupedPosts} />
       ) : (
         (sorted as Post[]).map((post: Post) => (
-          <HeroCardWrapper
+          <PostCard
             captionClassName="absolute bottom-[-2em] translate-y-[0.6em] pt-1.5"
             className="rounded-card bg-background lg:p-[7em]"
             key={post.title}
             post={post}
-          >
-            {post.assets && post.assets.length > 0 ? (
-              <CardImage
-                asset={post.assets[0]}
-                className={cx(mediaWrapperVariants())}
-              />
-            ) : null}
-          </HeroCardWrapper>
+          />
         ))
       )}
     </div>
