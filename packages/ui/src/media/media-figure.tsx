@@ -6,6 +6,7 @@ const mediaFigureVariants = cva({
   base: "MediaFigure relative overflow-hidden space-y-2",
   variants: {
     figureIntent: {
+      inGrid: "",
       inDialogTrigger: "hover:cursor-zoom-in",
       inMdx: "py-w4 first:pt-0",
       inMdxDialog: "py-w4 hover:cursor-zoom-in",
@@ -17,25 +18,30 @@ const mediaFigureVariants = cva({
       ],
     },
     isPortrait: {
-      // isPortrait manages images in dialogs
+      // these styles allow control when images are within dialogs
       true: [
-        "flex flex-col justify-center",
+        "isPortrait flex flex-col justify-center",
         "[&_img]:max-h-[70vh] [&_video]:max-h-[70vh]",
+        "[&_img]:h-[-webkit-fill-available] [&_video]:h-[-webkit-fill-available]",
+        "[&_img]:mx-auto [&_video]:mx-auto",
       ],
     },
   },
   compoundVariants: [
     {
       isPortrait: true,
-      className: [
-        "[&_img]:max-w-fit [&_img]:h-[-webkit-fill-available] [&_img]:mx-auto !border-none",
-        "[&_video]:max-w-fit [&_video]:h-[-webkit-fill-available] [&_video]:mx-auto !border-none",
-      ],
+      figureIntent: "inGrid",
+      className: "[&_img]:max-w-full [&_video]:max-w-full",
     },
     {
       isPortrait: true,
       figureIntent: "inMdxDialog",
       className: "[&_img]:max-w-[280px] [&_video]:max-w-[280px]",
+    },
+    {
+      isPortrait: true,
+      figureIntent: "superOutset",
+      className: "[&_img]:max-w-fit [&_video]:max-w-fit",
     },
     {
       isPortrait: false,

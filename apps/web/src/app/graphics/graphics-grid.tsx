@@ -29,9 +29,11 @@ export const GraphicsGrid = () => {
             <MediaDialogImage
               alt={project.title}
               aspect={`${project.width}-${project.height}`}
+              buttonFigureIntent="inGrid"
               caption={<Caption project={project} />}
               key={project.image}
               priority={index < 9}
+              showCaptionInButton={false}
               src={project.image}
               title={project.title}
             />

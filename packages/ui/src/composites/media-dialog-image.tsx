@@ -16,6 +16,8 @@ export interface MediaDialogImageProps
     Pick<ImageProps, "src" | "alt" | "priority" | "className"> {
   title: string;
   caption?: MediaFigureProps["caption"];
+  showCaptionInButton?: boolean;
+  buttonFigureIntent?: MediaFigureProps["figureIntent"];
 }
 
 export const MediaDialogImage = ({
@@ -23,11 +25,13 @@ export const MediaDialogImage = ({
   aspect,
   border,
   background,
+  buttonFigureIntent = "inMdxDialog",
   priority,
   rounded,
   src,
   title = "Media Dialog Image",
   caption,
+  showCaptionInButton = true,
 }: MediaDialogImageProps) => {
   const { width, height } = splitAspect(aspect);
 
@@ -35,8 +39,9 @@ export const MediaDialogImage = ({
     <DialogBasic
       buttonNode={
         <MediaFigure
-          caption={caption}
-          figureIntent="inMdxDialog"
+          caption={showCaptionInButton ? caption : null}
+          className="!py-0"
+          figureIntent={buttonFigureIntent}
           isPortrait={height > width}
         >
           <Image
@@ -65,7 +70,7 @@ export const MediaDialogImage = ({
         figureIntent="superOutset"
         isPortrait={height > width}
       >
-        <DialogClose className="cursor-zoom-out">
+        <DialogClose className="w-full cursor-zoom-out">
           <Image
             alt={alt}
             className={cx(
