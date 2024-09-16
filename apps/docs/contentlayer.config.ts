@@ -105,7 +105,7 @@ const Asset = defineNestedType(() => ({
       type: "string",
       description: "The poster image for the video. Therefore not required.",
     },
-    showBorder: {
+    border: {
       type: "boolean",
       default: true,
     },

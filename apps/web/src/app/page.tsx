@@ -1,4 +1,5 @@
-import { Text } from "@repo/ui/atoms";
+import { Text, spacingVariants } from "@repo/ui/atoms";
+import { cx } from "cva";
 import type { CustomPost } from "@/app/(home)";
 import { HomeSnapCarousel, extraCard } from "@/app/(home)";
 import { Available, Avatar, ContactIcons } from "~/src/components/elements";
@@ -32,7 +33,7 @@ export default function HomePage(): JSX.Element {
           <div className="pb-w4">
             <Avatar />
           </div>
-          <div className="space-y-2 lg:w-10/12">
+          <div className="space-y-2 lg:w-12/12">
             <Text as="h1" intent="title">
               Hi, I&rsquo;m Callum. I make beautiful hypertext products.
             </Text>
@@ -45,7 +46,10 @@ export default function HomePage(): JSX.Element {
           </div>
         </header>
 
-        <main className="relative pb-w20" id="work">
+        <main
+          className={cx("relative", spacingVariants({ intent: "b-xl" }))}
+          id="work"
+        >
           <HomeSnapCarousel posts={allFeaturedPosts} />
         </main>
       </div>

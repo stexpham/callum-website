@@ -44,8 +44,8 @@ export const PagePost = ({ post }: { post: Post }) => {
       //           <MediaWrapper
       //             aspect="1920-1080"
       //             className="!aspect-[1920/1080]"
-      //             showBackground={false}
-      //             showBorder={false}
+      //             background={false}
+      //             border={false}
       //             showRounded={false}
       //           >
       //             {nextPost.assets && nextPost.assets.length > 0 ? (

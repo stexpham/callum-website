@@ -7,8 +7,7 @@ import {
   SnapCarouselItem,
   snapCarouselStyles,
 } from "@repo/ui/composites";
-import type { AspectRatio } from "@repo/ui/media";
-import { MediaWrapper } from "@repo/ui/media";
+import { mediaWrapperVariants } from "@repo/ui/media";
 import { cx } from "cva";
 import { useEffect } from "react";
 import type { Asset } from "contentlayer/generated";
@@ -30,9 +29,7 @@ export const SnapCarouselInDialog = ({ assets }: SnapCarouselInDialogProps) => {
     };
 
     // Trigger resize immediately doesn't work…
-    // triggerResize();
-    // Trigger resize after a short delay
-    const timer = setTimeout(triggerResize, 100);
+    const timer = setTimeout(triggerResize, 500);
 
     return () => {
       clearTimeout(timer);
@@ -57,18 +54,19 @@ export const SnapCarouselInDialog = ({ assets }: SnapCarouselInDialogProps) => {
           isSnapPoint={isSnapPoint}
           key={item.src}
         >
-          <MediaWrapper
-            aspect={item.aspect as AspectRatio}
+          <CardImage
+            asset={item}
             className={cx(
-              "h-full w-full rounded-[9px]",
+              mediaWrapperVariants({
+                border: item.border as boolean,
+                rounded: false,
+              }),
+              "rounded-card",
               "max-w-hero",
               "[@media(max-width:1000px)]:max-w-inset-full"
             )}
-            showBorder={item.showBorder}
-            showRounded={false}
-          >
-            <CardImage asset={item} priority={index === 0} />
-          </MediaWrapper>
+            priority={index === 0}
+          />
         </SnapCarouselItem>
       )}
     />

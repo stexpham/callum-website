@@ -1,24 +1,27 @@
-import NextImage from "next/image";
-import { isVideoFile, splitAspect } from "@repo/ui/utils";
-import type { AspectRatio } from "@repo/ui/media";
 import { Video } from "@repo/ui/media";
+import { isVideoFile, splitAspect } from "@repo/ui/utils";
+import NextImage from "next/image";
 import type { Asset } from "contentlayer/generated";
 
 export interface CardImageProps {
   asset: Asset;
   sizes?: string;
   priority?: boolean;
+  className: string;
 }
 
 export const CardImage = ({
   asset,
   sizes = "(min-width: 1000px) 1080px, 100vw",
   priority,
+  className,
 }: CardImageProps) => {
-  // const isVideo = !!isVideoFile(asset.src);
   // const isVideo = Boolean(isVideoFile(asset.src));
   const isVideo = isVideoFile(asset.src);
-  const { width, height } = splitAspect(asset.aspect);
+
+  // Card image aspects are always 16:10
+  const aspect = "1600-1000";
+  const { width, height } = splitAspect(aspect);
 
   // if (!asset) return null;
 
@@ -26,7 +29,8 @@ export const CardImage = ({
     <>
       {isVideo ? (
         <Video
-          aspect={asset.aspect as AspectRatio}
+          aspect={aspect}
+          className={className}
           key={asset.src}
           poster={asset.poster ?? "/images/VIDEO-POSTER-TODO.png"}
           src={asset.src}
@@ -37,13 +41,16 @@ export const CardImage = ({
           // alt={asset.alt ?? "Missing alt text"}
           // quality={50}
           alt={asset.alt}
-          className="w-full object-cover"
-          height={isNaN(height) ? 667 : height}
+          className={className}
+          height={height}
           key={asset.src}
           priority={priority}
           sizes={sizes}
           src={asset.src}
-          width={isNaN(width) ? 1080 : width}
+          style={{
+            aspectRatio: aspect.replace("-", " / "),
+          }}
+          width={width}
         />
       )}
     </>

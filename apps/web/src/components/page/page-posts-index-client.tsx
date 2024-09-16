@@ -3,6 +3,7 @@
 import { Fragment, useState, Suspense } from "react";
 import { useRouter } from "next/navigation";
 import { cx } from "cva";
+import { spacingVariants } from "@repo/ui/atoms";
 import type { PostsKind } from "@/components/post";
 import {
   PostsBlockList,
@@ -48,7 +49,9 @@ export const PagePostsIndexClient = ({
   };
 
   return (
-    <main className="container relative pb-w24">
+    <main
+      className={cx("container relative", spacingVariants({ intent: "b-xl" }))}
+    >
       <ListHeader
         className={cx(
           "top-nav translate-y-px transform",

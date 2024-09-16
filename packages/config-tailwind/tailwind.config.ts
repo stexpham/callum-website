@@ -73,7 +73,7 @@ const config: Omit<Config, "content"> = {
           generateClampSize(500, 1200, 11.5, 14),
           { lineHeight: lineHeight.body, letterSpacing: letterSpacing.meta },
         ],
-        base: [
+        body: [
           generateClampSize(500, 1200, 15, 16),
           { lineHeight: lineHeight.body, letterSpacing: letterSpacing.body },
         ],
@@ -130,6 +130,7 @@ const config: Omit<Config, "content"> = {
       },
       borderRadius: {
         button: "5px",
+        card: "9px",
       },
       keyframes: {
         spin: {

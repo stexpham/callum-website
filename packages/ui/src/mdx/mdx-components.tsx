@@ -1,14 +1,14 @@
 import { cx } from "cva";
 import type { ComponentPropsWithoutRef } from "react";
-import type { ImageProps as NextImageProps } from "next/image";
-import NextImage from "next/image";
 import { highlight } from "sugar-high";
-import type { MediaDialogProps, MediaFigureProps, VideoProps } from "../media";
-import { MediaDialog, MediaFigure, Video } from "../media";
 import { Link } from "../atoms/next-link";
 import type { TextProps } from "../atoms/text";
 import { Text, textVariants } from "../atoms/text";
 import { LinkWithArrow } from "../elements";
+import { MediaDialogImage } from "../composites/media-dialog-image";
+import { MediaDialogVideo } from "../composites/media-dialog-video";
+import { MdxImage } from "./mdx-image";
+import { MdxVideo } from "./mdx-video";
 
 type AnchorProps = ComponentPropsWithoutRef<"a">;
 type HeadingProps = ComponentPropsWithoutRef<"h2">;
@@ -16,9 +16,6 @@ type ParagraphProps = ComponentPropsWithoutRef<"p">;
 type ListProps = ComponentPropsWithoutRef<"ul">;
 type ListItemProps = ComponentPropsWithoutRef<"li">;
 type BlockquoteProps = ComponentPropsWithoutRef<"blockquote">;
-
-interface MdxImageProps extends MediaFigureProps, NextImageProps {}
-interface MdxVideoProps extends MediaFigureProps, VideoProps {}
 
 export const noteStyle = [
   "Note !mt-w12 space-y-2 text-meta text-solid",
@@ -99,15 +96,6 @@ export const components = {
       {children}
     </Text>
   ),
-  // h5: ({ id, children, ...props }: HeadingProps) => (
-  //   <div className="scroll-mt-2" id={id}>
-  //     <a className="!no-underline" href={`#${id}`}>
-  //       <Text as="h5" className="inline" {...(props as TextProps)}>
-  //         {children}
-  //       </Text>
-  //     </a>
-  //   </div>
-  // ),
   pre: ({ children, ...props }: ComponentPropsWithoutRef<"pre">) => (
     <pre className="py-1" {...props}>
       {children}
@@ -129,138 +117,8 @@ export const components = {
   Note: (props: ComponentPropsWithoutRef<"div">) => (
     <div className={cx(noteStyle)} {...props} />
   ),
-  // // Contact: () => <ContactIcons className="!pl-0 pt-0.5" />,
-  // // Available: () => <Available />,
-  Img: ({
-    id,
-    src,
-    alt,
-    aspect,
-    theme,
-    sizes = "(min-width: 660px) 620px, 100vw",
-    showBorder,
-    showBackground = true,
-    showRounded = true,
-    darkSchemeInvert,
-    caption,
-    ...props
-  }: MdxImageProps) => (
-    <MediaFigure
-      aspect={aspect}
-      caption={caption}
-      darkSchemeInvert={darkSchemeInvert}
-      id={id}
-      showBackground={showBackground}
-      showBorder={showBorder}
-      showRounded={showRounded}
-      theme={theme}
-    >
-      <NextImage
-        alt={alt || ""}
-        className="w-full object-cover"
-        sizes={sizes}
-        src={src}
-        {...props}
-      />
-    </MediaFigure>
-  ),
-  Video: ({
-    id,
-    src,
-    poster,
-    aspect,
-    allowSound,
-    theme,
-    caption,
-    showBorder,
-    showBackground = true,
-    showRounded = true,
-  }: MdxVideoProps) => (
-    <MediaFigure
-      aspect={aspect}
-      caption={caption}
-      id={id}
-      showBackground={showBackground}
-      showBorder={showBorder}
-      showRounded={showRounded}
-      theme={theme}
-    >
-      <Video
-        allowSound={allowSound}
-        aspect={aspect}
-        poster={poster}
-        src={src}
-      />
-    </MediaFigure>
-  ),
-  MediaDialogVideo: ({
-    src,
-    poster,
-    aspect,
-    allowSound,
-    title = "Media Dialog Video",
-    theme,
-    showBorder = true,
-    showBackground = true,
-    showRounded = true,
-  }: MediaDialogProps & VideoProps) => (
-    <MediaDialog
-      aspect={aspect}
-      buttonNode={
-        <Video
-          allowSound={allowSound}
-          aspect={aspect}
-          poster={poster}
-          src={src}
-        />
-      }
-      showBackground={showBackground}
-      showBorder={showBorder}
-      showRounded={showRounded}
-      theme={theme}
-      title={title}
-    >
-      <Video
-        allowSound={allowSound}
-        aspect={aspect}
-        poster={poster}
-        src={src}
-      />
-    </MediaDialog>
-  ),
-  MediaDialogImage: ({
-    src,
-    alt,
-    aspect,
-    title = "Media Dialog Image",
-    theme,
-    showBorder = true,
-    showBackground = true,
-    showRounded = true,
-    ...props
-  }: MediaDialogProps & NextImageProps) => (
-    <MediaDialog
-      aspect={aspect}
-      buttonNode={
-        <NextImage
-          alt={alt}
-          className="w-full object-cover"
-          src={src}
-          {...props}
-        />
-      }
-      showBackground={showBackground}
-      showBorder={showBorder}
-      showRounded={showRounded}
-      theme={theme}
-      title={title}
-    >
-      <NextImage
-        alt={alt}
-        className="w-full object-cover"
-        src={src}
-        {...props}
-      />
-    </MediaDialog>
-  ),
+  Img: MdxImage,
+  Video: MdxVideo,
+  MediaDialogVideo,
+  MediaDialogImage,
 };

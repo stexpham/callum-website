@@ -1,12 +1,11 @@
-import { useMemo } from "react";
-import { cx } from "cva";
 import { Link } from "@repo/ui/atoms";
-import type { AspectRatio } from "@repo/ui/media";
-import { MediaWrapper } from "@repo/ui/media";
+import { mediaWrapperVariants } from "@repo/ui/media";
+import { cx } from "cva";
+import { useMemo } from "react";
+import { CardImage, HeroCardWrapper } from "@/components/card";
 import { sortButtonStyle } from "@/components/page/sort-button";
 import type { GroupedPosts } from "@/utils";
 import type { Post } from "contentlayer/generated";
-import { CardImage, HeroCardWrapper } from "@/components/card";
 import { PostLinkContent } from "./post-link-content";
 import { hideFeaturedDotStyle } from "./post.styles";
 
@@ -120,15 +119,16 @@ export const PostsSquaresGrouped = ({
                 // </HomeCard>
                 <HeroCardWrapper
                   captionClassName="absolute bottom-[-2em] translate-y-[0.6em] pt-1.5"
-                  className="rounded-[9px] bg-background lg:p-[7em]"
+                  className="rounded-card bg-background lg:p-[7em]"
                   key={post.title}
                   post={post}
                 >
-                  <MediaWrapper aspect={"video" as AspectRatio}>
-                    {post.assets && post.assets.length > 0 ? (
-                      <CardImage asset={post.assets[0]} />
-                    ) : null}
-                  </MediaWrapper>
+                  {post.assets && post.assets.length > 0 ? (
+                    <CardImage
+                      asset={post.assets[0]}
+                      className={cx(mediaWrapperVariants(), "aspect-video")}
+                    />
+                  ) : null}
                 </HeroCardWrapper>
               ))}
           </div>

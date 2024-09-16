@@ -18,7 +18,7 @@ export const textVariants = cva({
       fine: "text-fine", // subpixel-antialiased?
       metaHeading: "text-fine font-bold uppercase tracking-metaHeading",
       meta: "text-meta",
-      body: "text-base",
+      body: "text-body",
       heading: "text-heading font-medium",
       title: "text-title font-medium",
     },
