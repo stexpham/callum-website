@@ -5,7 +5,6 @@ import { cx } from "cva";
 import { useMemo } from "react";
 import { iconStyle, transformStyle } from "@/components/card/card-styles";
 import type { Project } from "./projects";
-import projects from "./projects";
 
 function pack(images: Project[], columns: number): Project[][] {
   const packed: Project[][] = Array.from({ length: columns }, () => []);
@@ -18,7 +17,7 @@ function pack(images: Project[], columns: number): Project[][] {
   return packed;
 }
 
-export const GraphicsGrid = () => {
+export const GraphicsGrid = ({ projects }: { projects: Project[] }) => {
   const columns = useMemo(() => pack(projects, 3), []);
 
   return (

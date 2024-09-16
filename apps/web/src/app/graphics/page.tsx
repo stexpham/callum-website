@@ -5,8 +5,11 @@ import { PageWrapper } from "@/components/page";
 // import type { PostsKind } from "@/components/post";
 // import type { SearchParams } from "@/types/search-params";
 import { GraphicsGrid } from "./graphics-grid";
+import { getProjects } from "./actions";
 
-export default function GraphicsIndexPage() {
+export default async function GraphicsIndexPage() {
+  const projects = await getProjects();
+
   // add filters?
   // searchParams: SearchParams;
   // const kind: PostsKind = "projects";
@@ -31,7 +34,7 @@ export default function GraphicsIndexPage() {
           spacingVariants({ intent: "b-xl" })
         )}
       >
-        <GraphicsGrid />
+        <GraphicsGrid projects={projects} />
       </main>
     </PageWrapper>
   );
