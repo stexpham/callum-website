@@ -29,10 +29,6 @@ export const DialogBasic = ({
       </DialogTrigger>
       <DialogContent
         aria-describedby={title}
-        // "container max-w-hero-px",
-        // sm-lg laptop sizes, keep using max-w so we can click outside to close the dialog
-        // "[@media(max-height:800px)]:max-w-[740px]",
-        // "[@media(max-width:960px)]:max-w-inset-full",
         className={cx("container", contentClassName)}
         overlayClassName="bg-background-active cursor-zoom-out"
       >

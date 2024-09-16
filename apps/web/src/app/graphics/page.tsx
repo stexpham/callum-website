@@ -7,6 +7,12 @@ import { PageWrapper } from "@/components/page";
 import { GraphicsGrid } from "./graphics-grid";
 import { getProjects } from "./actions";
 
+/* 
+  TODO:
+  * add searchParam filters
+  * add metaData
+ */
+
 export default async function GraphicsIndexPage() {
   const projects = await getProjects();
 
