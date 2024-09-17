@@ -16,6 +16,7 @@ export const featuredWorkSlugs = [
 export const featuredWritingSlugs = [
   "the-instantaneous-language-of-beauty",
   "the-matter-of-taste",
+  "organising-design-system-styles",
   "iteration-and-prototyping",
   "creativity-starts-with-love-and-theft",
 ];

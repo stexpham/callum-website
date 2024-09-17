@@ -60,7 +60,7 @@ type StyledSortButtonProps = SortButtonProps & {
 
 export const sortButtonStyle = [
   "inline-flex h-tab items-center gap-2",
-  textVariants({ intent: "metaHeading" }),
+  textVariants({ intent: "fineHeading" }),
   "pl-2 pr-1 first:pl-0",
   "hover:text-fill",
   "border-y border-transparent",

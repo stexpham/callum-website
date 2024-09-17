@@ -63,7 +63,7 @@ export const PostLine = ({
         )}
         dim
         inline
-        intent="metaHeading"
+        intent="fineHeading"
       >
         {/* END HOVER LABEL */}
         <div

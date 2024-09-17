@@ -2,6 +2,7 @@
 @import "@radix-ui/colors/gray-dark.css";
 @import "@radix-ui/colors/indigo.css";
 @import "@radix-ui/colors/indigo-dark.css"; */
+@import "./theme-colors.css";
 
 /**
   * https://github.com/huozhi/sugar-high
@@ -20,14 +21,21 @@
 */
 :root {
   --sh-class: #2d5e9d;
+  --sh-class: var(--color-gray-fill-contrast);
   /* --sh-identifier: #354150; */
   --sh-identifier: var(--indigo-11);
   --sh-sign: #8996a3;
+  --sh-sign: var(--color-gray-fill-contrast);
   --sh-property: #0550ae;
+  --sh-property: var(--color-gray-fill-contrast);
   --sh-entity: #249a97;
+  --sh-entity: var(--color-gray-solid);
   --sh-jsxliterals: #6266d1;
+  --sh-jsxliterals: var(--color-gray-solid);
   --sh-string: #00a99a;
+  --sh-string: var(--color-gray-fill-contrast);
   --sh-keyword: #f47067;
+  --sh-keyword: var(--color-gray-solid);
   --sh-comment: #a19595;
 
   /* custom for File component */
@@ -70,7 +78,7 @@
 .Prose pre code .sh__line::before {
   counter-increment: sh-line-number 1;
   content: counter(sh-line-number);
-  @apply !font-normal text-solid-light text-right mr-[20px];
+  @apply !font-normal text-solid-light text-right inline-block mr-3.5 w-4;
 }
 
 /* FAILING TESTS */

@@ -15,7 +15,7 @@ const lineHeight = {
   body: `${24 / 17}`,
 };
 const letterSpacing = {
-  meta: "0.0175em",
+  fine: "0.0175em",
   metaHeading: "0.125em",
   body: "0",
   heading: "-0.01em",
@@ -58,6 +58,9 @@ const config: Omit<Config, "content"> = {
         "accent-background": "var(--color-accent-bg)",
         accent: "var(--color-accent-solid)",
         "accent-hover": "var(--color-accent-solid-hover)",
+        "secondAccent-background": "var(--color-secondAccent-bg)",
+        secondAccent: "var(--color-secondAccent-solid)",
+        "secondAccent-hover": "var(--color-secondAccent-solid-hover)",
         design: "var(--color-design)",
 
         // ALPHAS: text-black-a4
@@ -67,22 +70,22 @@ const config: Omit<Config, "content"> = {
       fontSize: {
         fine: [
           generateClampSize(500, 1200, 9, 11),
-          { lineHeight: lineHeight.body, letterSpacing: letterSpacing.meta },
+          { lineHeight: lineHeight.body, letterSpacing: letterSpacing.fine },
         ],
         meta: [
           generateClampSize(500, 1200, 11.5, 14),
-          { lineHeight: lineHeight.body, letterSpacing: letterSpacing.meta },
+          { lineHeight: lineHeight.body, letterSpacing: letterSpacing.body },
         ],
         body: [
           generateClampSize(500, 1200, 15, 16),
           { lineHeight: lineHeight.body, letterSpacing: letterSpacing.body },
         ],
         heading: [
-          generateClampSize(500, 1200, 15, 16),
+          generateClampSize(500, 1200, 16, 18),
           { lineHeight: lineHeight.body, letterSpacing: letterSpacing.body },
         ],
         title: [
-          generateClampSize(500, 1200, 15.5, 19),
+          generateClampSize(500, 1200, 17, 21),
           { lineHeight: lineHeight.body, letterSpacing: letterSpacing.title },
         ],
       },
@@ -129,6 +132,7 @@ const config: Omit<Config, "content"> = {
         ...lineHeight,
       },
       borderRadius: {
+        soft: "2px",
         button: "5px",
         card: "9px",
       },

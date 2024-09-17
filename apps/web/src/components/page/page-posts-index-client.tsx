@@ -9,8 +9,8 @@ import {
   PostsListBlock,
   PostsList,
   hideFeaturedDotStyle,
+  useSortedPosts,
 } from "@/components/post";
-import { useSortedPosts } from "../post/use-sorted-posts";
 import { ListHeader } from "./list-header";
 import { StyledSortButton } from "./sort-button";
 

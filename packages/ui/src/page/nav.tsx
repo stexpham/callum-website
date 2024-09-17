@@ -46,7 +46,7 @@ export const Nav = ({
       >
         <Link
           className={cx(
-            textVariants({ intent: "metaHeading" }),
+            textVariants({ intent: "fineHeading" }),
             linkStyle,
             "pl-0 before:left-0",
             pathname === "/" || showRootActive
@@ -90,7 +90,7 @@ const NavLink = ({
 }: NavLinkProps & { isActive: boolean }) => (
   <Link
     className={cx(
-      textVariants({ intent: "metaHeading" }),
+      textVariants({ intent: "fineHeading" }),
       linkStyle,
       isActive
         ? "before:border-fill hover:before:border-accent"

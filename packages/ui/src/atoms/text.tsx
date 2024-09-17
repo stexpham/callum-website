@@ -16,9 +16,10 @@ export const textVariants = cva({
     intent: {
       link: "link", // specified in theme-utils.css
       fine: "text-fine", // subpixel-antialiased?
-      metaHeading: "text-fine font-bold uppercase tracking-metaHeading",
+      fineHeading: "text-fine font-bold uppercase tracking-metaHeading",
       meta: "text-meta",
       body: "text-body",
+      bodyHeading: "text-meta font-bold",
       heading: "text-heading font-medium",
       title: "text-title font-medium",
     },

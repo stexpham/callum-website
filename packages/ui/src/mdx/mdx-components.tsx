@@ -79,7 +79,7 @@ export const components = {
   h2: ({ children, ...props }: HeadingProps) => (
     <Text
       as="h2"
-      className="text-heading [&:not(:first-child)]:!mt-w8"
+      className="[&:not(:first-child)]:!mt-w8"
       intent="heading"
       {...(props as TextProps)}
     >
@@ -89,25 +89,31 @@ export const components = {
   h3: ({ children, ...props }: HeadingProps) => (
     <Text
       as="h3"
-      className="Text-subheading [&:not(:first-child)]:!mt-w8"
-      intent="metaHeading"
+      className="[&:not(:first-child)]:!mt-w8"
+      intent="fineHeading"
       {...(props as TextProps)}
     >
       {children}
     </Text>
   ),
   pre: ({ children, ...props }: ComponentPropsWithoutRef<"pre">) => (
-    <pre className="py-1" {...props}>
-      {children}
+    <pre className="Pre py-1" {...props}>
+      <div
+        className={cx(
+          "CodeWrapper bg-background-hover rounded-soft overflow-auto",
+          "[&_code]:overflow-auto [&_code]:py-2.5 [&_code]:pl-3 [&_code]:block",
+          "[&_code]:leading-[1.6]",
+          // overwrite prose code styles
+          "[&_code]:bg-transparent"
+        )}
+      >
+        {children}
+      </div>
     </pre>
   ),
   code: ({ children, ...props }: ComponentPropsWithoutRef<"code">) => {
     const codeHTML = highlight(children as string);
-    return (
-      <div className="py-3 pl-3.5 block rounded-[2px] bg-background font-mono text-[0.875em]">
-        <code dangerouslySetInnerHTML={{ __html: codeHTML }} {...props} />
-      </div>
-    );
+    return <code dangerouslySetInnerHTML={{ __html: codeHTML }} {...props} />;
   },
   hr: () => (
     <div className={cx(noteStyle)}>

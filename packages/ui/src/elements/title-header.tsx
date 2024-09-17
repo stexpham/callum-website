@@ -22,7 +22,7 @@ export const TitleHeader = ({
     <PolymorphicElement
       as={as || "header"}
       className={cx(
-        "flex flex-col space-y-[2px] pb-w8",
+        "flex flex-col space-y-[3px] pb-w8",
         isContained ? "" : "container pt-w20",
         className
       )}
@@ -36,7 +36,7 @@ export const TitleHeader = ({
         children
       )}
       {subheading ? (
-        <Text as="p" dim intent="meta">
+        <Text as="p" className="flex items-center gap-1.5" dim intent="meta">
           {subheading}
         </Text>
       ) : null}
