@@ -1,5 +1,5 @@
 import { ArrowRightIcon } from "@radix-ui/react-icons";
-import { Link } from "@repo/ui/atoms";
+import { Link, Text } from "@repo/ui/atoms";
 import { TitleHeader } from "@repo/ui/elements";
 import { getYear, isVideoFile, splitAspect } from "@repo/ui/utils";
 import NextImage from "next/image";
@@ -24,6 +24,9 @@ export const PagePost = ({ post }: { post: Post }) => {
 
   const year = getYear(post.date);
   const endYear = post.endDate ? getYear(post.endDate) : null;
+  const readingTimeText = (post.readingTime as { text: string }).text;
+
+  console.log("post", post);
 
   const renderActiveNav = () => {
     if (post.category === "projects") return "/work";
@@ -38,10 +41,14 @@ export const PagePost = ({ post }: { post: Post }) => {
         <>
           {nextPost ? (
             <Link className="space-y-w8" href={nextPost.slug}>
-              <h2 className="flex items-baseline gap-1.5 text-title font-medium">
+              <Text
+                as="h2"
+                className="flex items-baseline gap-1.5"
+                intent="title"
+              >
                 Next
                 <ArrowRightIcon className="size-[0.9em] translate-y-[0.1em] transform" />
-              </h2>
+              </Text>
 
               {/* 810 = 1080 * 0.75 */}
               {/* TODO post.asset[0] is aspect-[1440/880]? */}
@@ -88,6 +95,8 @@ export const PagePost = ({ post }: { post: Post }) => {
                 {endYear}
               </>
             ) : null}
+            <hr className="hr-vertical border-border-hover h-[13px]" />
+            {readingTimeText}
           </>
         }
       >

@@ -5,6 +5,7 @@ import {
 } from "contentlayer2/source-files";
 import readingTime from "reading-time";
 import smartypants from "remark-smartypants";
+import remarkGfm from "remark-gfm";
 // import remarkSlug from "remark-slug";
 // import { rehypeHighlightCode } from "./lib/rehype-highlight-code";
 // import { rehypeMetaAttribute } from "./lib/rehype-meta-attribute";
@@ -132,7 +133,7 @@ export default makeSource({
   documentTypes: [Post],
   mdx: {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any -- fuck you
-    remarkPlugins: [smartypants as any],
+    remarkPlugins: [smartypants, remarkGfm as any],
     // rehypePlugins: [rehypeMetaAttribute, rehypeHighlightCode],
   },
 });
