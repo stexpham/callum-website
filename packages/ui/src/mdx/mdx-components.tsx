@@ -18,8 +18,7 @@ type ListItemProps = ComponentPropsWithoutRef<"li">;
 type BlockquoteProps = ComponentPropsWithoutRef<"blockquote">;
 
 export const noteStyle = [
-  "Note !mt-w12 space-y-2 text-meta text-solid",
-  "link-block",
+  "Note !mt-w12 space-y-2 text-meta text-solid link-block",
   "[&_p]:text-meta [&_p]:text-solid",
 ];
 
@@ -76,26 +75,8 @@ export const components = {
       {children}
     </Text>
   ),
-  h2: ({ children, ...props }: HeadingProps) => (
-    <Text
-      as="h2"
-      className="[&:not(:first-child)]:!mt-w8"
-      intent="heading"
-      {...(props as TextProps)}
-    >
-      {children}
-    </Text>
-  ),
-  h3: ({ children, ...props }: HeadingProps) => (
-    <Text
-      as="h3"
-      className="[&:not(:first-child)]:!mt-w8"
-      intent="fineHeading"
-      {...(props as TextProps)}
-    >
-      {children}
-    </Text>
-  ),
+  h2: (props: HeadingProps) => <HeadingWithId as="h2" {...props} />,
+  h3: (props: HeadingProps) => <HeadingWithId as="h3" {...props} />,
   pre: ({ children, ...props }: ComponentPropsWithoutRef<"pre">) => (
     <pre className="Pre py-1" {...props}>
       <div
@@ -128,3 +109,35 @@ export const components = {
   MediaDialogVideo,
   MediaDialogImage,
 };
+
+type HeadingWithIdProps = HeadingProps &
+  Pick<TextProps, "as" | "intent"> & {
+    as: "h2" | "h3";
+    children?: React.ReactNode;
+  };
+
+function HeadingWithId({ as, children }: HeadingWithIdProps) {
+  const id = children?.toString().toLowerCase().replace(/\s+/g, "-");
+  return (
+    <Text
+      as={as}
+      className="group/heading scroll-mt-[calc(theme(spacing.nav)+theme(spacing.inset))] [&:not(:first-child)]:!mt-w8"
+      id={id}
+      intent={as === "h2" ? "heading" : "fineHeading"}
+    >
+      {children ? (
+        <Link
+          aria-hidden="true"
+          className="relative !no-underline"
+          href={`#${id}`}
+        >
+          <span className="absolute -left-em top-1/2 -translate-y-1/2 opacity-0 group-hover/heading:opacity-100 transition-opacity">
+            #
+          </span>
+
+          {children}
+        </Link>
+      ) : null}
+    </Text>
+  );
+}
