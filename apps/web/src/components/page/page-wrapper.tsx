@@ -37,7 +37,7 @@ export const PageWrapper = ({
         ]}
         ruleClassName={cx(
           intersection && intersection.intersectionRatio < 1
-            ? ""
+            ? "border-border"
             : "!border-transparent"
         )}
       />

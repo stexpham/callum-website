@@ -26,8 +26,6 @@ export const PagePost = ({ post }: { post: Post }) => {
   const endYear = post.endDate ? getYear(post.endDate) : null;
   const readingTimeText = (post.readingTime as { text: string }).text;
 
-  console.log("post", post);
-
   const renderActiveNav = () => {
     if (post.category === "projects") return "/work";
     if (post.category === "writing") return "/writing";

@@ -1,14 +1,5 @@
 import type { VariantProps } from "cva";
 import { cx, cva } from "cva";
-// import { cx, cva } from "cva";
-
-// import { ThemeColors } from "@/styles/colors.type";
-// this overwrites the text-* classes. DUH CN.
-// import { cn } from "@/utils/shadcn-utils";
-
-/* TODO: prose system from textVariants */
-
-// [&_em]:font-serif
 
 export const textVariants = cva({
   base: "",

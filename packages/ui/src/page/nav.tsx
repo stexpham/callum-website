@@ -4,6 +4,7 @@ import { cx } from "cva";
 import { usePathname } from "next/navigation";
 import { useWindowScroll } from "react-use";
 import { ArrowTopRightIcon } from "@radix-ui/react-icons";
+import { useEffect, useState } from "react";
 import { textVariants } from "../atoms/text";
 import { Link } from "../atoms/next-link";
 import { OutsetRule } from "../elements/outset-rule";
@@ -30,6 +31,11 @@ export const Nav = ({
 }: NavProps) => {
   const pathname = usePathname();
   const { y } = useWindowScroll();
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    setIsScrolled(y > 150);
+  }, [y]);
 
   return (
     <div
@@ -70,7 +76,7 @@ export const Nav = ({
       </nav>
       <OutsetRule
         className={cx(
-          y > 150 ? "border-border" : "border-transparent",
+          isScrolled ? "border-border" : "border-transparent",
           ruleClassName
         )}
       />

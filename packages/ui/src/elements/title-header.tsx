@@ -36,7 +36,7 @@ export const TitleHeader = ({
         children
       )}
       {subheading ? (
-        <Text as="p" className="flex items-center gap-1.5" dim intent="meta">
+        <Text as="div" className="flex items-center gap-1.5" dim intent="meta">
           {subheading}
         </Text>
       ) : null}
