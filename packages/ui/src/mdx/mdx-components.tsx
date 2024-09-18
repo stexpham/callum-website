@@ -40,13 +40,10 @@ export const components = {
     );
   },
   p: ({ children, ...props }: ParagraphProps) => (
-    <Text as="p" {...(props as TextProps)}>
-      {children}
-    </Text>
+    <p {...(props as TextProps)}>{children}</p>
   ),
   ul: ({ children, ...props }: ListProps) => (
-    <Text
-      as="ul"
+    <ul
       className={cx(
         "space-y-0.5 pl-[2em]",
         "[&>li]:relative [&>li]:before:content-[''] [&>li]:before:absolute [&>li]:before:inline-block [&>li]:before:bg-current [&>li]:before:-left-[1.3em] [&>li]:before:top-[0.75em] [&>li]:before:h-px [&>li]:before:w-[14px]"
@@ -54,16 +51,12 @@ export const components = {
       {...(props as TextProps)}
     >
       {children}
-    </Text>
+    </ul>
   ),
   ol: ({ children, ...props }: ListProps) => (
-    <Text
-      as="ol"
-      className="space-y-0.5 pl-5 list-decimal"
-      {...(props as TextProps)}
-    >
+    <ol className="space-y-0.5 pl-5 list-decimal" {...(props as TextProps)}>
       {children}
-    </Text>
+    </ol>
   ),
   li: ({ children, ...props }: ListItemProps) => <li {...props}>{children}</li>,
   blockquote: ({ children, ...props }: BlockquoteProps) => (
@@ -87,7 +80,7 @@ export const components = {
         className={cx(
           "CodeWrapper bg-background-hover rounded-soft overflow-auto",
           "[&_code]:overflow-auto [&_code]:py-2.5 [&_code]:pl-3 [&_code]:block",
-          "[&_code]:leading-[1.6]",
+          "[&_code]:leading-[1.6] [&_code]:hide-scrollbar",
           // overwrite prose code styles
           "[&_code]:bg-transparent"
         )}

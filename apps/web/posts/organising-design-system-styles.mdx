@@ -22,7 +22,7 @@ For design systems, consistency and comprehension are everything. A good design 
 
 Using my default stack of [React](https://react.dev/) with [Tailwind](https://tailwindcss.com/), I'll show you how setting your own defaults for typography, colour and spacing is not just the starting point for differentiating your app's look and feel. More importantly, it drastically cuts down the code we have to write and maintain, which reduces the mental load of implementing styles in a systematic, consistent and error-free way.
 
-I'll start with a major criticism that I see all the time, and then breakdown a series of configuration steps that I use to solve it.[^1]
+I'll start with a major criticism that I see all the time, and then breakdown a series of configuration steps that I use to solve it.
 
 ## Ease of use does not equate to ease of knowledge
 
@@ -149,7 +149,7 @@ If you're [extending a Tailwind theme](https://tailwindcss.com/docs/plugins#exte
 
 You'll note in the previous colour config example that I set the `--color-gray-base` var to `canvas`, not `base`. If I used `base` then using this color scale as a text colour (`text-base`) would clash with the [default font-size base value](https://github.com/tailwindlabs/tailwindcss/blob/818d10ab8461e682a185475dd4718e741103a4e3/stubs/config.full.js#L327), which is also `text-base`.
 
-This isn't a downfall of customising the Tailwind config, it's a legacy of its theme naming: setting font-size or color classes in Tailwind both use `text-*`.[^2]
+This isn't a downfall of customising the Tailwind config, it's a legacy of its theme naming: setting font-size or color classes in Tailwind both use `text-*`.[^1]
 
 ### Spacing defaults
 
@@ -256,10 +256,4 @@ Yes, there's an upfront time cost. But it pays off in spades: less code, fewer e
 
 Next up: We'll explore how to use [Class Variance Authority](https://cva.style/docs) to create a bulletproof styling API with semantic props drawn from Tailwind. Stay tuned.
 
-<Note>
-
-[^1]: CSS-in-JS libraries have recently hit limitations (performance overhead, complex set-ups, learning curves, SSR obstacles), but it might be that [Vanilla Extract](https://vanilla-extract.style/) or [StyleX](https://stylexjs.com/docs/learn/) futher improves these ideas I'll tackle. For now I won't directly address them as I've not yet used them. There are great benefits to stikcing with default systems that everyone knows!
-
-[^2]: This is also why I dislike using [tailwind-merge](https://github.com/dcastil/tailwind-merge) to remove duplicate Tailwind classes in JSX. More often than not, I find it removing a `text-color` in favour of a `text-fontSize` when both are needed. I'm surprised more developers don't raise this issue.
-
-</Note>
+[^1]: This is also why I dislike using [tailwind-merge](https://github.com/dcastil/tailwind-merge) to remove duplicate Tailwind classes in JSX. More often than not, I find it removing a `text-color` in favour of a `text-fontSize` when both are needed. I'm surprised more developers don't raise this issue.
