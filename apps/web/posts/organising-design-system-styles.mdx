@@ -26,11 +26,11 @@ I'll start with a major criticism that I see all the time, and then breakdown a 
 
 ## Ease of use does not equate to ease of knowledge
 
-Tailwind makes it easy for developers to write styles. But that doesn't mean the outcome is good design or that the resulting use of code equates with a scalable, maintainable and comprehensive design system.
+Tailwind makes it easy for developers to write styles, which is great for rapid prototyping. But that ease doesn't guarantee good design or a scalable, maintainable design system.
 
-Defaults are fantastic ways to advance systems. Zero config "it just works" libraries like Tailwind are the [infrastructure pace layer](https://jollycontrarian.com/index.php?title=Pace_layering) that creates more time for building. But if you're scaling an app, and it needs to look good, then the governance layer underneath your infrastructure tools requires you to tailor their "free as in lunch" configs.
+Defaults and zero-config tools like Tailwind are the [infrastructure pace layer](https://jollycontrarian.com/index.php?title=Pace_layering) that create more time for building. But if you're scaling an app that uses a design system to differentiate itself, you can't rely solely on "free as in lunch" out-of-the-box configs.
 
-Often, devs run with the default Tailwind config and push style management to the application of classes on components. The organisation of these components within folders then becomes their design system, whether they mean it to or not. The result is many components each with a mess of classes that are hard to reason about.
+If you run with the default Tailwind config and push style management to the application of classes on components, the result is often a mess of hard-to-reason-about classes spread across components, masquerading as a design system.
 
 <Img
   src="/images/post-ds-smush-01.png"
@@ -45,7 +45,7 @@ It is easy to smush your design classes into a single className. But there is no
 
 ## Configure your system for ease of knowledge
 
-Ease of use comes with trade-offs. By defering to an abstract standard someone else defined, we defer to their knowhow. This can be beneficial, but it can also be a trap. Let's take a step back and think about what the basics of a design system consist of:
+Ease of use comes with trade-offs. Using someone else's standard means relying on their knowhow. This can be beneficial, but it can also be a trap. Let's take a step back and think about what the basics of a design system consist of:
 
 - typography
 - colour
@@ -67,7 +67,9 @@ const config = {
 
 ### Typographic defaults
 
-For example, we can set leading (line-height) and tracking (letter-spacing) as parameters for each font size tuple. This means we don't need to set leading or tracking when we use a font-size class. No need to remember (or fail to look up) what the letter-spacing of small text is.
+Have you ever struggled to remember the correct letter-spacing for your small text? What if you could set it once and forget about it?
+
+We can set leading (line-height) and tracking (letter-spacing) as parameters for each font size tuple directly in `tailwind.config`. This means we don't need to set leading or tracking when we use a font-size class. No need to remember (or fail to look up) what the letter-spacing of small text is.
 
 ```ts
 fontSize: {
@@ -122,7 +124,7 @@ colors: {
 }
 ```
 
-Using `bg-canvas` now sets the appropriate color in light or dark mode. Removing this duplication across a codebase centralises color management to our config instead of spreading across the implementation of classes on components. A huge win for maintainability.
+Using `bg-canvas` now sets the appropriate color in light or dark mode. Removing this duplication across a codebase centralises color management to our config instead of spreading it across the implementation of classes on components. A huge win for cognitiion and maintainability.
 
 ```jsx
 /* sets --gray-1 as #fcfcfc on :root or #111111 on html.dark */
@@ -137,7 +139,7 @@ I've seen countless projects where inconsistent `gray-50`, `gray-100` or `gray-2
 
 In the same way, it is easier to remember the names for dark and light text colors when they are called `fill` and `solid`. It's harder and more error-prone when they're called `gray-900` and `gray-600` because then you have to remember specifically that it wasn't `gray-950` and `gray-500`, or `gray-800` and `gray-700`.
 
-But naming things—and agreeing on naming—is hard. In the spirit of zero-config, I suggest stealing [Radix Color](https://www.radix-ui.com/colors)'s backgrounds, borders, solids & fills paradigm. Or [this](https://github.com/rainbow-me/rainbowkit/blob/d8c64ee4baf865d3452a6b92e0525c123f680ec1/site/css/tokens.ts#L120) palette semantics.
+But naming things—and agreeing on naming—is hard. In the spirit of zero-config, I suggest taking [Radix Color](https://www.radix-ui.com/colors)'s backgrounds, borders, solids & fills paradigm. Or [this](https://github.com/rainbow-me/rainbowkit/blob/d8c64ee4baf865d3452a6b92e0525c123f680ec1/site/css/tokens.ts#L120) palette semantics.
 
 And once you've set this in `tailwind.config`, Typescript will jog your memory at your fingertips with autocomplete.
 
@@ -165,7 +167,7 @@ We can also use CSS variables to set spacings.
 
 ```ts
 spacing: {
-  em: "1em",
+  em: "1em", /* relate icon size to parent font-size */
   nav: "var(--height-nav)",
   inset: "var(--space-inset)",
   text: "var(--container-text)",
@@ -187,9 +189,11 @@ Note again the use of semantic naming makes it easy to remember and use.
 
 ## Augmenting your Tailwind config
 
-We have now configured typography, colour and spacing tokens in a manner that is easy to understand and maintain, and enables us to reduce spreading this knowledge as classes across components, and centralises their management in `tailwind.config`. And there's further steps we can take to reduce this implementation overhead.
+We have now configured typography, colour and spacing tokens in a manner that is easy to understand and maintain in a single, centralised place. And we don't need to wrire as many classes to implement the system. Winning. And there's further steps we can take to reduce this implementation overhead.
 
 ### Clamp() your classes
+
+What if I told you there's a way to completely avoid writing `text-lg lg:text-xl xl:text-2xl p-2 md:p-4 lg:p-8` everywhere?
 
 We can avoid setting responsive font-size classes by using clamp as a a font-size value in `tailwind.config`. Here's the [simple clamp function](https://github.com/callumflack/callum-website/blob/3746ca4eef7eaae1663e39584bb75a35e732ccf1/packages/config-tailwind/generate-clamp-size.ts#L7) I use.
 
@@ -240,24 +244,17 @@ This allows us to write `py-d24` instead of `py-16 md:py-20 lg:py-24`. This alle
 
 ## Summary
 
-Ease of use might help you get started faster. But it does not necessarily lead to good design outcomes, nor does it equate to ease of knowledge within the system.
+Well-crafted UI is your last defense against the coming slopwave of careless AI apps. Here's how customizing Tailwind can save you time and headaches so you can focus on the irrational amount of care it takes to build UI that works in the blink of an eye:
 
-Using `tailwind.config` ot it's full capacity allows us to centralise design token management, and avoid falling into the "implement classes" pitfall. This is a great way to reduce the number of classes we have to write and maintain.
+- Use `tailwind.config` to its full potential. Centralize and group your design tokens and avoid the "implement classes everywhere" trap.
+- Use `clamp()` for fluid typography and spacing.
+- Set color variables on `:root` and `.dark` for effortless dark mode.
+- Name colors and spacing semantically. `background` beats `gray-100` any day.
+- Relate icons to text size with `size-em`.
 
-Using Centralising design token management in `tailwind.config` is a great way to reduce the number of classes we have to write and maintain. And one particular opinion that I hold we underestimate the importance of: that we think in pixels, not rems.
-hoisting font-size responsiveness into a clamp value, we avoid the “implement classes” pitfall again, saving mental effort, errors and debugging time.
+Yes, there's an upfront time cost. But it pays off in spades: less code, fewer errors, greater design consistency, and a team that actually understands the system.
 
-If you're scaling your Tailwind styling system, and you want your app to feel and look good, then you should customise Tailwind to:
-
-- use the Tailwind fontSize config to it's full capacity
-- set color variables on `:root` and `.dark` to hoist color mode styles
-- name color and spacing scales semantically to avoid inconsistent use
-- use `clamp()` to hoist responsiveness into the config and write much less classes
-- relate icons to text size with `size-em`
-
-The obstacle to configuring consistency with Tailwind is accepting an upfront time cost. But that cost pays off when the team understands the system, writes less code, when design errors start to just go away, and when it's easy to remember what tokens belong to what context "at our finger tips".
-
-In the next post of this series, I'll describe how I use [Class Variance Authority](https://cva.style/docs) with React components to roll up these design tokens into a constrained styling API with semantic props.
+Next up: We'll explore how to use [Class Variance Authority](https://cva.style/docs) to create a bulletproof styling API with semantic props drawn from Tailwind. Stay tuned.
 
 <Note>
 
