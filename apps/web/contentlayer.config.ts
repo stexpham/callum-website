@@ -129,7 +129,7 @@ const Asset = defineNestedType(() => ({
 
 export default makeSource({
   contentDirPath: "posts",
-  contentDirExclude: ["_TEMPLATE.mdx"],
+  contentDirExclude: ["_TEMPLATE.mdx", "_leftovers"],
   documentTypes: [Post],
   mdx: {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any -- fuck you

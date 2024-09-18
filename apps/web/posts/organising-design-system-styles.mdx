@@ -20,17 +20,15 @@ For design systems, consistency and comprehension are everything. A good design 
 - easy to comprehend without foregoing the nuance that good design requires;
 - scalable and maintainable without compromising consistency.
 
-Here's my current approach to configuring design tokens and CSS classes relative to my default stack of [React](https://react.dev/) with [Tailwind](https://tailwindcss.com/). I'll start with a major criticism that I see all the time, and then breakdown a series of configuration steps that I use to solve it.[^1]
+Using my default stack of [React](https://react.dev/) with [Tailwind](https://tailwindcss.com/), I'll show you how setting your own defaults for typography, colour and spacing is not just the starting point for differentiating your app's look and feel. More importantly, it drastically cuts down the code we have to write and maintain, which reduces the mental load of implementing styles in a systematic, consistent and error-free way.
 
-I'll show you how setting our own defaults for typography, colour and spacing is not only the starting point for differentiating your app's look and feel. More importantly, at the start of the process, it drastically cuts down on the number of classes we have to write and maintain and reduces the mental load of applying styles in a systematic, consistent and error-free way.
+I'll start with a major criticism that I see all the time, and then breakdown a series of configuration steps that I use to solve it.[^1]
 
 ## Ease of use does not equate to ease of knowledge
 
-Defaults are fantastic ways to advance systems. Zero config "it just works" libraries like Tailwind are the [infrastructure pace layer](https://jollycontrarian.com/index.php?title=Pace_layering) that creates more time for building. If that's what you need, don't read any further—the default CSS from Tailwind is more than fine.
-
-But if you're scaling an app, and it needs to look good, then the governance layer underneath your "free of charge" infrastructure tools requires attention.
-
 Tailwind makes it easy for developers to write styles. But that doesn't mean the outcome is good design or that the resulting use of code equates with a scalable, maintainable and comprehensive design system.
+
+Defaults are fantastic ways to advance systems. Zero config "it just works" libraries like Tailwind are the [infrastructure pace layer](https://jollycontrarian.com/index.php?title=Pace_layering) that creates more time for building. But if you're scaling an app, and it needs to look good, then the governance layer underneath your infrastructure tools requires you to tailor their "free as in lunch" configs.
 
 Often, devs run with the default Tailwind config and push style management to the application of classes on components. The organisation of these components within folders then becomes their design system, whether they mean it to or not. The result is many components each with a mess of classes that are hard to reason about.
 
@@ -41,20 +39,20 @@ Often, devs run with the default Tailwind config and push style management to th
   priority
 />
 
-Above is a prime example. It is almost illegible. This makes it impossible to gain an understanding of the typography, color, spacing, responsiveness and color mode variations without significant effort.
+Above is a prime example. It is almost illegible and takes signficant time to understand, let alone manipulate. Attempts to do so are highly likely to lead to duplication and error, spiralling away from design consistency throughout the app.
 
-It's easy to smush colour, typography, spacing, and responsiveness all together into a single class string. But there is no ease of knowledge here. Attempts at manipulating this "Prose" system are highly likely to lead to duplication and error, spiralling away from consistency relative to other styles throughout the app.
+It is easy to smush your design classes into a single className. But there is no ease of knowledge in doing so.
 
 ## Configure your system for ease of knowledge
 
-Ease of use comes with trade-offs. By defering to an abstract standard someone else defined, we deferred to their knowhow. This can be beneficial, but it can also be a trap. Let's take a step back and think about what the basics of a design system consist of:
+Ease of use comes with trade-offs. By defering to an abstract standard someone else defined, we defer to their knowhow. This can be beneficial, but it can also be a trap. Let's take a step back and think about what the basics of a design system consist of:
 
 - typography
 - colour
 - spacing
 - responsiveness (which includes color mode)
 
-These, and many others, are set in the Tailwind config, which we can customise.
+In the context of React with Tailwind, these and many other design system elements are set in the Tailwind config, which we can customise.
 
 {/* prettier-ignore */}
 ```ts
@@ -69,7 +67,7 @@ const config = {
 
 ### Typographic defaults
 
-For example, we can set leading (line-height) and tracking (letter-spacing) as parameters for each font size tuple. This means we don't need to set leading or tracking when we use a font-size class. No need to remember (or fail to look up) what the line-height of small text is.
+For example, we can set leading (line-height) and tracking (letter-spacing) as parameters for each font size tuple. This means we don't need to set leading or tracking when we use a font-size class. No need to remember (or fail to look up) what the letter-spacing of small text is.
 
 ```ts
 fontSize: {
@@ -84,7 +82,7 @@ fontSize: {
 }
 ```
 
-Using `text-small` now sets font-size, line-height and letter-spacing.
+Using `text-small` now sets font-size, line-height and letter-spacing. Enclosing the core typographic tuple together in one class centralises the implementation of these values into the config instead of across a codebase. A huge win for maintainability.
 
 ```jsx
 /* 13px/1.5 with 0.015em letter-spacing */
@@ -109,7 +107,9 @@ We can use CSS variables to set responsive colours under `:root` and `html.dark`
 }
 ```
 
-Because I'm using [Radix Colors](https://www.radix-ui.com/colors) here, I don't need to set the `.dark` scope as that's [already done for me](https://github.com/radix-ui/colors/blob/8a03dad3bc93ea4ed48ce2b70847a3538097e02f/scripts/build-css-modules.js#L19). Then set the CSS variables in the Tailwind config.
+Because I'm using [Radix Colors](https://www.radix-ui.com/colors) here, I don't need to set the `.dark` scope as that's [already done for me](https://github.com/radix-ui/colors/blob/8a03dad3bc93ea4ed48ce2b70847a3538097e02f/scripts/build-css-modules.js#L19). If you don't like the Radix colors, you can [customise them](https://www.radix-ui.com/colors/custom), use another library or write your own.
+
+Then set the CSS variables in the Tailwind config.
 
 ```ts
 colors: {
@@ -122,24 +122,22 @@ colors: {
 }
 ```
 
-Using `bg-canvas` now sets the appropriate color in light or dark mode.
+Using `bg-canvas` now sets the appropriate color in light or dark mode. Removing this duplication across a codebase centralises color management to our config instead of spreading across the implementation of classes on components. A huge win for maintainability.
 
 ```jsx
 /* sets --gray-1 as #fcfcfc on :root or #111111 on html.dark */
 <div className="bg-canvas" />
 ```
 
-And if you don't like the Radix colors, you can [customise them](https://www.radix-ui.com/colors/custom).
-
 ### Semantic naming
 
-I advocate semantic names for colours and font-sizes because semantic naming is a forcing function that ties meaning to use to reduce error. How?
-
-It is easier to remember the names for dark and light text colors when they are called `fill` and `solid`. It's harder and more error-prone when they're called `gray-900` and `gray-600` because then you have to remember specifically that it wasn't `gray-950` and `gray-500`, or `gray-800` and `gray-700`.
+I advocate semantic names for colours and font-sizes because semantic naming is a forcing function that ties meaning to use. Does so removes implementation guess work and reduces error.
 
 I've seen countless projects where inconsistent `gray-50`, `gray-100` or `gray-200` are all used for backgrounds. This is easily solved by defining a color called `background`.
 
-But naming things—and agreeing on naming—is hard. In the spirit of zero-config, I suggest stealing [Radix Color](https://www.radix-ui.com/colors)'s backgrounds, borders, solids & fills paradigm. Or [this](https://github.com/rainbow-me/rainbowkit/blob/d8c64ee4baf865d3452a6b92e0525c123f680ec1/site/css/tokens.ts#L120) label, fill, background palette.
+In the same way, it is easier to remember the names for dark and light text colors when they are called `fill` and `solid`. It's harder and more error-prone when they're called `gray-900` and `gray-600` because then you have to remember specifically that it wasn't `gray-950` and `gray-500`, or `gray-800` and `gray-700`.
+
+But naming things—and agreeing on naming—is hard. In the spirit of zero-config, I suggest stealing [Radix Color](https://www.radix-ui.com/colors)'s backgrounds, borders, solids & fills paradigm. Or [this](https://github.com/rainbow-me/rainbowkit/blob/d8c64ee4baf865d3452a6b92e0525c123f680ec1/site/css/tokens.ts#L120) palette semantics.
 
 And once you've set this in `tailwind.config`, Typescript will jog your memory at your fingertips with autocomplete.
 
@@ -175,7 +173,7 @@ spacing: {
 }
 ```
 
-One could argue this is over-engineering. Except that when it comes time to compute complex interactive layouts like sticky headers, scroll margins and so on, this upfront configuration work makes it straight forward and error-free.
+One could argue this is over-engineering. Except that when it comes time to compute complex interactive layouts like sticky headers, scroll margins and so on, this upfront configuration work makes it straight forward and error-free, to the pixel.
 
 ```jsx
 <div className="top-[calc(theme(spacing.nav)+theme(spacing.tab))]">
@@ -185,29 +183,11 @@ One could argue this is over-engineering. Except that when it comes time to comp
 </div>
 ```
 
-Note again the use of semantic naming to make it easy to remember and use.
-
-### Why em?
-
-You'll notice in the prior spacing example that I set a "1em" value to an `em` key. I use this for child elements that should be related to the font-size of the parent. For example, icons.
-
-```ts
-<Text as="div" intent="heading" className="flex items-center gap-1">
-  /* instead of "h-4 w-4" */
-  <Icon className="size-em" />
-  Heading copy
-</Text>
-```
-
-Diagram example here?
-
-Using em for inline relationships keeps the child element directly related to the parent's font-size. It's a simple, maintianable and error-free way to set relationships between elements that deletes the need to use `px` or `rem` units.
-
-Ps. I'll talk about how I roll up typography tokens and styles into `<Text />` components with a constrained styling API in the post in this series.
+Note again the use of semantic naming makes it easy to remember and use.
 
 ## Augmenting your Tailwind config
 
-THere's further steps we can take to reduce the number of classes we have to write and maintain. And one particular opinion that I hold we underestimate the importance of: that we think in pixels, not rems.
+We have now configured typography, colour and spacing tokens in a manner that is easy to understand and maintain, and enables us to reduce spreading this knowledge as classes across components, and centralises their management in `tailwind.config`. And there's further steps we can take to reduce this implementation overhead.
 
 ### Clamp() your classes
 
@@ -218,12 +198,12 @@ fontSize: {
   title: [
     /* clamp(17px, 14.1429px + 0.5714vw, 21px) */
     generateClampSize(500, 1200, 17, 21),
-    { lineHeight: lineHeight.body, letterSpacing: letterSpacing.meta },
+    { lineHeight: 1.5, letterSpacing: "-0.015em" },
   ];
 }
 ```
 
-So instead of writing `text-lg lg:text-xl xl:text-2xl 2xl:text-4xl` we can just write `text-title`. This saves a large amount of mental effort, errors and debugging time. (What size is `text-5xl` anyway? If you can't picture it, delete it).
+So instead of writing `text-lg lg:text-xl xl:text-2xl` we can just write `text-title`. Once again, by hoisting font-size responsiveness into a clamp value, we avoid the "implement classes" pitfall again, saving mental effort, errors and debugging time.
 
 ```ts
 /* 17px at 500px, 21px at 1200, fluidly calculated inbetween */
@@ -232,7 +212,7 @@ So instead of writing `text-lg lg:text-xl xl:text-2xl 2xl:text-4xl` we can just 
 </h2>
 ```
 
-We can also do this for spacing. I prefix with `d` for "dynamic" to differentiate it from the default Tailwind spacing scale.
+We can also do this for spacing. When extending a theme, I prefix these keys with `d` for "dynamic" to differentiate it from the default spacing scale.
 
 ```ts
 spacing: {
@@ -245,7 +225,7 @@ spacing: {
 }
 ```
 
-This allows us to write `py-d24` instead of `py-16 md:py-20 lg:py-24`. This alleviates the weight of holding a range of website versions for each media-query in our minds. Instead it encourages us to picture fluidly repsonsive whitespace between layout elements where measurements don't matter as much as consistent relationships.
+This allows us to write `py-d24` instead of `py-16 md:py-20 lg:py-24`. This alleviates the weight of holding a range of website versions for each media-query in our minds. Instead it encourages us to picture fluidly responsive layouts where measurements don't matter as much as consistent relationships.
 
 ```ts
 <main className="pt-d24 pb-d64 space-y-w8">
@@ -258,13 +238,14 @@ This allows us to write `py-d24` instead of `py-16 md:py-20 lg:py-24`. This alle
 </main>
 ```
 
-### Thinking in pixels
-
-Pixels over REM. decipher.
-
-Yes, you can hover to see the pixel values. But that breaks the rule of instant feedback. And why is that even there? If one is thinking in pixels then the immeediate value shoudl be pixels.
-
 ## Summary
+
+Ease of use might help you get started faster. But it does not necessarily lead to good design outcomes, nor does it equate to ease of knowledge within the system.
+
+Using `tailwind.config` ot it's full capacity allows us to centralise design token management, and avoid falling into the "implement classes" pitfall. This is a great way to reduce the number of classes we have to write and maintain.
+
+Using Centralising design token management in `tailwind.config` is a great way to reduce the number of classes we have to write and maintain. And one particular opinion that I hold we underestimate the importance of: that we think in pixels, not rems.
+hoisting font-size responsiveness into a clamp value, we avoid the “implement classes” pitfall again, saving mental effort, errors and debugging time.
 
 If you're scaling your Tailwind styling system, and you want your app to feel and look good, then you should customise Tailwind to:
 
@@ -274,9 +255,7 @@ If you're scaling your Tailwind styling system, and you want your app to feel an
 - use `clamp()` to hoist responsiveness into the config and write much less classes
 - relate icons to text size with `size-em`
 
-The obstacle to configuring consistency with Tailwind is accepting an upfront time cost. But that cost pays off when the team understands the system, is writing less code, when design errors start to just go away, and when it's easy to remember what tokens belong to what context "at our finger tips".
-
-Ease of use might help you get started faster. But it does not necessarily lead to good design outcomes, nor does it equate to ease of knowledge within the system.
+The obstacle to configuring consistency with Tailwind is accepting an upfront time cost. But that cost pays off when the team understands the system, writes less code, when design errors start to just go away, and when it's easy to remember what tokens belong to what context "at our finger tips".
 
 In the next post of this series, I'll describe how I use [Class Variance Authority](https://cva.style/docs) with React components to roll up these design tokens into a constrained styling API with semantic props.
 
@@ -284,6 +263,6 @@ In the next post of this series, I'll describe how I use [Class Variance Authori
 
 [^1]: CSS-in-JS libraries have recently hit limitations (performance overhead, complex set-ups, learning curves, SSR obstacles), but it might be that [Vanilla Extract](https://vanilla-extract.style/) or [StyleX](https://stylexjs.com/docs/learn/) futher improves these ideas I'll tackle. For now I won't directly address them as I've not yet used them. There are great benefits to stikcing with default systems that everyone knows!
 
-[^2]: This is also why I dislike using [tailwind-merge](https://github.com/dcastil/tailwind-merge) to remove duplicate Tailwind classes in JSX. More often than not, I find it removing a `text-color` in favour of a `text-fontSize` when both are needed.
+[^2]: This is also why I dislike using [tailwind-merge](https://github.com/dcastil/tailwind-merge) to remove duplicate Tailwind classes in JSX. More often than not, I find it removing a `text-color` in favour of a `text-fontSize` when both are needed. I'm surprised more developers don't raise this issue.
 
 </Note>

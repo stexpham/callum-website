@@ -8,4 +8,40 @@ Fast forward to now and Tailwind has won by providing developers with an atomic 
 
 Defaults are fantastic ways to advance systems. Zero config "it just works" libraries like Tailwind are the [infrastructure pace layer](https://jollycontrarian.com/index.php?title=Pace_layering) that creates more time for building. If that's what you need, don't read any further—the default CSS from Tailwind is more than fine. But if you're scaling an app, and it needs to look good, then the governance layer underneath your infrastructure tools requires attention.
 
+## Ease of knowledge
+
+If that's what you need, don't read any further—the default CSS from Tailwind is more than fine.
+
+This makes it impossible to gain an understanding of the typography, color, spacing and responsiveness variations without significant effort.
+
+## Semantic naming
+
+Picture in your mind `text-5xl`. What size is it relative to `text-3xl`? If you can't picture it, I suggest you delete it or rename it so that it means something to you.
+
+### Why em?
+
+You'll notice in the prior spacing example that I set a "1em" value to an `em` key. I use this for child elements that should be related to the font-size of the parent. For example, icons.
+
+```ts
+<Text as="div" intent="heading" className="flex items-center gap-1">
+  /* instead of "h-4 w-4" */
+  <Icon className="size-em" />
+  Heading copy
+</Text>
+```
+
+Diagram example here?
+
+Using em for inline relationships keeps the child element directly related to the parent's font-size. It's a simple, maintianable and error-free way to set relationships between elements that deletes the need to use `px` or `rem` units.
+
+Ps. I'll talk about how I roll up typography tokens and styles into `<Text />` components with a constrained styling API in the post in this series.
+
+## Ender
+
 > Quote here about initial set-up costs paying back in time…
+
+### Thinking in pixels
+
+Pixels over REM. decipher.
+
+Yes, you can hover to see the pixel values. But that breaks the rule of instant feedback. And why is that even there? If one is thinking in pixels then the immeediate value shoudl be pixels.
