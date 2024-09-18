@@ -20,21 +20,24 @@
   * space
 */
 :root {
-  --sh-class: #2d5e9d;
-  --sh-class: var(--color-gray-fill-contrast);
-  /* --sh-identifier: #354150; */
-  --sh-identifier: var(--indigo-11);
+  /* default theme */
+  /* --sh-class: #2d5e9d;
+  --sh-identifier: #354150;
   --sh-sign: #8996a3;
-  --sh-sign: var(--color-gray-fill-contrast);
   --sh-property: #0550ae;
-  --sh-property: var(--color-gray-fill-contrast);
   --sh-entity: #249a97;
-  --sh-entity: var(--color-gray-solid);
   --sh-jsxliterals: #6266d1;
-  --sh-jsxliterals: var(--color-gray-solid);
   --sh-string: #00a99a;
-  --sh-string: var(--color-gray-fill-contrast);
   --sh-keyword: #f47067;
+  --sh-comment: #a19595; */
+
+  --sh-class: var(--color-gray-fill-contrast);
+  --sh-identifier: var(--indigo-11);
+  --sh-sign: var(--color-gray-fill-contrast);
+  --sh-property: var(--color-gray-fill-contrast);
+  --sh-entity: var(--color-gray-solid);
+  --sh-jsxliterals: var(--color-gray-solid);
+  --sh-string: var(--color-gray-fill-contrast);
   --sh-keyword: var(--color-gray-solid);
   --sh-comment: #a19595;
 
@@ -51,40 +54,9 @@
   --sh-entity: #e25a1c; */
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --sh-class: #4c97f8;
-    --sh-identifier: white;
-    --sh-keyword: #f47067;
-    --sh-string: #0fa295;
-  }
-  html {
-    /* color-scheme: dark; */
-  }
+.dark {
+  --sh-class: #4c97f8;
+  --sh-identifier: white;
+  --sh-keyword: #f47067;
+  --sh-string: #0fa295;
 }
-
-.code-simple {
-  --sh-class: var(--color-gray-fill-contrast);
-}
-
-/* 
-  Add line numbers:
-  https://github.com/huozhi/sugar-high?tab=readme-ov-file#line-number 
-  This relies on a parent element with `.Prose`.
- */
-.Prose pre code {
-  counter-reset: sh-line-number;
-}
-.Prose pre code .sh__line::before {
-  counter-increment: sh-line-number 1;
-  content: counter(sh-line-number);
-  @apply !font-normal text-solid-light text-right inline-block mr-3.5 w-4;
-}
-
-/* FAILING TESTS */
-/* .File .sh__line:nth-child(var(--highlight-lines)) {
-  background-color: rgb(243 244 246);
-}
-.File .sh__line:nth-child(1) {
-  @apply bg-white-a2;
-} */

@@ -45,23 +45,27 @@ export const components = {
     </Text>
   ),
   ul: ({ children, ...props }: ListProps) => (
-    <Text as="ul" className="space-y-0.5 pl-5" {...(props as TextProps)}>
+    <Text
+      as="ul"
+      className={cx(
+        "space-y-0.5 pl-[2em]",
+        "[&>li]:relative [&>li]:before:content-[''] [&>li]:before:absolute [&>li]:before:inline-block [&>li]:before:bg-current [&>li]:before:-left-[1.3em] [&>li]:before:top-[0.75em] [&>li]:before:h-px [&>li]:before:w-[14px]"
+      )}
+      {...(props as TextProps)}
+    >
       {children}
     </Text>
   ),
   ol: ({ children, ...props }: ListProps) => (
-    <Text as="ol" className="space-y-0.5 pl-5" {...(props as TextProps)}>
+    <Text
+      as="ol"
+      className="space-y-0.5 pl-5 list-decimal"
+      {...(props as TextProps)}
+    >
       {children}
     </Text>
   ),
-  li: ({ children, ...props }: ListItemProps) => (
-    <li
-      className="relative before:content-[''] before:absolute before:inline-block before:bg-current before:-left-[1.3em] before:top-[0.75em] before:h-px before:w-[14px]"
-      {...props}
-    >
-      {children}
-    </li>
-  ),
+  li: ({ children, ...props }: ListItemProps) => <li {...props}>{children}</li>,
   blockquote: ({ children, ...props }: BlockquoteProps) => (
     <Text
       as="blockquote"
