@@ -3,7 +3,7 @@
 import { Fragment, useState, Suspense } from "react";
 import { useRouter } from "next/navigation";
 import { cx } from "cva";
-import { spacingVariants } from "@repo/ui/atoms";
+// import { spacingVariants } from "@repo/ui/atoms";
 import type { PostsKind } from "@/components/post";
 import {
   PostsListBlock,
@@ -50,7 +50,8 @@ export const PagePostsIndexClient = ({
 
   return (
     <main
-      className={cx("container relative", spacingVariants({ intent: "b-xl" }))}
+      // spacingVariants({ intent: "b-xl" })?
+      className={cx("container relative pb-w24")}
     >
       <ListHeader
         className={cx(

@@ -55,10 +55,15 @@
 }
 
 .dark {
-  --sh-class: #4c97f8;
-  --sh-identifier: white;
-  --sh-keyword: #f47067;
-  --sh-string: #0fa295;
+  --sh-class: var(--color-gray-fill-contrast);
+  --sh-identifier: var(--indigo-11);
+  --sh-sign: var(--color-gray-fill-contrast);
+  --sh-property: var(--color-gray-fill-contrast);
+  --sh-entity: var(--color-gray-solid);
+  --sh-jsxliterals: var(--color-gray-solid);
+  --sh-string: var(--color-gray-fill-contrast);
+  --sh-keyword: var(--color-gray-solid);
+  --sh-comment: #a19595;
 }
 
 /* 

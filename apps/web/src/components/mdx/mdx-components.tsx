@@ -3,6 +3,7 @@ import { components as uiMdxComponents } from "@repo/ui/mdx-components";
 import { Prose } from "@repo/ui/elements";
 import type { ComponentPropsWithoutRef } from "react";
 import { Available, ContactIcons } from "~/src/components/elements";
+import { cx } from "cva";
 
 export const components = {
   ...uiMdxComponents,
@@ -32,7 +33,12 @@ export function Mdx({ code, children }: MdxProps) {
 type DivProps = ComponentPropsWithoutRef<"div">;
 
 const Callout = ({ children }: DivProps) => (
-  <div className="flex items-center gap-2 bg-secondAccent-background px-3 py-2.5 rounded-soft">
+  <div
+    className={cx(
+      "bg-highlight-background px-3 py-2.5 rounded-soft space-y-1.5",
+      "[&_code]:bg-black-a2"
+    )}
+  >
     {/* <CalloutIcon className="size-[1.25em]" /> */}
     {children}
   </div>

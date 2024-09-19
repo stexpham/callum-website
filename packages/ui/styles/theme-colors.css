@@ -53,10 +53,10 @@
     --color-accent-solid: var(--red-9);
     --color-accent-solid-hover: var(--red-10);
 
-    /* SECOND ACCENT */
-    --color-secondAccent-bg: var(--amber-3);
-    --color-secondAccent-solid: var(--amber-9);
-    --color-secondAccent-solid-hover: var(--amber-10);
+    /* HIGHLIGHT ACCENT */
+    --color-highlight-bg: var(--amber-3);
+    --color-highlight-solid: var(--amber-9);
+    --color-highlight-solid-hover: var(--amber-10);
 
     /* SKILLS */
     --color-design: var(--orange-9);

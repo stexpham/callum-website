@@ -58,9 +58,9 @@ const config: Omit<Config, "content"> = {
         "accent-background": "var(--color-accent-bg)",
         accent: "var(--color-accent-solid)",
         "accent-hover": "var(--color-accent-solid-hover)",
-        "secondAccent-background": "var(--color-secondAccent-bg)",
-        secondAccent: "var(--color-secondAccent-solid)",
-        "secondAccent-hover": "var(--color-secondAccent-solid-hover)",
+        "highlight-background": "var(--color-highlight-bg)",
+        highlight: "var(--color-highlight-solid)",
+        "highlight-hover": "var(--color-highlight-solid-hover)",
         design: "var(--color-design)",
 
         // ALPHAS: text-black-a4

@@ -1,12 +1,11 @@
 ---
 date: 2024-09-12
 title: Configuring Tailwind as a Design System
-lede: Well-crafted UI is your last defense against the coming slopwave of careless AI apps. Here's how customizing Tailwind can save you time and headaches so you can focus on the irrational amount of care it takes to build good UI.
+lede: Well-crafted UI is your last defense against the coming slopwave of careless AI apps. Here's how customizing Tailwind can save you time and design bugs so you can focus on the irrational amount of care it takes to build good UI.
 assets:
-  - src: /images/VIDEO-POSTER-TODO.png
-    poster: /images/VIDEO-POSTER-TODO.png
-    alt: Description of the main asset
-    aspect: 1728-1080
+  - src: /images/post-tailwind-config-1920-1080b.jpg
+    alt: Configuring your design system
+    aspect: 1920-1080
 category: writing
 tags:
   - engineering
@@ -14,6 +13,19 @@ tags:
   - featured
 nextPostLink: iteration-and-prototyping
 ---
+
+<Callout>
+### TLDR;
+
+- Like all infastructure tools built for convenience, Tailwind's easy set-up can quickly become costly. Ease of use is not ease of knowledge.
+- Use `tailwind.config` to its full potential. Take the time to centralise and group your design tokens and avoid the "implement classes everywhere" trap.
+- Use `clamp()` for fluid typography and spacing.
+- Set color variables on `:root` and `.dark` for effortless dark mode.
+- Name colors and spacing semantically: `background` beats `gray-100` any day.
+
+</Callout>
+
+## Design systems live by consistency and comprehension
 
 For design systems, consistency and comprehension are everything. A good design system ensures consistency of implementation through the configuration of code that implements it. It needs to be:
 
@@ -249,10 +261,10 @@ This allows us to write `py-d24` instead of `py-16 md:py-20 lg:py-24`. This alle
 
 Well-crafted UI is your last defense against the coming slopwave of careless AI apps. Here's how customizing Tailwind can save you time and headaches so you can focus on the irrational amount of care it takes to build UI that works in the blink of an eye:
 
-- Use `tailwind.config` to its full potential. Centralize and group your design tokens and avoid the "implement classes everywhere" trap.
+- Use `tailwind.config` to its full potential. Take the time to centralise and group your design tokens and avoid the "implement classes everywhere" trap.
 - Use `clamp()` for fluid typography and spacing.
 - Set color variables on `:root` and `.dark` for effortless dark mode.
-- Name colors and spacing semantically. `background` beats `gray-100` any day.
+- Name colors and spacing semantically: `background` beats `gray-100` any day.
 - Relate icons to text size with `size-em`.
 
 Yes, there's an upfront time cost. But it pays off in spades: less code, fewer errors, greater design consistency, and a team that actually understands the system.
