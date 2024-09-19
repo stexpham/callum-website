@@ -75,21 +75,23 @@ export const components = {
   h2: (props: HeadingProps) => <HeadingWithId as="h2" {...props} />,
   h3: (props: HeadingProps) => <HeadingWithId as="h3" {...props} />,
   pre: ({ children, ...props }: ComponentPropsWithoutRef<"pre">) => (
-    <pre className="Pre py-1" {...props}>
-      <div
+    <div className="py-1">
+      <pre
         className={cx(
-          "CodeWrapper bg-background-hover rounded-soft overflow-auto",
+          "Pre bg-background-hover rounded-soft overflow-auto",
           "[&_code]:overflow-auto [&_code]:py-2.5 [&_code]:pl-3 [&_code]:block",
           "[&_code]:leading-[1.6] [&_code]:hide-scrollbar",
           // overwrite prose code styles
           "[&_code]:bg-transparent"
         )}
+        {...props}
       >
         {children}
-      </div>
-    </pre>
+      </pre>
+    </div>
   ),
   code: ({ children, ...props }: ComponentPropsWithoutRef<"code">) => {
+    // sugar-high encapsulates code styles so we can't set them here nor in <Prose> but we can in a global CSS file, see styles/theme-code.css
     const codeHTML = highlight(children as string);
     return <code dangerouslySetInnerHTML={{ __html: codeHTML }} {...props} />;
   },

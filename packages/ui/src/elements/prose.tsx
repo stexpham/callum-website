@@ -13,21 +13,13 @@ export const proseVariants = cva({
     "Prose space-y-2.5 group",
     "[&_strong]:font-medium",
     "[&_em]:not-italic",
+    // specifically highlight within a paragraph
+    // "[&_p>span]:bg-secondAccent-background",
+    "[&_p>span]:text-fil [&_p>span]:font-medium",
     // Code styles that can't be set in mdx-components due highlight() function
     // or when <code> is used without being wrapped by <pre>
     "[&_code]:text-[0.825em] [&_code]:bg-background-active [&_code]:font-mono",
     "[&_code]:px-[2px] [&_code]:rounded-soft",
-    // Sugar-high code line numbers
-    // https://github.com/huozhi/sugar-high?tab=readme-ov-file#line-number
-    "[&_pre_code]:counter-reset-[sh-line-number]",
-    "[&_pre_code_.sh__line::before]:content-[counter(sh-line-number)]",
-    "[&_pre_code_.sh__line::before]:counter-increment-[sh-line-number]",
-    "[&_pre_code_.sh__line::before]:!font-normal",
-    "[&_pre_code_.sh__line::before]:text-solid-light",
-    "[&_pre_code_.sh__line::before]:text-right",
-    "[&_pre_code_.sh__line::before]:inline-block",
-    "[&_pre_code_.sh__line::before]:mr-3.5",
-    "[&_pre_code_.sh__line::before]:w-4",
     // Hide the footnotes h2
     "[&_#footnotes]:hidden",
     // / Apply `noteStyle` styles to footnotes
@@ -50,7 +42,7 @@ export const proseVariants = cva({
     "[&_.footnotes_.data-footnote-backref]:after:left-[0.3em]",
     "[&_.footnotes_.data-footnote-backref]:after:size-em",
     "[&_.footnotes_.data-footnote-backref]:after:bg-solid",
-    // Add new footnotes backref SVG icon as a mask so we can colour it
+    // Add new footnotes backref SVG icon via mask so we can colour it
     "[&_.footnotes_.data-footnote-backref]:after:[mask-size:contain]",
     "[&_.footnotes_.data-footnote-backref]:after:[mask-repeat:no-repeat]",
     "[&_.footnotes_.data-footnote-backref]:after:[mask-position:center]",

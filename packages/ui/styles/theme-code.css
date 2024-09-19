@@ -60,3 +60,18 @@
   --sh-keyword: #f47067;
   --sh-string: #0fa295;
 }
+
+/* 
+  Adds sugar-high line numbers
+  NB. Not possible to add this in either <Prose> nor <mdx-components>!
+  https://github.com/huozhi/sugar-high?tab=readme-ov-file#line-number 
+ */
+.Prose pre code {
+  counter-reset: sh-line-number;
+}
+.Prose pre code .sh__line::before {
+  content: counter(sh-line-number);
+  counter-increment: sh-line-number 1;
+  @apply !font-normal text-solid-light text-right;
+  @apply inline-block mr-4 w-4;
+}
