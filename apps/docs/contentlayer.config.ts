@@ -33,7 +33,7 @@ export const Post = defineDocumentType(() => ({
     },
     category: {
       type: "enum",
-      options: ["writing", "projects", "library", "home", "about", "content"],
+      options: ["note", "review", "library", "pattern", "idea", "weeklog"],
       required: true,
     },
     tags: {
@@ -59,27 +59,6 @@ export const Post = defineDocumentType(() => ({
     readingTime: {
       type: "json",
       resolve: (post) => readingTime(post.body.raw),
-    },
-    excerpt: {
-      type: "string",
-      // resolve: (post) => {
-      //   const content = post.body.raw.trim();
-      //   const excerptLength = 200; // Adjust this value as needed
-      //   return (
-      //     content.slice(0, excerptLength) +
-      //     (content.length > excerptLength ? "..." : "")
-      //   );
-      // },
-      resolve: (post) => {
-        const content = post.body.raw.trim().replace(/\s+/g, " ");
-        const excerpt =
-          content.slice(0, 800) + (content.length > 800 ? "…" : "");
-        return excerpt;
-      },
-      // resolve: (post) => {
-      //   const content = post.body.raw.replace(/\s+/g, " ").trim();
-      //   return content.slice(0, 200) + (content.length > 200 ? "..." : "");
-      // },
     },
   },
 }));

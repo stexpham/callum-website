@@ -2,6 +2,7 @@ import { notFound } from "next/navigation";
 import config from "@repo/ui/config";
 import { allPosts } from "contentlayer/generated";
 import { PagePost } from "@/components/page-post";
+import { PageWrapper } from "~/src/components/page-wrapper";
 
 interface Params {
   slug: string;
@@ -14,7 +15,11 @@ export default function PostPage({ params }: { params: Params }) {
     notFound();
   }
 
-  return <PagePost post={post} />;
+  return (
+    <PageWrapper showRootActive>
+      <PagePost post={post} />
+    </PageWrapper>
+  );
 }
 
 export function generateStaticParams(): Params[] {

@@ -1,83 +1,52 @@
-import { useMDXComponent } from "next-contentlayer2/hooks";
-import { Prose, TitleHeader } from "@repo/ui/elements";
-import { components } from "@repo/ui/mdx-components";
+import { TitleHeader } from "@repo/ui/elements";
 import { formatPostDate } from "@repo/ui/utils";
+import { Link, Text } from "@repo/ui/atoms";
+import { Mdx } from "@/components/mdx-components";
 import { type Post } from "contentlayer/generated";
-import { PageWrapper } from "./page-wrapper";
-// import { ArrowRightIcon } from "@radix-ui/react-icons";
-// import NextImage from "next/image";
-// import { Link } from "@repo/ui/atoms";
-// import { MediaWrapper } from "@repo/ui/media";
-// import { PostMeta } from "@/components/post";
+// import { PostMeta } from "./post-meta";
 
-export const PagePost = ({ post }: { post: Post }) => {
-  const MDXContent = useMDXComponent(post.body.code);
-  // const longDate = format(parseISO(post?.date ?? ""), "LLLL d, yyyy");
-  // const year = format(parseISO(post?.date ?? ""), "yyyy");
-  // const tagsWithoutFeatured = post?.tags.filter((tag) => tag !== "featured");
+interface PagePostProps {
+  post: Post;
+  isIndex?: boolean;
+}
 
-  // const nextPost = allPosts.find((p) => p.slug === post.nextPostLink);
-  // const { width, height } = splitAspect(
-  //   nextPost?.assets?.[0]?.aspect ?? "1920-1080"
-  // );
-
+export const PagePost = ({ post, isIndex }: PagePostProps) => {
   return (
-    <PageWrapper
-      showRootActive
-      // footerChildren={
-      //   <>
-      //     {nextPost ? (
-      //       <Link className="space-y-w8" href={nextPost.slug}>
-      //         <h2 className="flex items-baseline gap-1.5 text-title font-medium">
-      //           Next
-      //           <ArrowRightIcon className="size-[0.9em] translate-y-[0.1em] transform" />
-      //         </h2>
-      //         {/* Double MediaWrapper to 0.75 the image */}
-      //         {/* Override aspect! This is better than adding more types! */}
-      //         {/* 810 = 1080 * 0.75 // TODO post.asset[0] is aspect-[1440/880]? */}
-      //         <MediaWrapper
-      //           aspect="1920-1080"
-      //           className="!aspect-[1920/810] !rounded-b-none !border-b-0"
-      //           theme="default"
-      //         >
-      //           {/* Override aspect! This is better than adding more types! */}
-      //           <MediaWrapper
-      //             aspect="1920-1080"
-      //             className="!aspect-[1920/1080]"
-      //             background={false}
-      //             border={false}
-      //             showRounded={false}
-      //           >
-      //             {nextPost.assets && nextPost.assets.length > 0 ? (
-      //               <NextImage
-      //                 alt={nextPost.assets[0].alt}
-      //                 className="object-cover"
-      //                 height={isNaN(height) ? 667 : height}
-      //                 sizes="(min-width: 1000px) 960px, (min-width: 660px) 620px, 100vw"
-      //                 src={
-      //                   isVideoFile(nextPost.assets[0].src)
-      //                     ? (nextPost.assets[0].poster ?? "")
-      //                     : nextPost.assets[0].src
-      //                 }
-      //                 width={isNaN(width) ? 1080 : width}
-      //               />
-      //             ) : null}
-      //           </MediaWrapper>
-      //         </MediaWrapper>
-      //       </Link>
-      //     ) : null}
-      //   </>
-      // }
-    >
-      <TitleHeader subheading={formatPostDate(post.date)}>
-        {post.title}
-      </TitleHeader>
-      <div className="container flex flex-col pb-w20">
-        <Prose>
-          <MDXContent components={components} />
-          {/* <PostMeta post={post} /> */}
-        </Prose>
-      </div>
-    </PageWrapper>
+    /* unlike in web, we do NOT wrap with PageWrapper */
+    <>
+      {isIndex ? (
+        <TitleHeader subheading={<Subheading post={post} />}>
+          <Link className="hover:text-accent" href={post.slug}>
+            <Text as="h1" intent="title">
+              {post.title}
+            </Text>
+          </Link>
+        </TitleHeader>
+      ) : (
+        <TitleHeader subheading={<Subheading post={post} />}>
+          {post.title}
+        </TitleHeader>
+      )}
+      <article className="container flex flex-col pb-w20">
+        <Mdx code={post.body.code}>
+          {/* {!isIndex ? <PostMeta post={post} /> : null} */}
+        </Mdx>
+      </article>
+    </>
   );
 };
+
+const Subheading = ({ post }: { post: Post }) => (
+  <>
+    <span>{formatPostDate(post.date)}</span>
+    <hr className="hr-vertical h-[0.9em] border-solid-light mt-[0.075em]" />
+    <span>
+      <Link
+        className="capitalize link-alt"
+        href={`/archive?category=${post.category}`}
+      >
+        {post.category}
+      </Link>
+    </span>
+  </>
+);

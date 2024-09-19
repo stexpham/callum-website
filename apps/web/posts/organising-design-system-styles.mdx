@@ -77,14 +77,14 @@ fontSize: {
     "13px",
     { lineHeight: 1.5, letterSpacing: "0.015em" },
   ],
-  base: [
+  body: [
     "16px",
     { lineHeight: 1.5, letterSpacing: 0 },
   ],
 }
 ```
 
-Using `text-small` now sets font-size, line-height and letter-spacing. Enclosing the core typographic tuple together in one class centralises the implementation of these values into the config instead of across a codebase. A huge win for maintainability.
+Using `text-small` now sets the tuple of font-size, line-height and letter-spacing in one class. Enclosing the core typographic settings centralises their implementation in the config instead of across a codebase. A huge win for maintainability.
 
 ```jsx
 /* 13px/1.5 with 0.015em letter-spacing */
@@ -109,7 +109,7 @@ We can use CSS variables to set responsive colours under `:root` and `html.dark`
 }
 ```
 
-Because I'm using [Radix Colors](https://www.radix-ui.com/colors) here, I don't need to set the `.dark` scope as that's [already done for me](https://github.com/radix-ui/colors/blob/8a03dad3bc93ea4ed48ce2b70847a3538097e02f/scripts/build-css-modules.js#L19). If you don't like the Radix colors, you can [customise them](https://www.radix-ui.com/colors/custom), use another library or write your own.
+Because I'm using [Radix Colors](https://www.radix-ui.com/colors) here, I don't need to set the `.dark` scope as that's [already done for me](https://github.com/radix-ui/colors/blob/8a03dad3bc93ea4ed48ce2b70847a3538097e02f/scripts/build-css-modules.js#L19). Another reason I like Radix Colors is that they're [easy to customise](https://www.radix-ui.com/colors/custom).
 
 Then set the CSS variables in the Tailwind config.
 
@@ -133,7 +133,7 @@ Using `bg-canvas` now sets the appropriate color in light or dark mode. Removing
 
 ### Semantic naming
 
-I advocate semantic names for colours and font-sizes because semantic naming is a forcing function that ties meaning to use. Does so removes implementation guess work and reduces error.
+I advocate semantic names for colours and font-sizes because semantic naming is a forcing function that ties meaning to use. Doing so removes implementation guess work and reduces error.
 
 I've seen countless projects where inconsistent `gray-50`, `gray-100` or `gray-200` are all used for backgrounds. This is easily solved by defining a color called `background`.
 
@@ -209,8 +209,11 @@ fontSize: {
 
 So instead of writing `text-lg lg:text-xl xl:text-2xl` we can just write `text-title`. Once again, by hoisting font-size responsiveness into a clamp value, we avoid the "implement classes" pitfall again, saving mental effort, errors and debugging time.
 
+Keep in mind, this means we've moved from `text-lg lg:text-xl xl:text-2xl leading-none tracking-wide` to `text-title` by properly configuring Tailwind. Winning!
+
 ```ts
 /* 17px at 500px, 21px at 1200, fluidly calculated inbetween */
+/* …with default line-height and letter-spacing also specified */
 <h2 className="text-title">
   Heading copy
 </h2>

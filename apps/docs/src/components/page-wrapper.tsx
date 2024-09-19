@@ -31,9 +31,9 @@ export const PageWrapper = ({
         activeNav={activeNav}
         anchorName="Notes"
         navItems={[
-          { href: "/archive", label: "Archive" },
-          { href: "/random", label: "Random" },
-          { href: "/patterns", label: "Patterns" },
+          // { href: "/archive", label: "Archive" },
+          // { href: "/random", label: "Random" },
+          // { href: "/patterns", label: "Patterns" },
           { href: config.PUBLIC_URL, label: "Callum" },
         ]}
         ruleClassName={cx(
@@ -47,8 +47,12 @@ export const PageWrapper = ({
       {children}
 
       <FooterShape intersectionRef={intersectionRef}>
-        <TitleHeader as="div" isContained>
-          HEY!!!
+        <TitleHeader
+          as="div"
+          isContained
+          subheading="It&lsquo;s hard to believe you made it down this far."
+        >
+          More soon…
         </TitleHeader>
         {footerChildren}
       </FooterShape>

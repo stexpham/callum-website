@@ -84,6 +84,7 @@
   .link-alt,
   .link-block-alt a:not(.Button) {
     @apply relative no-underline;
+    @apply hover:text-accent;
   }
   .link-accent,
   .link-block-accent a:not(.Button) {
