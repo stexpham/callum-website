@@ -4,6 +4,7 @@ import { Fragment } from "react";
 import { Link } from "@repo/ui/atoms";
 import { noteStyle } from "@repo/ui/mdx-components";
 import { getYear } from "@repo/ui/utils";
+import { ArrowTopRightIcon } from "@radix-ui/react-icons";
 import { type Post } from "contentlayer/generated";
 
 /* <a
@@ -69,6 +70,21 @@ export const PostMeta = ({ post }: { post: Post }) => {
           </>
         ) : null}
       </span>
+      {post.tweet ? (
+        <>
+          <br />
+          <span>
+            Tweetback:{" "}
+            <Link
+              className="inline-flex items-center gap-[1px]"
+              href={post.tweet}
+            >
+              link
+              <ArrowTopRightIcon className="size-[0.9em] mt-[0.02em]" />
+            </Link>
+          </span>
+        </>
+      ) : null}
     </div>
   );
 };

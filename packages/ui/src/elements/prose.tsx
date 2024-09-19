@@ -30,7 +30,8 @@ export const proseVariants = cva({
     "[&_[id*='user-content-fnref']]:scroll-mt-[calc(theme(spacing.nav)+theme(spacing.inset))]",
     // Note spacings
     "[&_.footnotes]:!mt-w12",
-    "[&_.Note+.Note]:!mt-2 [&_.footnotes+.Note]:!mt-2",
+    "[&_.Note+.Note]:!mt-2",
+    // "[&_.footnotes+.Note]:!mt-2",
     "[&_.footnotes_ol]:pl-3.5",
     // Hide the text content of the footnotes backref link
     "[&_.footnotes_.data-footnote-backref]:indent-[-9999px]",
