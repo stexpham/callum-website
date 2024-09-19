@@ -9,8 +9,8 @@
     "type-check": "turbo type-check",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
     "clean": "turbo run clean && rm -rf node_modules",
-    "clean:all": "turbo run clean && rm -rf node_modules **/node_modules",
-    "release": "turbo run build --filter=docs^..."
+    "clean:all": "turbo run clean && rm -rf node_modules **/node_modules && rm pnpm-lock.yaml",
+    "release": "turbo run build --filter=notes^..."
   },
   "devDependencies": {
     "prettier": "^3.2.5",
