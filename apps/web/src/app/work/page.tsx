@@ -3,9 +3,7 @@ import { TitleHeader } from "@repo/ui/elements";
 import type { SearchParams } from "@/types/search-params";
 import { PageWrapper, PagePostsIndexClient } from "@/components/page";
 import type { PostsKind } from "@/components/post";
-export const config = {
-  runtime: 'experimental-edge',
-}
+export const runtime = "experimental-edge";
 export default function WorkIndexPage({
   searchParams,
 }: {
