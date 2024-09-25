@@ -5,7 +5,9 @@ import type { SearchParams } from "@/types/search-params";
 import { PageWrapper } from "@/components/page";
 import { PagePostsIndexClient } from "@/components/page/page-posts-index-client";
 import type { PostsKind } from "@/components/post";
-
+export const config = {
+  runtime: 'experimental-edge',
+}
 export default function WritingIndexPage({
   searchParams,
 }: {

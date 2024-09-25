@@ -1,6 +1,8 @@
 const title = `Work — Callum Flack Design & Development`;
 const description = "An archive of design and programming projects.";
-
+export const config = {
+  runtime: 'experimental-edge',
+}
 export const generateMetadata = () => {
   return {
     title,
